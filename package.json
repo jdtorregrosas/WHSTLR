@@ -1,0 +1,28 @@
+{
+  "name": "release_notes_printer",
+  "version": "1.0.0",
+  "description": "Print the release notes from commit messages in a repository",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.local.coliquio.de:jdtorregrosas/releaseNotesPrinter.git"
+  },
+  "keywords": [
+    "release"
+  ],
+  "author": "Julian",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "nodegit": "^0.14.1",
+    "promisify": "0.0.3",
+    "promisify-node": "^0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  }
+}
