@@ -3,12 +3,13 @@
 const exec = require('child_process').exec
 const promisify = require('promisify-node')
 const fse = promisify(require('fs-extra'))
+const temporalPath = `${__dirname}/../tmp`
 
 module.exports = {
   clone: function (url, branch = 'master', callback) {
-    const command = `git clone -b ${branch} ${url} ./tmp`
-    fse.remove('./tmp').then(function () {
-      exec(command, { cwd: './' }, function (err, stdout, stderr) {
+    const command = `git clone -b ${branch} ${url} ${temporalPath}`
+    fse.remove(temporalPath).then(function () {
+      exec(command, { cwd: `${__dirname}/../` }, function (err, stdout, stderr) {
         // if (err) callback(err)
         callback(stdout)
       })
@@ -21,7 +22,7 @@ module.exports = {
     } else {
       command = `git log ${latestTag}..HEAD --oneline --format="_TITLE%s%n %b"`
     }
-    exec(command, { cwd: './tmp' }, function (err, stdout, stderr) {
+    exec(command, { cwd: temporalPath }, function (err, stdout, stderr) {
       // if (err) callback(err)
       callback(stdout)
     })

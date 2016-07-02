@@ -1,11 +1,11 @@
 'use strict'
 
-const git = require('./git.js')
-const ReleaseNote = require('./releaseNote.js')
+const git = require('./app/git.js')
+const ReleaseNote = require('./app/releaseNote.js')
 
 const repositoryURL = 'https://github.com/jdtorregrosas/releaseNotesPrinter.git'
-const version = 'v1.0.0'
-const latestVersion = ''
+const version = 'v2.0.0'
+const latestVersion = 'v1.0.0'
 const branch = 'master'
 const repositoryName = getRepositoryName(repositoryURL)
 
