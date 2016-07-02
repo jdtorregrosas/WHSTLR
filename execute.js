@@ -3,15 +3,16 @@
 const git = require('./git.js')
 const ReleaseNote = require('./releaseNote.js')
 
-const repositoryURL = 'https://github.com/jdtorregrosas/walpurgis-nacht-syntax'
-const version = 'v0.0.0.1'
-const branch = 'test'
+const repositoryURL = 'https://github.com/jdtorregrosas/releaseNotesPrinter.git'
+const version = 'v1.0.0'
+const latestVersion = ''
+const branch = 'master'
 const repositoryName = getRepositoryName(repositoryURL)
 
 const releaseNote = new ReleaseNote(repositoryName, version)
 
 git.clone(repositoryURL, branch, (str) => {
-  git.log(version, function (str) {
+  git.log(latestVersion, function (str) {
     releaseNote.addTitle('Features', 3)
     var array = str.split('\n')
     for (var entry in array) {
