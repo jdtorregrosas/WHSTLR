@@ -5,14 +5,16 @@ const ReleaseNote = require('./app/releaseNote.js')
 
 const repositoryURL = 'https://github.com/jdtorregrosas/releaseNotesPrinter.git'
 const version = 'v2.0.0'
-const latestVersion = 'v1.0.0'
 const branch = 'master'
 const repositoryName = getRepositoryName(repositoryURL)
 
 const releaseNote = new ReleaseNote(repositoryName, version)
 
+const logOptions = {
+  endTag: 'v1.0.0'
+}
 git.clone(repositoryURL, branch, (str) => {
-  git.log(latestVersion, function (str) {
+  git.log(logOptions, function (str) {
     releaseNote.addTitle('Features', 3)
     var array = str.split('\n')
     for (var entry in array) {
