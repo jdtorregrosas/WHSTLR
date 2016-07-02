@@ -18,8 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
-    "nodegit": "^0.14.1",
-    "promisify": "0.0.3",
+    "fs-extra": "^0.30.0",
     "promisify-node": "^0.4.0"
   },
   "devDependencies": {
