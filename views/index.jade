@@ -1,0 +1,31 @@
+//- index.jade
+doctype html
+html
+  head
+    style
+      include style.css
+  body
+    h1= title
+    h2= subtitle
+    p Welcome to my super lame site.
+    div
+      form#formCreateNotes(name="createNotes",method="post",action="/createNotes")
+        div.form-item
+          span Repository:   
+          input#inputRepositoryUrl(type="text", placeholder="https://your-repo.git", name="repository")
+        br
+        div.form-item Last Version Tag:   
+          input#inputEndVersion(type="text", placeholder="last version Tag: 'v1.0.0'", name="endVersion")
+        br
+        div.form-item New Version:   
+          input#inputNewVersion(type="text", placeholder="new version: 'v2.0.0'", name="newVersion")
+        br
+        button.form-item#btnSubmit(type="submit") Generate
+  if successMessage
+    br
+    div.successMessage
+      a(class='button', href= successMessage)= successMessage
+  else if error
+    br
+    div.error
+      span= error
