@@ -1,3 +1,4 @@
+public/bower
 node_modules
 tmp
 releases/*

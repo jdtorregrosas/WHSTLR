@@ -1,0 +1,25 @@
+{
+  "name": "release_notes_printer",
+  "description": "Print the release notes from commit messages in a repository",
+  "main": "",
+  "authors": [
+    "Julian"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "release"
+  ],
+  "homepage": "https://github.com/jdtorregrosas/releaseNotesPrinter",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sweetalert": "^1.1.3"
+  }
+}
