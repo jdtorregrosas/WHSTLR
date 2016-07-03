@@ -1,16 +1,11 @@
 //- index.jade
 doctype html
 html
-  head
-    style
-      include style.css
-    link(rel="stylesheet" href="/public/bower/sweetalert/dist/sweetalert.css")
-    script(src="/public/bower/sweetalert/dist/sweetalert.min.js")
-
+  include navBar
   body
+    include head
     div.main
-      h1= title
-      h2= subtitle
+      include header
       div.form
         form#formCreateNotes(name="createNotes",method="post",action="/createNotes")
           div.form-item
@@ -25,8 +20,8 @@ html
             span New Version:   
             input#inputNewVersion(type="text", placeholder="new version: 'v2.0.0'", name="newVersion")
           br
-          div.form-item
-            button.form-item#btnSubmit(onclick='loading()' type="submit") Generate
+          div.form-item.submit
+            button.button#btnSubmit(onclick='loading()' type="submit") Generate
       if successMessage
         br
         div.output.successMessage
@@ -35,6 +30,8 @@ html
         br
         div.output.error
           span= error
+    include footer
+
 script.
   var loading = function() {
     swal("Please Wait", "We are processing your request...", "warning");

@@ -1,0 +1,10 @@
+doctype html
+html
+  include navBar
+  body
+    include head
+    div.main
+      include header
+      div.about
+        include:markdown ../README.md
+    include footer
