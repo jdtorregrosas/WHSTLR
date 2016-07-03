@@ -17,8 +17,8 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
 
-app.use('/releases', express.static(__dirname + '/releases'))
-app.use('/public', express.static(__dirname + '/public'))
+app.use('/releases', express.static(path.join(__dirname, '/releases')))
+app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use('/', healthRoute)
 app.use('/', indexRoute)
 app.use('/', aboutRoute)

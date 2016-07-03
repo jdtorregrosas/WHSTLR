@@ -31,7 +31,7 @@ module.exports = {
   log: function (options = {}) {
     let command
     if (!options.endTag) {
-      command = `git log --oneline --format="_TITLE%s%n %b"`
+      command = 'git log --oneline --format="_TITLE%s%n %b"'
     } else if (!options.startTag && options.endTag) {
       command = `git log ${options.endTag}..HEAD --oneline --format="_TITLE%s%n %b"`
     } else if (options.startTag && options.endTag) {
