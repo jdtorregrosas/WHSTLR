@@ -12,12 +12,14 @@ module.exports = {
    * @param {string} branch
    * @param {function} callback
    */
-  clone: function (url, branch = 'master', callback) {
+  clone: function (url, branch = 'master') {
     const command = `git clone -b ${branch} ${url} ${temporalPath}`
-    fse.remove(temporalPath).then(function () {
-      exec(command, { cwd: `${__dirname}/../` }, function (err, stdout, stderr) {
-        // TODO: Error
-        callback(stdout)
+    return new Promise((resolve, reject) => {
+      fse.remove(temporalPath).then(function () {
+        exec(command, { cwd: `${__dirname}/./` }, function (err, stdout, stderr) {
+          if (err) reject(err)
+          resolve(stdout)
+        })
       })
     })
   },
@@ -26,7 +28,7 @@ module.exports = {
    * @param {Object} options{endTag: {string}, startTag: {string}}
    * @param {function} callback
    */
-  log: function (options = {}, callback) {
+  log: function (options = {}) {
     let command
     if (!options.endTag) {
       command = `git log --oneline --format="_TITLE%s%n %b"`
@@ -34,12 +36,12 @@ module.exports = {
       command = `git log ${options.endTag}..HEAD --oneline --format="_TITLE%s%n %b"`
     } else if (options.startTag && options.endTag) {
       command = `git log ${options.endTag}..${options.startTag} --oneline --format="_TITLE%s%n %b"`
-    } else {
-      // TODO: Throw error
     }
-    exec(command, { cwd: temporalPath }, function (err, stdout, stderr) {
-      // TODO: Error
-      callback(stdout)
+    return new Promise((resolve, reject) => {
+      exec(command, { cwd: temporalPath }, function (err, stdout, stderr) {
+        if (err) reject(err)
+        resolve(stdout)
+      })
     })
   }
 }

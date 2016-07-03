@@ -3,7 +3,8 @@
 const fs = require('fs')
 
 function ReleaseNote (repositoryName, releaseVersion) {
-  this.releaseFile = `${__dirname}/../releases/${repositoryName}_${releaseVersion}.md`
+  this.releaseFileName = `${repositoryName}_${releaseVersion}.md`
+  this.releaseFile = `${__dirname}/../releases/${this.releaseFileName}`
   fs.writeFileSync(this.releaseFile, `# ${repositoryName}\n*****\n`)
   this.addTitle(releaseVersion, 2)
 }
