@@ -2,7 +2,6 @@
   "name": "release_notes_printer",
   "version": "1.0.0",
   "description": "Print the release notes from commit messages in a repository",
-  "main": "index.js",
   "scripts": {
     "start": "node ./app.js",
     "test": "test"
@@ -17,11 +16,15 @@
   "author": "Julian",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "fs-extra": "^0.30.0",
+    "jade": "^1.11.0",
     "promisify-node": "^0.4.0"
   },
   "devDependencies": {
-    "mocha": "^2.5.3"
+    "jsdoc": "^3.4.0",
+    "mocha": "^2.5.3",
+    "nodemon": "^1.9.2"
   }
 }
