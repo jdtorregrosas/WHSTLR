@@ -3,3 +3,4 @@ node_modules
 tmp
 releases/*
 !releases/README.md
+npm-debug.log
