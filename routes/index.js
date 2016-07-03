@@ -13,8 +13,8 @@ let error
 app.get('/index', (req, res) => {
   res.render('index', {
     md: md,
-    title: 'Release Notes',
-    subtitle: 'Create',
+    title: 'Release Notes Printer',
+    subtitle: '',
     successMessage: successMessage,
     error
   })
@@ -28,7 +28,7 @@ app.post('/createNotes', (req, res) => {
   }
   execute(repositoryURL, version, branch, logOptions)
   .then((file) => {
-    successMessage = file
+    successMessage = 'releases/' + file
     error = ''
     res.redirect('/index')
   }).catch((err) => {
