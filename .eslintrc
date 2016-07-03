@@ -1,0 +1,23 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "extends": "standard",
+  "plugins": [
+    "mocha"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "mongo": true,
+    "es6": true
+  }
+}

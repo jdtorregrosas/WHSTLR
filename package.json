@@ -12,29 +12,6 @@
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- tests/* -R spec",
     "watch": "nodemon ./app.js"
   },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "ecmaFeatures": {
-      "modules": true
-    },
-    "extends": "standard",
-    "plugins": [
-      "mocha"
-    ],
-    "env": {
-      "browser": true,
-      "node": true,
-      "mocha": true,
-      "mongo": true,
-      "es6": true
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git@gitlab.local.coliquio.de:jdtorregrosas/releaseNotesPrinter.git"
