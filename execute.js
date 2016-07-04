@@ -17,12 +17,16 @@ module.exports = {
         git.log(logOptions)
         .then((str) => {
           releaseNote.addTitle('Features', 3)
-          var array = str.split('\n')
+          let array = str.split(/\n|\r/)
+          let printBody = false
           for (var entry in array) {
             if (array[entry] !== '' && array[entry] !== ' ') {
-              if (array[entry].match(/_TITLE./)) {
+              if (array[entry].match(/_TITLE./) && !array[entry].match(/_TITLEMerge./)) {
                 releaseNote.addItem(array[entry].replace('_TITLE', ''))
-              } else {
+                printBody = true
+              } else if (array[entry].match(/_TITLEMerge./)) {
+                printBody = false
+              } else if (printBody) {
                 releaseNote.addSubItem(array[entry])
               }
             }
