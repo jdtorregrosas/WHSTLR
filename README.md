@@ -14,6 +14,8 @@ Print the release notes of your repository.
 * Clone the repo `https://github.com/jdtorregrosas/releaseNotesPrinter.git`
 * Make `npm install`
 * Make  `npm start`
+* Make `bower install`
+ * If bower throw permission errors in linux use: `sudo chown -R $USER:$GROUP ~/.config`
 * Go to `http://localhost:3000/index`
 * Write your repository URL e.g. `https://github.com/jdtorregrosas/releaseNotesPrinter.git` in the Repository field
 * (Optional) Write the last Tag to log your commits starting by it e.g. `v1.0.0`
