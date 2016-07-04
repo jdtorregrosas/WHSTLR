@@ -21,10 +21,10 @@ module.exports = {
           let printBody = false
           for (var entry in array) {
             if (array[entry] !== '' && array[entry] !== ' ') {
-              if (array[entry].match(/_TITLE./) && !array[entry].match(/_TITLEMerge./)) {
+              if (array[entry].match(/_TITLE./) && !array[entry].match(/_TITLEMerge.|_TITLERevert./)) {
                 releaseNote.addItem(array[entry].replace('_TITLE', ''))
                 printBody = true
-              } else if (array[entry].match(/_TITLEMerge./)) {
+              } else if (array[entry].match(/_TITLEMerge.|_TITLERevert./)) {
                 printBody = false
               } else if (printBody) {
                 releaseNote.addSubItem(array[entry])
