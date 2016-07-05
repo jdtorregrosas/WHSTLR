@@ -1,6 +1,12 @@
-# ReleaseNotesPrinter
-*****
-Print the release notes of your repository.
+![WHSTLR Logo](public/assets/images/whstlr-logo.png)
+# WHSTLR
+### (What happened since the last release?)
+
+**********************************
+
+
+Make easier to write release notes.
+
 ## Requirements
 * nodejs, npm
 * git running local
