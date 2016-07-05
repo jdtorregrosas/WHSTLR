@@ -5,7 +5,6 @@
 **********************************
 
 
-Make easier to write release notes.
 
 ## Requirements
 * nodejs, npm

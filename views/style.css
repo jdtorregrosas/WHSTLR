@@ -1,19 +1,11 @@
 *{
   float: none;
   clear: both;
-}
-.title > h1{
-  clear: none;
-  float: right;
-  color: #F9F9F9;
-  margin-right: 10px;
-  margin-bottom: 60px;
+  font-family: 'PT Sans', sans-serif;
 }
 .title > img{
   clear: none;
-  float: right;
-  margin: 10px;
-
+  margin: 0 auto;
 }
 h2{
   float: left;
@@ -25,10 +17,11 @@ h2{
   width: 80%;
   min-width: 400px;
   min-height: 100vh;
-  background-color: #222;
+  background-color: #c3c3a8;
 }
 .form{
-  border: solid 1.5px #505050;
+  background-color: #A9A992;
+  border-radius: 10px;
   padding: 10px;
   clear: both;
   margin: 0 auto;
@@ -44,7 +37,7 @@ h2{
   width: 30%;
   float: left;
   clear: both;
-  color: #F9F9F9;
+  color: #292929;
   padding-right: 10px;
 }
 .form-item input{
@@ -56,19 +49,19 @@ h2{
   display: flex;
 }
 .form-item > .button{
-  background-color: #105300;
+  background-color: #204C08;
   color: #F9F9F9;
   height: 40px;
-  border: solid 3px #102300;
+  border: solid 2px #292929;
   border-radius: 15px;
   display: inline-block;
   margin: auto;
   width: 50%;
 }
-.form-item.button:hover{
+.form-item > .button:hover{
   cursor: pointer;
-  background-color: #4CAF50;
-  border: solid 2px #303030;
+  background-color: #3F990F;
+  border: solid 2px #292929;
 }
 .output{
   margin-left: auto;
@@ -95,6 +88,7 @@ h2{
   display: block;
   clear: both;
   width: 100%;
+  text-align: center;
 }
 .header{
   background-color: #333;
@@ -119,7 +113,7 @@ ul.topnav {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #292929;
 }
 
 ul.topnav li {float: left;}
