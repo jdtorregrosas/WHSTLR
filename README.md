@@ -7,15 +7,19 @@ When some people is working on the same project in the same repository, in diffe
 
 ## MVP Feature list (v1.0)
 - Show git commit history since last release tag or since the beginning of the repository.
-- Write in a easy-to-undertand format (markdown?)
-- Provide good (enough) information
-- Is flexible enough to select an specific release tag
-- Have an interface easy-to-use
-- Show error messages in a transparent way
+- Merge request (info) who, when, what
+- Show messages of most important errors in a transparent way
+- Settings interface for storing GitLab token
+- UI: After selection of repo, automatically insert the last release tag
 
 ## Feature Backlog
-- ...
-- ...
+- UI: Dropdown for available tags
+- UI: List of available repos
+- Is flexible enough to select an specific release tag
+- Date
+- Show messages of all errors in transparent way
+- Offer support for GitHub
+- Offer support for BitBucket
 
 ## Requirements
 * nodejs, npm
