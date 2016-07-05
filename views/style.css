@@ -49,7 +49,7 @@ h2{
   display: flex;
 }
 .form-item > .button{
-  background-color: #204C08;
+  background-color: #D0A811;
   color: #F9F9F9;
   height: 40px;
   border: solid 2px #292929;
@@ -128,7 +128,7 @@ ul.topnav li a {
 
 ul.topnav li a:hover:not(.active) {background-color: #111;}
 
-ul.topnav li a.active {background-color: #4CAF50;}
+ul.topnav li a.active {background-color: #D0A811;}
 
 ul.topnav li.right {float: right;}
 
