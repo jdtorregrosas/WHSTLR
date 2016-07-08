@@ -1,0 +1,9 @@
+ul
+  each commit in commits
+    li (#{commit.author}) #{commit.title} 
+      ul
+        - var bodyElements = []
+        - bodyElements = commit.body.split(/\n|\r/)
+        each bodyElement in bodyElements
+          if bodyElement
+            li= bodyElement

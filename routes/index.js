@@ -5,17 +5,22 @@ const app = express()
 const execute = require('../execute').execute
 // const md = require('node-markdown').Markdown
 const branch = 'master'
+const mock = require('../test/APIMock.js')
 let successMessage
-let error
-
+// let error
 /* GET Index. */
 app.get('/index', (req, res) => {
   res.render('index', {
-    successMessage: successMessage,
-    error
+    user: mock.getUser(),
+    projects: mock.getProjects(),
+    tags: mock.getTags(),
+    commits: mock.getCommits(),
+    mergeRequests: mock.getMergeRequests(),
+    error: mock.getError(),
+    successMessage: successMessage
   })
   successMessage = ''
-  error = ''
+  // error = ''
 })
 
 app.post('/createNotes', (req, res) => {
@@ -27,11 +32,11 @@ app.post('/createNotes', (req, res) => {
   execute(repositoryURL, version, branch, logOptions)
   .then((file) => {
     successMessage = 'releases/' + file
-    error = ''
+    // error = ''
     res.redirect('/index')
   }).catch((err) => {
-    error = err
-    successMessage = ''
+    // error = err
+    successMessage = err
     res.redirect('/index')
   })
 })
