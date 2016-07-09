@@ -1,0 +1,4 @@
+if projects
+  select
+    each project in projects
+      option#inputEndVersion(value=project.name)= project.name

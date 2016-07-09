@@ -1,11 +1,12 @@
-each merge in mergeRequests
-  fieldset
-    ul
-      each commit in commits
-        li (#{commit.author}) #{commit.title}
-          ul
-            - var bodyElements = []
-            - bodyElements = commit.body.split(/\n|\r/)
-            each bodyElement in bodyElements
-              if bodyElement
-                li= bodyElement
+- if(mergeRequests)
+  fieldset.right
+    legend Merge Requests
+    each merge in mergeRequests
+      fieldset
+        legend= merge.title
+        ul
+          li 
+            a(href=merge.link)= merge.link
+          li #{merge.description}
+          li #{merge.author}
+          li #{merge.date}

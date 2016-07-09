@@ -1,0 +1,23 @@
+html
+  include head
+  body
+    include navBar
+    div.main
+      include header
+      div.form
+        form#formCreateNotes(name="applyConfig",method="post",action="/applyConfig")
+          div.form-item
+            span Repository URL:    
+            input(type='text' placeholder="http://gitlab.coliquio.de/")
+          div.form-item
+            span Access Token:
+            input(type='text' placeholder="3dzg38990nd89NzjhdbJrff")
+          div.form-item.submit
+            button.button#btnSubmit(onclick='loading()' type="submit") Apply
+      br
+    include footer
+
+script.
+  var loading = function() {
+    swal("Please Wait", "We are processing your request...", "warning");
+  }

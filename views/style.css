@@ -45,6 +45,11 @@ h2{
   float: right;
   clear: right;
 }
+.form-item select{
+  width: 66%;
+  float: right;
+  clear: right;
+}
 .form-item.submit{
   display: flex;
 }
@@ -137,9 +142,15 @@ ul.topnav li.right {float: right;}
     ul.topnav li {float: none;}
 }
 
-// Containers
 .container{
-
+  overflow:  auto;
+  margin: 0 auto;
+}
+.container.center.border{
+  border: solid 2px #292929;
+  padding: 15px;
+  margin: 15px auto;
+  width: 70%;
 }
 .container > .right{
   clear: none;

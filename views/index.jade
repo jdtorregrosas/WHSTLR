@@ -1,43 +1,27 @@
 //- index.jade
 doctype html
 html
-  include navBar
+  include head
   body
-    include head
+    include navBar
     div.main
       include header
       div.form
-        form#formCreateNotes(name="createNotes",method="post",action="/createNotes")
+        form#formCreateNotes(name="createNotes",method="post",action="/getProject")
           div.form-item
-            span Repository:
-            input#inputRepositoryUrl(type="text", placeholder="https://your-repo.git", name="repository")
+            span Project:
+            include projects
           br
           div.form-item
-            span Last Version Tag:
-            input#inputEndVersion(type="text", placeholder="last version Tag: 'v1.0.0'", name="endVersion")
-          br
-          div.form-item
-            span New Version:
-            input#inputNewVersion(type="text", placeholder="new version: 'v2.0.0'", name="newVersion")
+            span Version Tag:
+            include tags
           br
           div.form-item.submit
             button.button#btnSubmit(onclick='loading()' type="submit") Generate
-      if successMessage
-        br
-        div.output.successMessage
-          a(class='button', href= successMessage) &raquo See your file in the browser
-      else if error
-        br
-        div.output.error
-          span= error.title
-          br
-          span= error.description
+      include error
       div.container
-        fieldset.left
-          legend Commit Messages
-          include commits
-        fieldset.right
-          legend Merge Requests
+        include commits
+        include mergeRequests
     include footer
 
 script.
