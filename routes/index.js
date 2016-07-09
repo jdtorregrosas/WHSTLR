@@ -7,20 +7,43 @@ const execute = require('../execute').execute
 const branch = 'master'
 const mock = require('../test/APIMock.js')
 let successMessage
+let user, projects
+let tags
+let commits
+let mergeRequests
+let error
 // let error
-/* GET Index. */
+
+app.get('/', (req, res) => {
+  res.redirect('/config')
+})
+
+app.get('/config', (req, res) => {
+  res.render('config', {})
+})
+
 app.get('/index', (req, res) => {
-  res.render('index', {
-    user: mock.getUser(),
-    projects: mock.getProjects(),
-    tags: mock.getTags(),
-    commits: mock.getCommits(),
-    mergeRequests: mock.getMergeRequests(),
-    error: mock.getError(),
-    successMessage: successMessage
-  })
-  successMessage = ''
+  if (projects) {
+    res.render('index', {
+      user: user,
+      projects: projects,
+      tags: tags,
+      commits: commits,
+      mergeRequests: mergeRequests,
+      error: error,
+      successMessage: successMessage
+    })
+  } else {
+    res.redirect('/config')
+  }
   // error = ''
+})
+
+app.post('/applyConfig', (req, res) => {
+  user = mock.getUser()
+  projects = mock.getProjects()
+  tags = mock.getTags()
+  res.redirect('index')
 })
 
 app.post('/createNotes', (req, res) => {
@@ -29,16 +52,10 @@ app.post('/createNotes', (req, res) => {
   const logOptions = {
     endTag: req.body.endVersion
   }
-  execute(repositoryURL, version, branch, logOptions)
-  .then((file) => {
-    successMessage = 'releases/' + file
-    // error = ''
-    res.redirect('/index')
-  }).catch((err) => {
-    // error = err
-    successMessage = err
-    res.redirect('/index')
-  })
+  commits = mock.getCommits()
+  mergeRequests = mock.getMergeRequests()
+  error = mock.getError()
+  res.redirect('/index')
 })
 
 module.exports = app

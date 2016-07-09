@@ -8,8 +8,8 @@ module.exports = {
   },
   getProjects: () => {
     return [
-      {projectName: 'userService2.0'},
-      {projectName: 'website'}
+      {name: 'userService2.0'},
+      {name: 'website'}
     ]
   },
   getCommits: () => {
@@ -65,7 +65,7 @@ module.exports = {
         date: '2016-06-07T11:36:43+00:00'
       },
       {
-        name: 'release-3.0.0',
+        name: 'release-2.0.0',
         date: '2016-06-02T11:36:43+00:00'
       }
     ]
@@ -84,6 +84,13 @@ module.exports = {
         link: 'http://gitlab.coliquio.de/merge-requests/4321',
         description: 'Added cool things\nRemoved cool things',
         author: 'ceggert',
+        date: '2016-06-03T11:36:43+00:00'
+      },
+      {
+        title: 'My merge request',
+        link: 'http://gitlab.coliquio.de/merge-requests/5678',
+        description: 'Added cool things\nRemoved cool things',
+        author: 'jtorregrosa',
         date: '2016-06-03T11:36:43+00:00'
       }
     ]
