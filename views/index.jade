@@ -5,6 +5,8 @@ html
   body
     include navBar
     div.main
+      a(href="/config")
+        img.config(src='/public/assets/images/config-icon.ico' height='40')
       include header
       div.form
         form#formCreateNotes(name="createNotes",method="post",action="/getProject")
@@ -25,6 +27,7 @@ html
     include footer
 
 script.
-  var loading = function() {
+  var loading = function () {
     swal("Please Wait", "We are processing your request...", "warning");
   }
+  

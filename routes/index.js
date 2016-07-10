@@ -43,7 +43,7 @@ app.post('/applyConfig', (req, res) => {
   user = mock.getUser()
   projects = mock.getProjects()
   tags = mock.getTags()
-  res.redirect('index')
+  res.redirect('/index')
 })
 
 app.post('/createNotes', (req, res) => {

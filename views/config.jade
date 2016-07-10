@@ -5,6 +5,7 @@ html
     div.main
       include header
       div.form
+        h2 Configuration
         form#formCreateNotes(name="applyConfig",method="post",action="/applyConfig")
           div.form-item
             span Repository URL:    
@@ -19,5 +20,5 @@ html
 
 script.
   var loading = function() {
-    swal("Please Wait", "We are processing your request...", "warning");
+    swal("Saving", "We are saving your configuration...", "warning");
   }

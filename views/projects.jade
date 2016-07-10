@@ -1,4 +1,9 @@
 if projects
-  select
+  select()
     each project in projects
-      option#inputEndVersion(value=project.name)= project.name
+      option#inputEndVersion(value=project.name onchange='getTags(project.name)')= project.name
+      
+script.
+  var getTags = function (project) {
+    console.log(project)
+  }
