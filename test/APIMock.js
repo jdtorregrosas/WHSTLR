@@ -1,4 +1,5 @@
 'use strict'
+var projectsSchema = require('../app/schemas/projectsSchema')
 
 module.exports = {
   getUser: () => {
@@ -7,10 +8,11 @@ module.exports = {
     }
   },
   getProjects: () => {
-    return [
+    let projects = [
       {name: 'userService2.0'},
       {name: 'website'}
     ]
+    return projectsSchema.validateProjects(projects)
   },
   getCommits: () => {
     return [
