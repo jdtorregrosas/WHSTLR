@@ -42,7 +42,6 @@ app.get('/index', (req, res) => {
 app.post('/applyConfig', (req, res) => {
   user = mock.getUser()
   projects = mock.getProjects()
-  tags = mock.getTags()
   res.redirect('/index')
 })
 

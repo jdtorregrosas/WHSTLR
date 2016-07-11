@@ -3,13 +3,17 @@
 const Joi = require('joi')
 
 const projectsSchema = Joi.array().items(Joi.object().keys({
-  name: Joi.string().required()
+  name: Joi.string().required(),
+  tags: Joi.array().items(Joi.object().keys({
+    name: Joi.string().required(),
+    date: Joi.string().required()
+  }))
 }))
 
 module.exports = {
-  validateProjects : (projects) => {
+  validateProjects: (projects) => {
     return Joi.validate(projects, projectsSchema, (err, projects) => {
-      if(err) {
+      if (err) {
         console.log(err)
         return err
       } else {

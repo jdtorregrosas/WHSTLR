@@ -9,8 +9,23 @@ module.exports = {
   },
   getProjects: () => {
     let projects = [
-      {name: 'userService2.0'},
-      {name: 'website'}
+      {
+        name: 'userService2.0',
+        tags: [
+          {
+            name: 'release-3.0.0',
+            date: '2016-06-07T11:36:43+00:00'
+          },
+          {
+            name: 'release-2.0.0',
+            date: '2016-06-02T11:36:43+00:00'
+          }
+        ]
+      },
+      {
+        name: 'website',
+        tags: []
+      }
     ]
     return projectsSchema.validateProjects(projects)
   },
@@ -57,18 +72,6 @@ module.exports = {
         body: '',
         author: 'tsailer',
         date: '2016-06-01T11:36:43+00:00'
-      }
-    ]
-  },
-  getTags: () => {
-    return [
-      {
-        name: 'release-3.0.0',
-        date: '2016-06-07T11:36:43+00:00'
-      },
-      {
-        name: 'release-2.0.0',
-        date: '2016-06-02T11:36:43+00:00'
       }
     ]
   },
