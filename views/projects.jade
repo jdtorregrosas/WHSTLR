@@ -1,27 +1,5 @@
 if projects
-  select(name="projects")
+  select#projects(name="projects")
+    option Please Select
     each project in projects
-      option#inputEndVersion(value=project.name)= project.name
-if tags
-  select
-    each tag in tags
-      option#inputEndVersion(value=tag.name)= tag.name
-
-script(type='text/javascript' src='javascripts/jquery-min.js')
-  $(document).on("change", '#department', function(e) {
-  var department = $(this).val()
-  $.ajax({
-  type: "POST",
-  data: {department: department},
-  url: 'admin/users/get_name_list.php',
-  dataType: 'json',
-  success: function(json) {
-    var $el = $("#name");
-    $el.empty(); // remove old options
-    $el.append($("<option></option>").attr("value", '').text('Please Select'));
-    $.each(json, function(value, key) {
-    $el.append($("<option></option>").attr("value", value).text(key));
-    })
-  }
-  })
-  })
+      option(value=project.name)= project.name

@@ -30,4 +30,22 @@ script.
   var loading = function () {
     swal("Please Wait", "We are processing your request...", "warning");
   }
-  
+
+script.
+  $(document).on("change", '#projects', function(e) {
+    var project = $(this).val()
+    $.ajax({
+      type: "POST",
+      data: {project: project},
+      url: '/getTags',
+      dataType: 'json',
+      success: function(json) {
+        var $tags = $("#tags");
+        $tags.empty(); // remove old options
+        $tags.append($("<option></option>").attr("value", '').text('Please Select'));
+        $.each(json, function(value, key) {
+          $tags.append($("<option></option>").attr("value", key.name).text(key.name));
+        })
+      }
+    })
+  })
