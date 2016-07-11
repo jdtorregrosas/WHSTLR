@@ -45,6 +45,15 @@ app.post('/applyConfig', (req, res) => {
   res.redirect('/index')
 })
 
+app.post('/getTags', (req, res) => {
+  projects = mock.getProjects()
+  for (let project in projects){
+    if(projects[project].name === req.body.project){
+      res.send(projects[project].tags)
+    }
+  }
+})
+
 app.post('/createNotes', (req, res) => {
   const repositoryURL = req.body.repository
   const version = req.body.newVersion
