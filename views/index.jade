@@ -9,7 +9,7 @@ html
         img.config(src='/public/assets/images/config-icon.ico' height='40')
       include header
       div.form
-        form#formCreateNotes(name="createNotes",method="post",action="/getProject")
+        form#formCreateNotes(name="createNotes",method="post",action="/createNotes")
           div.form-item
             span Project:
             include projects
@@ -42,7 +42,6 @@ script.
       success: function(json) {
         var $tags = $("#tags");
         $tags.empty(); // remove old options
-        $tags.append($("<option></option>").attr("value", '').text('Please Select'));
         $.each(json, function(value, key) {
           $tags.append($("<option></option>").attr("value", key.name).text(key.name));
         })
