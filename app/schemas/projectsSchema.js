@@ -3,11 +3,8 @@
 const Joi = require('joi')
 
 const projectsSchema = Joi.array().items(Joi.object().keys({
-  name: Joi.string().required(),
-  tags: Joi.array().items(Joi.object().keys({
-    name: Joi.string().required(),
-    date: Joi.string().required()
-  })).required()
+  id: Joi.number().required(),
+  name: Joi.string().required()
 }))
 
 module.exports = {
