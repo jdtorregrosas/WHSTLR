@@ -4,8 +4,8 @@ const Joi = require('joi')
 
 const mergeRequestsSchema = Joi.array().items(Joi.object().keys({
   title: Joi.string().required(),
-  link: Joi.string().required(),
-  description: Joi.string().required(),
+  source_branch: Joi.string().required(),
+  description: Joi.string().allow(''),
   author: Joi.string().required(),
   date: Joi.string().required()
 }))

@@ -5,8 +5,7 @@
       fieldset
         legend= merge.title
         ul
-          li 
-            a(href=merge.link)= merge.link
+          li #{merge.source_branch}
           li #{merge.description}
           li #{merge.author}
           li #{merge.date}
