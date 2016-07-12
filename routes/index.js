@@ -49,7 +49,8 @@ app.post('/getTags', (req, res) => {
   projects = mock.getProjects()
   for (let project in projects) {
     if (projects[project].name === req.body.project) {
-      res.send(projects[project].tags)
+      let tags = mock.getTags(projects[project].id)
+      res.send(tags)
     }
   }
 })
