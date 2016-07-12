@@ -33,44 +33,37 @@ module.exports = {
   getCommits: () => {
     let commits = [
       {
-        title: 'Add something new',
-        body: '',
+        message: 'Add something new',
         author: 'tsailer',
         date: '2016-06-07T11:36:43+00:00'
       },
       {
-        title: 'Add something new',
-        body: '',
+        message: 'Add something new',
         author: 'tsailer',
         date: '2016-06-09T11:36:43+00:00'
       },
       {
-        title: 'Fix something new',
-        body: '',
+        message: 'Fix something new',
         author: 'tsailer',
         date: '2016-06-08T11:36:43+00:00'
       },
       {
-        title: 'Make something new',
-        body: '',
+        message: 'Make something new',
         author: 'tsailer',
         date: '2016-06-07T11:36:43+00:00'
       },
       {
-        title: 'Add something old',
-        body: 'This and this\n and this \n - and this',
+        message: 'Add something old\n\nThis and this\n and this \n - and this',
         author: 'ceggert',
         date: '2016-06-04T11:36:43+00:00'
       },
       {
-        title: 'Fix something old',
-        body: 'This and this\n and this \n - and this',
+        message: 'Fix something old\n\nThis and this\n and this \n - and this',
         author: 'ceggert',
         date: '2016-06-02T11:36:43+00:00'
       },
       {
-        title: 'Remove something new',
-        body: '',
+        message: 'Remove something new',
         author: 'tsailer',
         date: '2016-06-01T11:36:43+00:00'
       }
