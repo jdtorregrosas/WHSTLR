@@ -6,6 +6,19 @@ function GitlabClient (baseURL, token) {
   this.baseURL = baseURL
   this.token = token
 }
+//TODO test tags
+GitlabClient.prototype.getTags = function (projectId) {
+  return new Promise((resolve, reject) => {
+    const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/tags`
+    request
+    .get(url)
+    .set('PRIVATE-TOKEN', this.token)
+    .end((err, res) => {
+      if (err) reject(err)
+      resolve(res)
+    })
+  })
+}
 GitlabClient.prototype.getProjects = function () {
   return new Promise((resolve, reject) => {
     const url = `${this.baseURL}/api/v3/projects`
