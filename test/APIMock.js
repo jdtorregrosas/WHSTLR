@@ -1,5 +1,6 @@
 'use strict'
 var projectsSchema = require('../app/schemas/projectsSchema')
+var commitsSchema = require('../app/schemas/commitsSchema')
 
 module.exports = {
   getUser: () => {
@@ -30,7 +31,7 @@ module.exports = {
     return projectsSchema.validateProjects(projects)
   },
   getCommits: () => {
-    return [
+    let commits = [
       {
         title: 'Add something new',
         body: '',
@@ -74,6 +75,7 @@ module.exports = {
         date: '2016-06-01T11:36:43+00:00'
       }
     ]
+    return commitsSchema.validateCommits(commits)
   },
   getMergeRequests: () => {
     return [
