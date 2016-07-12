@@ -3,10 +3,14 @@
     legend Commit Messages
     ul
       each commit in commits
-        li (#{commit.author}) #{commit.title} 
-          ul
-            - var bodyElements = []
-            - bodyElements = commit.body.split(/\n|\r/)
-            each bodyElement in bodyElements
-              if bodyElement
-                li= bodyElement
+        - var messageElements = []
+        - var counter = 0
+        - messageElements = commit.message.split(/\n|\r/)
+          each messageElement in messageElements
+            if messageElement && counter === 0
+              li (#{commit.author}) #{messageElement}
+              - counter = counter + 1
+            else if messageElement
+                span= messageElement
+                br
+            
