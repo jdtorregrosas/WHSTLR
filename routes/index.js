@@ -3,18 +3,13 @@
 const express = require('express')
 const app = express()
 const GitlabClient = require('../app/gitlab/GitlabClient')
-const converter = require('../app/converter')
-// const mock = require('../test/APIMock.js')
-// const execute = require('../execute').execute
-// const md = require('node-markdown').Markdown
-// const branch = 'master'
+const converter = require('../app/gitlab/gitlabConvert')
 let successMessage
 let user, projects
 let commits
 let mergeRequests
 let tags
 let error
-// let error
 let gitlabClient
 
 app.get('/', (req, res) => {
@@ -74,7 +69,6 @@ app.post('/getTags', (req, res) => {
 app.post('/createNotes', (req, res) => {
   commits = []
   mergeRequests = []
-  console.log(tags)
   for (let project in projects) {
     if (projects[project].name === req.body.projects) {
       gitlabClient.getCommits(projects[project].id)
