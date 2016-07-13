@@ -181,11 +181,10 @@ ul.topnav li.right {float: right;}
   overflow-y: scroll;
   height: 800px;
 }
-fieldset {
+.commits-fieldset {
   border:2px solid #292929;
 }
-
-legend {
+.commits-legend {
   padding: 0.2em 0.5em;
   border: 2px solid #292929;
   color:#292929;
@@ -193,6 +192,33 @@ legend {
   font-size:90%;
   text-align:right;
   }
+/*** merges ***/
+.merges-div {
+  overflow-y: scroll;
+  height: 800px;
+}
+.merges-fieldset {
+  border:2px solid #292929;
+}
+.merges-legend {
+  padding: 0.2em 0.5em;
+  border: 2px solid #292929;
+  color:#292929;
+  font-weight: bold;
+  font-size:90%;
+  text-align:left;
+}
+.merge-title{
+  padding-left: 0;
+  font-weight: bold;
+}
+.merge-subtitle{
+  padding-left: 0;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+
 .background {
   width: 100%;
   height: 100%;

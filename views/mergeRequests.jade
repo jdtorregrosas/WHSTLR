@@ -1,11 +1,24 @@
 - if(mergeRequests)
-  fieldset.right
-    legend Merge Requests
-    each merge in mergeRequests
-      fieldset
-        legend= merge.title
-        ul
-          li #{merge.source_branch}
-          li #{merge.description}
-          li #{merge.author}
-          li #{merge.date}
+  fieldset.right.merges-fieldset
+    legend.merges-legend Merge Requests
+    div.merges-div
+      each merge in mergeRequests
+        fieldset
+          legend.merge-title= merge.title
+          div.merge-div
+            div.commit-icon-div
+              img(src="/public/assets/images/git-merge.png" width=20)
+            div.commit-messages-container
+              span.merge-subtitle Branch: 
+              span #{merge.source_branch}
+              br
+              span.merge-subtitle Author: 
+              span #{merge.author}
+              br
+              span.merge-subtitle Date: 
+              span #{merge.date}
+              br
+              - if(merge.description!=='')
+                hr
+                span #{merge.description}
+                br
