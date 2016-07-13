@@ -21,7 +21,7 @@ h2{
   background-color: #c3c3a8;
 }
 .form{
-  background-color: #A9A992;
+  background-color: #292929;
   border-radius: 10px;
   padding: 10px;
   clear: both;
@@ -29,25 +29,32 @@ h2{
   max-width: 700px;
   min-width: 300px;
 }
+.form > h2{
+  margin: 0;
+  padding:1em;
+  color: #F9F9F9;
+}
 .form-item{
-  padding-bottom: 10px;
+  padding-bottom: .75em;
   display: inline-block;
   width: 100%;
 }
 .form-item span{
-  width: 30%;
+  width: 25%;
   float: left;
   clear: both;
-  color: #292929;
-  padding-right: 10px;
+  color: #F9F9F9;
+  padding-top: .15em;
+  text-align: right;
 }
 .form-item input{
-  width: 66%;
+  width: 72%;
+  height: 2.5em;
   float: right;
   clear: right;
 }
 .form-item select{
-  width: 66%;
+  width: 72%;
   float: right;
   clear: right;
 }
@@ -55,8 +62,8 @@ h2{
   display: flex;
 }
 .form-item > .button{
-  background-color: #D0A811;
-  color: #F9F9F9;
+  background-color: #fcd949;
+  color: #292929;
   height: 40px;
   border: solid 2px #292929;
   border-radius: 15px;
@@ -66,8 +73,9 @@ h2{
 }
 .form-item > .button:hover{
   cursor: pointer;
-  background-color: #3F990F;
-  border: solid 2px #292929;
+  color: #F9F9F9;
+  background-color: #E86F0C;
+  border: solid 2px #F9F9F9;
 }
 .output{
   margin-left: auto;
@@ -133,7 +141,7 @@ ul.topnav li a {
 
 ul.topnav li a:hover:not(.active) {background-color: #111;}
 
-ul.topnav li a.active {background-color: #D0A811;}
+ul.topnav li a.active {background-color: #E86F0C;}
 
 ul.topnav li.right {float: right;}
 
@@ -184,13 +192,15 @@ ul.topnav li.right {float: right;}
 .commits-fieldset {
   border:2px solid #292929;
 }
-.commits-legend {
+.main-legend {
   padding: 0.2em 0.5em;
   border: 2px solid #292929;
-  color:#292929;
+  background-color: #E86F0C;
+  box-shadow: 0 3px 2px 0 rgba(0,0,0,1);
+  color:#F9F9F9;
   font-weight: bold;
   font-size:90%;
-  text-align:right;
+  text-align:center;
   }
 /*** merges ***/
 .merges-div {
@@ -199,14 +209,6 @@ ul.topnav li.right {float: right;}
 }
 .merges-fieldset {
   border:2px solid #292929;
-}
-.merges-legend {
-  padding: 0.2em 0.5em;
-  border: 2px solid #292929;
-  color:#292929;
-  font-weight: bold;
-  font-size:90%;
-  text-align:left;
 }
 .merge-title{
   padding-left: 0;
@@ -217,10 +219,24 @@ ul.topnav li.right {float: right;}
   font-weight: bold;
   font-size: 110%;
 }
+/*** Select dropdown ***/
+select {
+  /* irrelevante Eigenschaften gekürzt */
+  border: 1px solid black;
+  padding:.50em .15em .25em .25em;
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,1);
+  background-color:#C3C3A8;
+  color:#292929;
+}
 
+option {
+  background:#DDD;
+  border-top:1px solid #DDD;
+  padding:.3em 1em .3em 1em;
+}
 
 .background {
   width: 100%;
-  height: 100%;
   background-color: #454545;
+  min-height: 100vh;
 }
