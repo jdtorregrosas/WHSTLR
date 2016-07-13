@@ -1,7 +1,7 @@
 'use strict'
 
 const expect = require('chai').expect
-const GitlabClient = require('../app/gitlab/GitlabClient')
+const GitlabClient = require('../../app/gitlab/GitlabClient')
 let gitlabClient
 
 before('Create a GitlabClient for the tests', () => {
@@ -33,6 +33,16 @@ describe('# Merge Requests', () => {
     return gitlabClient.getMergeRequests(projectId)
     .then((res) => {
       expect(res).to.be.an('array')
+    })
+  })
+})
+
+describe('# Tags', () => {
+  it('Should get an array of merge requests of an specific project', () => {
+    const projectId = 140
+    return gitlabClient.getTags(projectId)
+    .then((res) => {
+      expect(res.body).to.be.an('array')
     })
   })
 })
