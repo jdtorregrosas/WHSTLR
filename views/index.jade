@@ -3,28 +3,29 @@ doctype html
 html
   include head
   body
-    include navBar
-    div.main
-      a(href="/config")
-        img.config(src='/public/assets/images/config-icon.ico' height='40')
-      include header
-      div.form
-        form#formCreateNotes(name="createNotes",method="post",action="/createNotes")
-          div.form-item
-            span Project:
-            include projects
-          br
-          div.form-item
-            span Version Tag:
-            include tags
-          br
-          div.form-item.submit
-            button.button#btnSubmit(onclick='loading()' type="submit") Generate
-      include error
-      div.container
-        include commits
-        include mergeRequests
-    include footer
+    div.background
+      include navBar
+      div.main
+        a(href="/config")
+          img.config(src='/public/assets/images/config-icon.ico' height='40')
+        include header
+        div.form
+          form#formCreateNotes(name="createNotes",method="post",action="/createNotes")
+            div.form-item
+              span Project:
+              include projects
+            br
+            div.form-item
+              span Version Tag:
+              include tags
+            br
+            div.form-item.submit
+              button.button#btnSubmit(onclick='loading()' type="submit") Generate
+        include error
+        div.container
+          include commits
+          include mergeRequests
+      include footer
 
 script.
   var loading = function () {

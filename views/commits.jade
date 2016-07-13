@@ -1,16 +1,22 @@
 - if(commits)
   fieldset.left
     legend Commit Messages
-    ul
+    div.commits-div
       each commit in commits
-        - var messageElements = []
-        - var counter = 0
-        - messageElements = commit.message.split(/\n|\r/)
-          each messageElement in messageElements
-            if messageElement && counter === 0
-              li (#{commit.author}) #{messageElement}
-              - counter = counter + 1
-            else if messageElement
-                span= messageElement
-                br
+        br
+        div.commit-div
+          div.commit-icon-div
+            img(src="/public/assets/images/git-commit.png" width=20)
+          div.commit-messages-container
+            - var messageElements = []
+            - var counter = 0
+            - messageElements = commit.message.split(/\n|\r/)
+              each messageElement in messageElements
+                if messageElement && counter === 0
+                  span.commit-title(#{commit.author}) #{messageElement}
+                  br
+                  - counter = counter + 1
+                else if messageElement
+                  span.commit-body= messageElement
+                  br
             
