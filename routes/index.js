@@ -69,9 +69,19 @@ app.post('/getTags', (req, res) => {
 app.post('/createNotes', (req, res) => {
   commits = []
   mergeRequests = []
+  let tagDate
+  let tagDateConverted = '2007-09-06T04:00:00'
   for (let project in projects) {
     if (projects[project].name === req.body.projects) {
-      gitlabClient.getCommits(projects[project].id)
+      for (let tag in tags) {
+        if (tags[tag].name === req.body.tags) {
+          tagDate = tags[tag].date
+        }
+      }
+      if (tagDate !== undefined) {
+        tagDateConverted = converter.convertDate(tagDate)
+      }
+      gitlabClient.getCommits(projects[project].id, tagDateConverted)
       .then((res) => {
         commits = converter.convertCommits(res)
       }).then(() => {

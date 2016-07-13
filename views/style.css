@@ -157,12 +157,16 @@ ul.topnav li.right {float: right;}
   float: right;
   margin: 1%;
   padding: 1%;
-  width: 45%;
+  width: 40%;
+  height: 800px;
+  overflow: scroll;
 }
 .container > .left{
   clear: none;
   float: left;
   margin: 1%;
   padding: 1%;
-  width: 45%;
+  width: 40%;
+  height: 800px;
+  overflow: scroll;
 }

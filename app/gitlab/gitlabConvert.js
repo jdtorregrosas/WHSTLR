@@ -1,5 +1,9 @@
 'use strict'
 
+function convertDate (date) {
+  return date.replace(/\+.*/, '')
+}
+
 function convertProjects (projects) {
   let projectsView = []
   for (let project in projects) {
@@ -59,5 +63,6 @@ module.exports = {
   convertProjects,
   convertCommits,
   convertTags,
-  convertMergeRequests
+  convertMergeRequests,
+  convertDate
 }

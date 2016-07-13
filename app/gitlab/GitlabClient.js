@@ -36,9 +36,10 @@ GitlabClient.prototype.getProjects = function () {
     })
   })
 }
-GitlabClient.prototype.getCommits = function (projectId) {
+GitlabClient.prototype.getCommits = function (projectId, since) {
+  console.log(since)
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/commits?per_page=${this.maxItems}`
+    const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/commits?since=${since}&per_page=${this.maxItems}`
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
@@ -54,7 +55,7 @@ GitlabClient.prototype.getCommits = function (projectId) {
 }
 GitlabClient.prototype.getMergeRequests = function (projectId) {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests?state=merged?per_page=${this.maxItems}`
+    const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests?state=merged&per_page=${this.maxItems}`
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
