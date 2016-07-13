@@ -21,5 +21,9 @@ html
 
 script.
   var loading = function() {
-    swal("Saving", "We are saving your configuration...", "warning");
+    swal({
+      title: "Wait a moment, please!",
+      text: "We are applying your configuration ",
+      imageUrl: "public/assets/images/loading.png" 
+    });
   }
