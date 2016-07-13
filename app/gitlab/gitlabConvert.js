@@ -1,6 +1,6 @@
 'use strict'
 
-function convertProjects(projects) {
+function convertProjects (projects) {
   let projectsView = []
   for (let project in projects) {
     projectsView[project] = {
@@ -8,10 +8,17 @@ function convertProjects(projects) {
       name: projects[project].name
     }
   }
+  function compare (a, b) {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+    return 0
+  }
+
+  projectsView.sort(compare)
   return projectsView
 }
 
-function convertCommits(commits) {
+function convertCommits (commits) {
   let commitsView = []
   for (let commit in commits) {
     commitsView[commit] = {
@@ -23,7 +30,7 @@ function convertCommits(commits) {
   return commitsView
 }
 
-function convertTags(tags) {
+function convertTags (tags) {
   let tagsView = []
   for (let tag in tags) {
     tagsView[tag] = {
@@ -34,7 +41,7 @@ function convertTags(tags) {
   return tagsView
 }
 
-function convertMergeRequests(mergeRequests) {
+function convertMergeRequests (mergeRequests) {
   let mergeRequestsView = []
   for (let mergeRequest in mergeRequests) {
     mergeRequestsView[mergeRequest] = {
