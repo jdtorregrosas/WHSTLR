@@ -4,7 +4,7 @@
   "description": "Print the release notes from commit messages in a repository",
   "scripts": {
     "start": "node ./app.js",
-    "test": "node node_modules/.bin/mocha test",
+    "test": "node node_modules/.bin/mocha test/*",
     "lint": "node node_modules/eslint/bin/eslint.js",
     "lint-app": "npm run lint app/* && npm run lint app.js",
     "lint-routes": "npm run lint routes/*",
