@@ -47,7 +47,11 @@ app.post('/applyConfig', (req, res) => {
       res.redirect('/index')
     }).catch((err) => {
       error = {title: 'Error', description: err}
+      console.log(error)
     })
+  }).catch((err) => {
+    error = {title: 'Error', description: err}
+    console.log(error)
   })
 })
 

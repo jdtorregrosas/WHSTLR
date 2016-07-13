@@ -7,6 +7,7 @@ const projects = require('./mockData/projects.json')
 const commits = require('./mockData/commits140.json')
 const tags = require('./mockData/tags140.json')
 const mergeRequests = require('./mockData/mergeRequests140.json')
+const user = require('./mockData/user.json')
 
 app.get('/api/v3/projects', (req, res) => {
   res.send(projects)
@@ -22,6 +23,10 @@ app.get('/api/v3/projects/140/repository/tags', (req, res) => {
 
 app.get('/api/v3/projects/140/merge_requests', (req, res) => {
   res.send(mergeRequests)
+})
+
+app.get('/api/v3/user', (req, res) => {
+  res.send(user)
 })
 
 app.listen(2000)
