@@ -11,6 +11,8 @@ let mergeRequests
 let tags
 let error
 let gitlabClient
+let currentTag
+let currentProject
 
 app.get('/', (req, res) => {
   res.redirect('/config')
@@ -27,8 +29,8 @@ app.get('/index', (req, res) => {
       projects: projects,
       commits: commits,
       mergeRequests: mergeRequests,
-      error: error,
-      successMessage: successMessage
+      currentTag: currentTag,
+      currentProject: currentProject
     })
   } else {
     res.redirect('/config')
@@ -75,6 +77,8 @@ app.post('/createNotes', (req, res) => {
   mergeRequests = []
   let tagDate
   let tagDateConverted = '2007-09-06T04:00:00'
+  currentTag = req.body.tags
+  currentProject = req.body.projects
   for (let project in projects) {
     if (projects[project].name === req.body.projects) {
       for (let tag in tags) {

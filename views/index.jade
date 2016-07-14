@@ -21,6 +21,8 @@ html
             br
             div.form-item.submit
               button.button#btnSubmit(onclick='loading()' type="submit") Generate
+        h2= currentProject
+        h3= currentTag
         div.container
           include commits
           include mergeRequests
