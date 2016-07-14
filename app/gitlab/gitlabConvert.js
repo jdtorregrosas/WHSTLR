@@ -42,6 +42,13 @@ function convertTags (tags) {
       date: tags[tag].commit.committed_date
     }
   }
+  function compare (a, b) {
+    if (a.date < b.date) return 1
+    if (a.date > b.date) return -1
+    return 0
+  }
+
+  tagsView.sort(compare)
   return tagsView
 }
 

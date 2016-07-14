@@ -6,11 +6,25 @@
 When some people is working on the same project in the same repository, in different features, can be difficult to have the enough comunication in order to tell all the included features in the release. All this information is better to have documented in your release notes. But how can you write everything that all the team did?. Where write all the team everything that makes? Normally in your commit comments, you write your changes. The main idea od WHSTLR is to make easier your release notes writing. To write a good list of features with just a little of your effort. So that you can read them, they must be in a good format, saved in your system and give good information.
 
 ## MVP Feature list (v1.0)
+- Swagger specification
 - Show git commit history since last release tag or since the beginning of the repository.
-- Merge request (info) who, when, what
+  ✔ Title
+  ✔ Description
+  - Author
+  - Date (format human readable)
+  - Title is linked to Commit diff (e.g. http://gitlab.local.coliquio.de/col/col-dev/commit/2b7d182b33b67a9631b86cc0d6b55d83383d4ac0)
+- Merge request history since last release:
+  ✔ Title
+  - Date (format human readable)
+  ✔ Description
+  ✔ Author
+  ✔ Branch
+  - Title is linked to MR on Gitlab (e.g. http://gitlab.local.coliquio.de/col/col-dev/merge_requests/336)
 - Show messages of most important errors in a transparent way
-- Settings interface for storing GitLab token
-- UI: After selection of repo, automatically insert the last release tag
+✔ Settings interface for storing GitLab token
+- UI:
+  ✔ After selection of repo, automatically insert the last release tag
+  - Show headline (project name and tag)
 
 ## Feature Backlog
 - UI: Dropdown for available tags
@@ -37,10 +51,3 @@ When some people is working on the same project in the same repository, in diffe
 * Make `bower install`
  * If bower throw permission errors in linux use: `sudo chown -R $USER:$GROUP ~/.config`
 * Go to `http://localhost:3000/index`
-* Write your repository URL e.g. `https://github.com/jdtorregrosas/releaseNotesPrinter.git` in the Repository field
-* (Optional) Write the last Tag to log your commits starting by it e.g. `v1.0.0`
-* Write the version that you want to be showed in your release file
-* Generate!
-* You can see the file in the browser or search it in your releases directory
-
-> NOTE: The file is generated in markdown format
