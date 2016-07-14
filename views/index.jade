@@ -21,8 +21,10 @@ html
             br
             div.form-item.submit
               button.button#btnSubmit(onclick='loading()' type="submit") Generate
-        h2= currentProject
-        h3= currentTag
+        if currentProject
+          h2 Project: #{currentProject}
+        if currentTag
+          h3 Tag: #{currentTag}
         div.container
           include commits
           include mergeRequests

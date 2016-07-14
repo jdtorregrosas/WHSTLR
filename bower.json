@@ -1,5 +1,5 @@
 {
-  "name": "release_notes_printer",
+  "name": "WHSTLR",
   "description": "Print the release notes from commit messages in a repository",
   "main": "",
   "authors": [
