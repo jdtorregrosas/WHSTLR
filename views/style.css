@@ -240,3 +240,19 @@ option {
   background-color: #454545;
   min-height: 100vh;
 }
+
+/*** checkbox ***/
+input[type=checkbox] {
+   /*position: absolute;
+   top: -9999px;
+   left: -9999px;*/
+}
+
+img.commit-title-checkbox {
+  content:url("/public/assets/images/git-commit.png");
+  cursor: pointer;
+}
+input[type=checkbox]:checked ~ img.commit-title-checkbox {
+  background-color: #44FF44;
+  content:url("/public/assets/images/git-merge.png")
+}
