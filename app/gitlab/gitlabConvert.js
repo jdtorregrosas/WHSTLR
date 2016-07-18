@@ -25,10 +25,12 @@ function convertProjects (projects) {
 function convertCommits (commits) {
   let commitsView = []
   for (let commit in commits) {
-    commitsView[commit] = {
-      message: commits[commit].message,
-      author: commits[commit].author_name,
-      date: commits[commit].created_at
+    if (!commits[commit].message.match(/Merge.*|Revert.*|.*lint.*/)) {
+      commitsView.push({
+        message: commits[commit].message,
+        author: commits[commit].author_name,
+        date: commits[commit].created_at
+      })
     }
   }
   return commitsView
