@@ -54,15 +54,17 @@ function convertTags (tags) {
   return tagsView
 }
 
-function convertMergeRequests (mergeRequests) {
+function convertMergeRequests (mergeRequests, tagDate) {
   let mergeRequestsView = []
   for (let mergeRequest in mergeRequests) {
-    mergeRequestsView[mergeRequest] = {
-      title: mergeRequests[mergeRequest].title,
-      source_branch: mergeRequests[mergeRequest].source_branch,
-      description: mergeRequests[mergeRequest].description,
-      author: mergeRequests[mergeRequest].author.username,
-      date: mergeRequests[mergeRequest].updated_at
+    if (+mergeRequests[mergeRequest].updated_at > +tagDate) {
+      mergeRequestsView.push({
+        title: mergeRequests[mergeRequest].title,
+        source_branch: mergeRequests[mergeRequest].source_branch,
+        description: mergeRequests[mergeRequest].description,
+        author: mergeRequests[mergeRequest].author.username,
+        date: mergeRequests[mergeRequest].updated_at
+      })
     }
   }
   return mergeRequestsView

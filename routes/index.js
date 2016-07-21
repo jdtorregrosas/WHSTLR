@@ -4,7 +4,6 @@ const express = require('express')
 const app = express()
 const GitlabClient = require('../app/gitlab/GitlabClient')
 const converter = require('../app/gitlab/gitlabConvert')
-let successMessage
 let user, projects
 let commits
 let mergeRequests
@@ -94,7 +93,7 @@ app.post('/createNotes', (req, res) => {
         commits = converter.convertCommits(res)
       }).then(() => {
         gitlabClient.getMergeRequests(projects[project].id).then((result) => {
-          mergeRequests = converter.convertMergeRequests(result)
+          mergeRequests = converter.convertMergeRequests(result, tagDateConverted)
         }).then(() => {
           res.redirect('/index')
         }).catch((err) => {
