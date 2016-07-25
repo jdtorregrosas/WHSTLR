@@ -57,7 +57,7 @@ function convertTags (tags) {
 function convertMergeRequests (mergeRequests, tagDate) {
   let mergeRequestsView = []
   for (let mergeRequest in mergeRequests) {
-    if (+mergeRequests[mergeRequest].updated_at > +tagDate) {
+    if (convertDate(mergeRequests[mergeRequest].updated_at) > tagDate) {
       mergeRequestsView.push({
         title: mergeRequests[mergeRequest].title,
         source_branch: mergeRequests[mergeRequest].source_branch,
