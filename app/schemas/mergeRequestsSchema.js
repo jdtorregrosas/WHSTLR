@@ -3,6 +3,7 @@
 const Joi = require('joi')
 
 const mergeRequestsSchema = Joi.array().items(Joi.object().keys({
+  id: Joi.number().required(),
   title: Joi.string().required(),
   source_branch: Joi.string().required(),
   description: Joi.string().allow(''),
