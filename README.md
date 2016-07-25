@@ -10,12 +10,12 @@ When some people is working on the same project in the same repository, in diffe
 - Show git commit history since last release tag or since the beginning of the repository.
   ✔ Title
   ✔ Description
-  - Author
+  ✔ Author
   - Date (format human readable)
-  - Title is linked to Commit diff (e.g. http://gitlab.local.coliquio.de/col/col-dev/commit/2b7d182b33b67a9631b86cc0d6b55d83383d4ac0)
+  - Title is linked to Commit diff (e.g. http://gitlab.local.coliquio.de/col/col-dev/commit/2b7d182b33b67a9631b86cc0d6b55d83383d4ac0) ? ? how to make it easy
 - Merge request history since last release:
   ✔ Title
-  - Date (format human readable)
+  ✔ Date (format human readable)
   ✔ Description
   ✔ Author
   ✔ Branch

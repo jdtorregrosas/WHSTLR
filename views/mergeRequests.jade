@@ -1,4 +1,4 @@
-- if(mergeRequests)
+if mergeRequests
   fieldset.right.merges-fieldset
     legend.main-legend Merge Requests
     div.merges-div
@@ -15,10 +15,11 @@
               span.merge-subtitle Author: 
               span #{merge.author}
               br
+              - var newDate = new Date(merge.date)
               span.merge-subtitle Date: 
-              span #{merge.date}
+              span= newDate
               br
-              - if(merge.description!=='')
+              if merge.description!==''
                 hr
                 span #{merge.description}
                 br
