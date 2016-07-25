@@ -22,15 +22,15 @@ When some people is working on the same project in the same repository, in diffe
   - Title is linked to MR on Gitlab (e.g. http://gitlab.local.coliquio.de/col/col-dev/merge_requests/336)
 - Show messages of most important errors in a transparent way
 ✔ Settings interface for storing GitLab token
-- UI:
+✔ UI:
   ✔ After selection of repo, automatically insert the last release tag
-  - Show headline (project name and tag)
+  ✔ Show headline (project name and tag)
 
 ## Feature Backlog
-- UI: Dropdown for available tags
-- UI: List of available repos
+✔ UI: Dropdown for available tags
+✔ UI: List of available repos
 - Is flexible enough to select an specific release tag
-- Date
+✔ Date
 - Show messages of all errors in transparent way
 - Offer support for GitHub
 - Offer support for BitBucket
