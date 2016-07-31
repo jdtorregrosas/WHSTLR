@@ -36,7 +36,7 @@ GitlabClient.prototype.getProjects = function () {
     })
   })
 }
-GitlabClient.prototype.getCommits = function (projectId, mergeRequestId) {
+GitlabClient.prototype.getCommitsFromMerge = function (projectId, mergeRequestId) {
   return new Promise((resolve, reject) => {
     const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests/${mergeRequestId}/commits`
     request

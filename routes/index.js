@@ -88,20 +88,21 @@ app.post('/createNotes', (req, res) => {
       if (tagDate !== undefined) {
         tagDateConverted = converter.convertDate(tagDate)
       }
-      gitlabClient.getCommits(projects[project].id, tagDateConverted)
-      .then((res) => {
-        commits = converter.convertCommits(res)
+      gitlabClient.getMergeRequests(projects[project].id).then((result) => {
+        mergeRequests = converter.convertMergeRequests(result, tagDateConverted)
       }).then(() => {
-        gitlabClient.getMergeRequests(projects[project].id).then((result) => {
-          mergeRequests = converter.convertMergeRequests(result, tagDateConverted)
-        }).then(() => {
-          res.redirect('/index')
-        }).catch((err) => {
-          error = {title: 'Error', description: err}
-          commits = []
-          mergeRequests = []
-          res.redirect('/index')
-        })
+        for (let mergeRequest in mergeRequests) {
+          gitlabClient.getCommitsFromMerge(projects[project].id, mergeRequests[mergeRequest].id).then((result) => {
+            mergeRequests[mergeRequest].commits= converter.convertCommits(result)
+            res.redirect('/index')
+          }).catch((err) => {
+            error = {title: 'Error', description: err}
+            commits = []
+            mergeRequests = []
+            console.log(err)
+            res.redirect('/index')
+          })
+        }
       }).catch((err) => {
         error = {title: 'Error', description: err}
         commits = []
