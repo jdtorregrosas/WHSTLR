@@ -36,10 +36,9 @@ GitlabClient.prototype.getProjects = function () {
     })
   })
 }
-GitlabClient.prototype.getCommits = function (projectId, since) {
-  console.log(since)
+GitlabClient.prototype.getCommitsFromMerge = function (projectId, mergeRequestId) {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/commits?since=${since}&per_page=${this.maxItems}`
+    const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests/${mergeRequestId}/commits`
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
