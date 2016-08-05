@@ -1,9 +1,7 @@
 'use strict'
 
 const converter = require('../../app/gitlab/gitlabConvert.js')
-const projectsSchema = require('../../app/schemas/projectsSchema.js')
 const commitsSchema = require('../../app/schemas/commitsSchema.js')
-const tagsSchema = require('../../app/schemas/tagsSchema.js')
 const mergeRequestsSchema = require('../../app/schemas/mergeRequestsSchema.js')
 const assert = require('assert')
 

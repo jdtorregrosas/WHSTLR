@@ -4,12 +4,9 @@
   "description": "Print the release notes from commit messages in a repository",
   "scripts": {
     "start": "node ./app.js",
-    "mocha": "node_modules/.bin/mocha", 
+    "mocha": "node_modules/.bin/mocha",
     "test": "node_modules/.bin/mocha test/*",
-    "lint": "node node_modules/eslint/bin/eslint.js",
-    "lint-app": "npm run lint app/* && npm run lint app.js",
-    "lint-routes": "npm run lint routes/*",
-    "lint-tests": "npm run lint test/*",
+    "linter": "eslint app/ test/ routes/",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- tests/* -R spec",
     "watch": "nodemon ./app.js"
   },
