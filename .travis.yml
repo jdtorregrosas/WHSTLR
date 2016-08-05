@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  - "6"
+
+sudo: false
+
+install:
+  - npm install
+
+script:
+  - npm test
+  - npm run coverage
+  - npm run checkCoverage
