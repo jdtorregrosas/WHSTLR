@@ -1,6 +1,4 @@
-public/bower
-node_modules
-tmp
-releases/*
-!releases/README.md
-npm-debug.log
+*.log
+/public/bower
+/node_modules
+/coverage

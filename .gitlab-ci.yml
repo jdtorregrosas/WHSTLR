@@ -1,0 +1,38 @@
+image: node:6.1.0
+
+stages:
+  - build
+  - test
+
+# Build stage
+
+package_test:
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    expire_in: '1h'
+    paths:
+      - node_modules/
+
+# Test stage
+
+linter:
+  stage: test
+  script:
+    - npm run linter
+
+tests:
+  stage: test
+  script:
+    - npm run test
+
+coverage:
+  stage: test
+  script:
+    - npm run coverage
+    - npm run checkCoverage
+  artifacts:
+    untracked: true
+    paths:
+      - coverage
