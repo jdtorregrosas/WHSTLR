@@ -7,7 +7,8 @@
     "mocha": "node_modules/.bin/mocha",
     "test": "node_modules/.bin/mocha test/*",
     "linter": "eslint app/ test/ routes/",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- tests/* -R spec",
+    "coverage": "istanbul cover _mocha",
+    "checkCoverage": "istanbul check-coverage --functions 100 --branches 0 --lines 40 --statements 40",
     "watch": "nodemon ./app.js"
   },
   "repository": {
