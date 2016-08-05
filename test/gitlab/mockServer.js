@@ -32,6 +32,12 @@ app.get('/api/v3/projects/140/merge_requests/1456/commits', (req, res) => {
 app.get('/api/v3/projects/140/merge_requests/1436/commits', (req, res) => {
   res.send(commits)
 })
+app.get('/api/v3/projects/140/merge_requests/1404/commits', (req, res) => {
+  res.send(commits)
+})
+app.get('/api/v3/projects/140/merge_requests/1401/commits', (req, res) => {
+  res.send(commits)
+})
 
 app.get('/api/v3/user', (req, res) => {
   res.send(user)
