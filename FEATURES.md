@@ -3,7 +3,7 @@ Feature backlog / planning
 
 ## MVP v1: The first minimal version of WHSTLR is running and available
 - Define final schemas
-- Move project to GitLab
+✔ Move project to GitLab
 - Tests, Linter (Gitlab CI)
 - whstlr.local.coliquio.de (@Inti: small VM)
 - Update README
