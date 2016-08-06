@@ -1,0 +1,202 @@
+[
+  {
+    "id": "8574912c1880ce03f89d6d666d0c624c1521e4f0",
+    "mergeid": "1456",
+    "short_id": "8574912c",
+    "title": "Merge branch 'regiestrierungsdatum-f575' into 'master'\r",
+    "author_name": "Tobias Sailer",
+    "author_email": "tobias.sailer@coliquio.de",
+    "created_at": "2016-07-07T11:40:45.000+02:00",
+    "message": "Merge branch 'regiestrierungsdatum-f575' into 'master'\r\n\r\nRegiestrierungsdatum f575\r\n\r\n-  Add createdAt in the response\r\n- Fix tests\r\n\r\n### To change the format in the other apps you can do something like this:\r\n```\r\nvar responseDate = '2016-06-13T08:29:41.886Z'\r\nvar date = new Date(responseDate)\r\nvar newDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear()\r\n```\r\n\r\nSee merge request !45"
+  },
+  {
+    "id": "6d9a3467990ac05de599c3c3757d342da4e1df3e",
+    "mergeid": "1456",
+    "short_id": "6d9a3467",
+    "title": "Update documentation descriptions",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-06-30T17:03:59.000+01:00",
+    "message": "Update documentation descriptions\n\n"
+  },
+  {
+    "id": "b37735f4bba0318ebde70deea14b8c2c277028ba",
+    "mergeid": "1456",
+    "short_id": "b37735f4",
+    "title": "Update api documentation",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-06-30T15:57:10.000+01:00",
+    "message": "Update api documentation\n\n"
+  },
+  {
+    "id": "43c2f8fb619185543ab33ae49155429991815d7e",
+    "mergeid": "1456",
+    "short_id": "43c2f8fb",
+    "title": "Use default format",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-06-30T10:34:19.000+01:00",
+    "message": "Use default format\n\n- The fortmat change muss be implemented in the other apps, not here"
+  },
+  {
+    "id": "4d617d2de72482ce7b8cc11e9aaf445666a8a057",
+    "mergeid": "1456",
+    "short_id": "4d617d2d",
+    "title": "Fix more tests",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-06-30T10:15:22.000+01:00",
+    "message": "Fix more tests\n\n"
+  },
+  {
+    "id": "768790d8d5432053c8413249848abed01b4c7d62",
+    "mergeid": "1456",
+    "short_id": "768790d8",
+    "title": "Add createdAt field to response and fix tests",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-06-30T09:59:11.000+01:00",
+    "message": "Add createdAt field to response and fix tests\n\n"
+  },
+  {
+    "id": "6dae8798e8f917cee8060ac81beddad0380e99c4",
+    "mergeid": "1456",
+    "short_id": "6dae8798",
+    "title": "Merge branch 'adapt-systemd-settings-devops53' into 'master'\r",
+    "author_name": "Inti Gabriel",
+    "author_email": "inti.gabriel@coliquio.de",
+    "created_at": "2016-06-28T14:16:38.000+02:00",
+    "message": "Merge branch 'adapt-systemd-settings-devops53' into 'master'\r\n\r\ntell systemd to start services automatically at boot\r\n\r\n\r\n\r\nSee merge request !44"
+  },
+  {
+    "id": "d6e3040a127eab4c9765614e3c1281393428d515",
+    "mergeid": "1456",
+    "short_id": "d6e3040a",
+    "title": "tell systemd to start services automatically at boot",
+    "author_name": "Rene Bach",
+    "author_email": "rene.bach@coliquio.de",
+    "created_at": "2016-06-27T13:49:36.000+02:00",
+    "message": "tell systemd to start services automatically at boot\n"
+  },
+  {
+    "id": "7cb0b008409c61338defd4d19430233686063b70",
+    "mergeid": "1456",
+    "short_id": "7cb0b008",
+    "title": "Merge branch 'gitlab-ci-cleanup' into 'master'\r",
+    "author_name": "Jens Bissinger",
+    "author_email": "jens.bissinger@coliquio.de",
+    "created_at": "2016-06-23T11:45:34.000+02:00",
+    "message": "Merge branch 'gitlab-ci-cleanup' into 'master'\r\n\r\nAdd coverage checks\r\n\r\n\r\n\r\nSee merge request !42"
+  },
+  {
+    "id": "c8f2d8ac9943ea282e22c6655a483d831c2f6e03",
+    "mergeid": "1456",
+    "short_id": "c8f2d8ac",
+    "title": "Add coverage checks",
+    "author_name": "Jens Bissinger",
+    "author_email": "mail@jens-bissinger.de",
+    "created_at": "2016-06-23T09:59:00.000+02:00",
+    "message": "Add coverage checks\n"
+  },
+  {
+    "id": "b512dd61be777f4d7dae069e3d7ec8ab27a07963",
+    "mergeid": "1456",
+    "short_id": "b512dd61",
+    "title": "Merge branch 'gitlab-ci-cleanup' into 'master'\r",
+    "author_name": "Jens Bissinger",
+    "author_email": "jens.bissinger@coliquio.de",
+    "created_at": "2016-06-23T09:35:41.000+02:00",
+    "message": "Merge branch 'gitlab-ci-cleanup' into 'master'\r\n\r\nRefactor gitlab ci\r\n\r\n\r\n\r\nSee merge request !41"
+  },
+  {
+    "id": "c8cff21e9c8b54003f3c46787a78bf6df2794515",
+    "mergeid": "1456",
+    "short_id": "c8cff21e",
+    "title": "Fix mongo default url",
+    "author_name": "Jens Bissinger",
+    "author_email": "mail@jens-bissinger.de",
+    "created_at": "2016-06-22T16:27:27.000+02:00",
+    "message": "Fix mongo default url\n"
+  },
+  {
+    "id": "6ac7b8467ae96ca1b51c97bef39f91c2470aa1cc",
+    "mergeid": "1456",
+    "short_id": "6ac7b846",
+    "title": "Refactor gitlab ci",
+    "author_name": "Jens Bissinger",
+    "author_email": "mail@jens-bissinger.de",
+    "created_at": "2016-06-22T13:32:25.000+02:00",
+    "message": "Refactor gitlab ci\n"
+  },
+  {
+    "id": "62e5f392e2b13901c3681e02ef086bf428d9358f",
+    "mergeid": "1456",
+    "short_id": "62e5f392",
+    "title": "Merge branch 'find-by-username-559f' into 'master'\r",
+    "author_name": "Christian Deinert",
+    "author_email": "christian.deinert@coliquio.de",
+    "created_at": "2016-06-01T09:29:30.000+02:00",
+    "message": "Merge branch 'find-by-username-559f' into 'master'\r\n\r\nFind by username 559f\r\n\r\nChange Route find?email to find?userName\r\n\r\nSee merge request !40"
+  },
+  {
+    "id": "817c53af411c2db7e6b1a1da3e5d487c7d77afd9",
+    "mergeid": "1456",
+    "short_id": "817c53af",
+    "title": "Change queryValidate to validate against userName",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-05-31T14:44:41.000+01:00",
+    "message": "Change queryValidate to validate against userName\n\n"
+  },
+  {
+    "id": "2e6a59d08a903d50561b743f56749962d53dd09d",
+    "mergeid": "1456",
+    "short_id": "2e6a59d0",
+    "title": "Change findByEmail method to findByUSerName",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-05-31T14:44:01.000+01:00",
+    "message": "Change findByEmail method to findByUSerName\n\n"
+  },
+  {
+    "id": "0de4884b2f63c542241c2124c8c8e3cfbef895d3",
+    "mergeid": "1456",
+    "short_id": "0de4884b",
+    "title": "Change odm test to use findByUserName instead of findByEmail",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-05-31T14:43:23.000+01:00",
+    "message": "Change odm test to use findByUserName instead of findByEmail\n\n"
+  },
+  {
+    "id": "60b1c43d7bb9ced07e61e14e8d5aa3db5b47fbbe",
+    "mergeid": "1456",
+    "short_id": "60b1c43d",
+    "title": "Change routes tests to use userName instead of email",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-05-31T14:42:43.000+01:00",
+    "message": "Change routes tests to use userName instead of email\n\n"
+  },
+  {
+    "id": "5dd34ab135c636c5509bd8c292f2b7092fa093e9",
+    "mergeid": "1456",
+    "short_id": "5dd34ab1",
+    "title": "Change Unit tests to query validator",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-05-31T14:40:11.000+01:00",
+    "message": "Change Unit tests to query validator\n\n"
+  },
+  {
+    "id": "7fd28800e3eb016d59e1bc48908e9466ae64772e",
+    "mergeid": "1456",
+    "short_id": "7fd28800",
+    "title": "Change API documentation",
+    "author_name": "Julian",
+    "author_email": "jdtorregrosas@gmail.com",
+    "created_at": "2016-05-31T14:02:02.000+01:00",
+    "message": "Change API documentation\n\n"
+  }
+]
