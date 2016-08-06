@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node ./app.js",
     "mocha": "node_modules/.bin/mocha",
-    "test": "node_modules/.bin/mocha test/*",
+    "test": "mocha test/*",
     "linter": "eslint app/ test/ routes/",
-    "coverage": "istanbul cover _mocha",
+    "coverage": "istanbul cover _mocha test/*",
     "checkCoverage": "istanbul check-coverage --functions 100 --branches 0 --lines 40 --statements 40",
     "watch": "nodemon ./app.js"
   },
