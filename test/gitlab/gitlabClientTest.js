@@ -1,11 +1,11 @@
 'use strict'
 
 const GitlabClient = require('../../app/gitlab/GitlabClient')
-const mockCommits = require('./mockData/commits140WithMergeid.json')
-const mockProjects = require('./mockData/projects.json')
-const mockTags = require('./mockData/tags140.json')
-const mockMerges = require('./mockData/mergeRequests140.json')
-const mockUser = require('./mockData/user.json')
+const mockCommits = require('./helper/mockData/commits140WithMergeid.json')
+const mockProjects = require('./helper/mockData/projects.json')
+const mockTags = require('./helper/mockData/tags140.json')
+const mockMerges = require('./helper/mockData/mergeRequests140.json')
+const mockUser = require('./helper/mockData/user.json')
 const assert = require('assert')
 
 describe('Gitlab Client Tests', () => {
@@ -13,7 +13,7 @@ describe('Gitlab Client Tests', () => {
   let gitlabClient
 
   beforeEach(function () {
-    let app = require('./mockServer.js')
+    let app = require('./helper/mockServer.js')
     mockServer = app.listen(2001)
     gitlabClient = new GitlabClient('localhost:2001', '')
   })
