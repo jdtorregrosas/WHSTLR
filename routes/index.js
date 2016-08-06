@@ -48,12 +48,10 @@ app.post('/applyConfig', (req, res) => {
     }).then(() => {
       res.redirect('/index')
     }).catch((err) => {
-      error = {title: 'Error', description: err}
-      console.log(error)
+      throw new ErrorW(err)
     })
   }).catch((err) => {
-    error = {title: 'Error', description: err}
-    console.log(error)
+    throw new ErrorW(err)
   })
 })
 
@@ -66,7 +64,7 @@ app.post('/getTags', (req, res) => {
       }).then(() => {
         res.send(tags)
       }).catch((err) => {
-        error = {title: 'Error', description: err}
+        throw new ErrorW('Could not fetch Tags')
       })
     }
   }
@@ -91,16 +89,17 @@ app.post('/getMerges', (req, res) => {
       }).then(() => {
         res.send(mergeRequests)
       }).catch((err) => {
-        error = {title: 'Error', description: err}
+        throw new ErrorW(err)
       })
       isFetched = true
     } else{
-      isFetched = false;
+      isFetched = false
     }
   }
   if(!isFetched) throw new ErrorW('Could not fetch merges: Project doesnt exist')
 })
 app.post('/getCommits', (req, res) => {
+  let isFetched = false
   for (let project in projects) {
     if (projects[project].name === req.body.project) {
       gitlabClient.getCommitsFromMerge(projects[project].id, req.body.mergeid)
@@ -109,10 +108,14 @@ app.post('/getCommits', (req, res) => {
       }).then(() => {
         res.send(commits)
       }).catch((err) => {
-        error = {title: 'Error', description: err}
+         throw new ErrorW('Gilab Client failed in Commits operation')
       })
+      isFetched = true
+    } else {
+      isFetched = false
     }
   }
+  if(!isFetched) throw new ErrorW('Could not fetch commits: Project doesnt exist')
 })
 
 module.exports = app
