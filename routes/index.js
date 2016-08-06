@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const GitlabClient = require('../app/gitlab/GitlabClient')
 const converter = require('../app/gitlab/gitlabConvert')
+const ErrorW = require('../app/ErrorW')
 let user, projects
 let commits
 let mergeRequests
@@ -73,6 +74,7 @@ app.post('/getTags', (req, res) => {
 app.post('/getMerges', (req, res) => {
   let tagDate
   let tagDateConverted = '2007-09-06T04:00:00'
+  let isFetched = false
   for (let project in projects) {
     if (projects[project].name === req.body.project) {
       for (let tag in tags) {
@@ -91,8 +93,12 @@ app.post('/getMerges', (req, res) => {
       }).catch((err) => {
         error = {title: 'Error', description: err}
       })
+      isFetched = true
+    } else{
+      isFetched = false;
     }
   }
+  if(!isFetched) throw new ErrorW('Could not fetch merges: Project doesnt exist')
 })
 app.post('/getCommits', (req, res) => {
   for (let project in projects) {

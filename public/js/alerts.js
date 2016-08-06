@@ -16,8 +16,8 @@ function indexLoading() {
 
 function error(err) {
   swal({
-    title: "Baaad!",
-    text: "Error",
-    imageUrl: "public/assets/images/thumbs-up.jpg"
+    title: "Error!",
+    text: err,
+    imageUrl: "public/assets/images/error.png"
   });
 }

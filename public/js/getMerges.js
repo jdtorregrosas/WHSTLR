@@ -67,14 +67,14 @@ $(document).on("click", '#btnGenerate', function() {
             }
           },
           error: function(err) {
-            error(err)
+            error(err.responseText);
           }
         })
       }
     },
     error: function(err) {
       $(".merges-fieldset").hide();
-      error(err)
+      error(err.responseText);
     }
   })
 })
