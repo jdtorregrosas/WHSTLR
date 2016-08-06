@@ -1,14 +1,16 @@
 $(document).on("click", '#btnGenerate', function() {
+  $("#merges").empty();
   var mergeRequests = []
   var project = $('#projects')[0].value;
   var tag = $("#tags")[0].value;
-  indexLoading()
   $.ajax({
     type: "POST",
     data: {project: project, tag: tag},
     url: '/getMerges',
     dataType: 'json',
     success: function(merges) {
+      indexLoading()
+      $(".merges-fieldset").show();
       for (var merge in merges){
         // if(merge.description!==''){
         // }
@@ -71,6 +73,7 @@ $(document).on("click", '#btnGenerate', function() {
       }
     },
     error: function(err) {
+      $(".merges-fieldset").hide();
       error(err)
     }
   })
