@@ -11,7 +11,8 @@ function indexLoading() {
     title: "Wait a moment, please!",
     text: "We are trying to proccess your request",
     imageUrl: "public/assets/images/thumbs-up.jpg",
-    timer: 2000
+    timer: 2000,
+    showConfirmButton: false
   });
 }
 
