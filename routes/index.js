@@ -46,12 +46,16 @@ app.post('/applyConfig', (req, res) => {
     gitlabClient.getProjects().then((res) => {
       projects = converter.convertProjects(res)
     }).then(() => {
-      res.redirect('/index')
+      var redirect = JSON.stringify('/index')
+      res.header('Content-Length', redirect.length);
+      res.send(redirect);
     }).catch((err) => {
-      throw new ErrorW(err)
+      res.send(new ErrorW(err))
     })
   }).catch((err) => {
-    throw new ErrorW(err)
+    res
+    .status(500)
+    .send(new ErrorW('Server not found'))
   })
 })
 
@@ -64,7 +68,9 @@ app.post('/getTags', (req, res) => {
       }).then(() => {
         res.send(tags)
       }).catch((err) => {
-        throw new ErrorW('Could not fetch Tags')
+        res
+        .status(500)
+        .send(new ErrorW('Could not fetch Tags'))
       })
     }
   }
@@ -89,7 +95,9 @@ app.post('/getMerges', (req, res) => {
       }).then(() => {
         res.send(mergeRequests)
       }).catch((err) => {
-        throw new ErrorW(err)
+        res
+        .status(500)
+        .send(new ErrorW(err))
       })
       isFetched = true
     } else{

@@ -1,6 +1,6 @@
 $(document).on("change", '#projects', function() {
-  var project = $(this).val()
-  var $tags = $("#tags")
+  var project = $(this).val();
+  var $tags = $("#tags");
   $tags.html(
     $("<option />").attr('disabled','disabled').attr('selected','selected').text('Fetching tags...')
   )
@@ -11,10 +11,13 @@ $(document).on("change", '#projects', function() {
     url: '/getTags',
     dataType: 'json',
     success: function(json) {
-      $tags.empty()
+      $tags.empty();
       $.each(json, function(value, key) {
-        $tags.append($("<option />").attr("value", key.name).text(key.name))
+        $tags.append($("<option />").attr("value", key.name).text(key.name));
       })
+    },
+    error: function(err) {
+      error(err.responseText);
     }
   })
 })
