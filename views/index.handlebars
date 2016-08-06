@@ -1,0 +1,32 @@
+<a href="/config">
+  <img class="config" src='/public/assets/images/config-icon.ico' height='40'>
+</a>
+<div class="form">>
+    <div class="form-item">
+      <span> Project:</span>
+      {{#if projects}}
+        <select id="projects" name="projects">
+          <option>Please Select<option>
+          {{#each projects}}
+            <option value="{{this.name}}")>{{this.name}}</option>
+          {{/each}}
+        </select>
+      {{/if}}
+    </div>
+    <br>
+    <div class="form-item">
+      <span> Version Tag:</span>
+      <select id="tags" name="tags">
+        <option>Please Select</option>
+      </select>
+    </div>
+    <br>
+    <div class="form-item submit">
+      <button class="button" id="btnGenerate">Generate</button>
+    </div>
+</div>
+<fieldset class="left merges-fieldset">
+  <legend class="main-legend">Merge Requests</legend>
+  <div id="merges" class='merges-div'>
+  </div>
+</fieldset>

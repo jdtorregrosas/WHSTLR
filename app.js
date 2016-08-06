@@ -1,21 +1,26 @@
 'use strict'
 
-const express = require('express')
 const path = require('path')
 const healthRoute = require('./routes/_health')
 const indexRoute = require('./routes/index')
 const aboutRoute = require('./routes/about')
 const notFoundRoute = require('./routes/notFound')
 const bodyParser = require('body-parser')
+
+const express = require('express')
 const app = express()
+const exphbs = require('express3-handlebars')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'jade')
+app.engine('handlebars', exphbs({defaultLayout: 'main'}))
+app.set('view engine', 'handlebars')
+app.get('/test', (req, res) => {
+  res.render('index')
+})
 
-app.listen(3000, function () {
-  console.log('WHSTLR running on port 3000!')
+app.listen(5000, function () {
+  console.log('WHSTLR running on port 5000!')
 })
 
 app.use('/releases', express.static(path.join(__dirname, '/releases')))

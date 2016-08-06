@@ -5,7 +5,8 @@ const Joi = require('joi')
 const commitSchema = Joi.array().items(Joi.object().keys({
   message: Joi.string().required(),
   author: Joi.string().required(),
-  date: Joi.string().required()
+  date: Joi.string().required(),
+  mergeid: Joi.string().required()
 }))
 
 module.exports = {
