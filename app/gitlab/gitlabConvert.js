@@ -7,10 +7,13 @@ function convertDate (date) {
 function convertProjects (projects) {
   let projectsView = []
   for (let project in projects) {
-    projectsView[project] = {
+    if (projects[project].id === undefined || projects[project].name === undefined) {
+      throw new TypeError('No Id or name error')
+    }
+    projectsView.push({
       id: projects[project].id,
       name: projects[project].name
-    }
+    })
   }
   function compare (a, b) {
     if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
@@ -40,10 +43,10 @@ function convertCommits (commits) {
 function convertTags (tags) {
   let tagsView = []
   for (let tag in tags) {
-    tagsView[tag] = {
+    tagsView.push({
       name: tags[tag].name,
       date: tags[tag].commit.committed_date
-    }
+    })
   }
   function compare (a, b) {
     if (a.date < b.date) return 1
