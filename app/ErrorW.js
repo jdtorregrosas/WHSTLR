@@ -1,6 +1,6 @@
 'use strict'
 
-function ErrorW(message) {
+function ErrorW (message) {
   this.name = 'WHSTLR Error'
   this.message = message || 'Unkown Error'
   this.stack = Error.prototype.stack
