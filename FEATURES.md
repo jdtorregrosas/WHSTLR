@@ -33,7 +33,6 @@ Feature backlog / planning
 ✔ UI: List of available repos
 - Is flexible enough to select an specific release tag
 ✔ Date
-- Show messages of all errors in transparent way
 - Offer support for GitHub
 - Offer support for BitBucket
--
+✔ Commits are listed under each corresponding merge request
