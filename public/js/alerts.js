@@ -10,7 +10,8 @@ function indexLoading() {
   swal({
     title: "Wait a moment, please!",
     text: "We are trying to proccess your request",
-    imageUrl: "public/assets/images/thumbs-up.jpg"
+    imageUrl: "public/assets/images/thumbs-up.jpg",
+    timer: 2000
   });
 }
 
