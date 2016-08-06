@@ -63,7 +63,7 @@ app.post('/getTags', (req, res) => {
     if (projects[project].name === req.body.project) {
       gitlabClient.getTags(projects[project].id)
       .then((res) => {
-        tags = converter.convertTags(res.body)
+        tags = converter.convertTags(res)
       }).then(() => {
         res.send(tags)
       }).catch((err) => {
