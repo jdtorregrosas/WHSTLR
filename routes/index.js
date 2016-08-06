@@ -4,11 +4,11 @@ const express = require('express')
 const app = express()
 const GitlabClient = require('../app/gitlab/GitlabClient')
 const converter = require('../app/gitlab/gitlabConvert')
+const ErrorW = require('../app/ErrorW')
 let user, projects
 let commits
 let mergeRequests
 let tags
-let error
 let gitlabClient
 let currentTag
 let currentProject
@@ -45,14 +45,16 @@ app.post('/applyConfig', (req, res) => {
     gitlabClient.getProjects().then((res) => {
       projects = converter.convertProjects(res)
     }).then(() => {
-      res.redirect('/index')
+      var redirect = JSON.stringify('/index')
+      res.header('Content-Length', redirect.length)
+      res.send(redirect)
     }).catch((err) => {
-      error = {title: 'Error', description: err}
-      console.log(error)
+      res.send(new ErrorW(err))
     })
   }).catch((err) => {
-    error = {title: 'Error', description: err}
-    console.log(error)
+    res
+    .status(500)
+    .send(new ErrorW(err))
   })
 })
 
@@ -65,52 +67,62 @@ app.post('/getTags', (req, res) => {
       }).then(() => {
         res.send(tags)
       }).catch((err) => {
-        error = {title: 'Error', description: err}
+        res
+        .status(500)
+        .send(new ErrorW(err))
       })
     }
   }
 })
-
-app.post('/createNotes', (req, res) => {
-  commits = []
-  mergeRequests = []
+app.post('/getMerges', (req, res) => {
   let tagDate
   let tagDateConverted = '2007-09-06T04:00:00'
-  currentTag = req.body.tags
-  currentProject = req.body.projects
+  let isFetched = false
   for (let project in projects) {
-    if (projects[project].name === req.body.projects) {
+    if (projects[project].name === req.body.project) {
       for (let tag in tags) {
-        if (tags[tag].name === req.body.tags) {
+        if (tags[tag].name === req.body.tag) {
           tagDate = tags[tag].date
         }
       }
       if (tagDate !== undefined) {
         tagDateConverted = converter.convertDate(tagDate)
       }
-      gitlabClient.getMergeRequests(projects[project].id).then((result) => {
-        mergeRequests = converter.convertMergeRequests(result, tagDateConverted)
+      gitlabClient.getMergeRequests(projects[project].id)
+      .then((res) => {
+        mergeRequests = converter.convertMergeRequests(res, tagDateConverted)
       }).then(() => {
-        for (let mergeRequest in mergeRequests) {
-          gitlabClient.getCommitsFromMerge(projects[project].id, mergeRequests[mergeRequest].id).then((result) => {
-            mergeRequests[mergeRequest].commits= converter.convertCommits(result)
-            res.redirect('/index')
-          }).catch((err) => {
-            error = {title: 'Error', description: err}
-            commits = []
-            mergeRequests = []
-            console.log(err)
-            res.redirect('/index')
-          })
-        }
+        res.send(mergeRequests)
       }).catch((err) => {
-        error = {title: 'Error', description: err}
-        commits = []
-        mergeRequests = []
-        res.redirect('/index')
+        res
+        .status(500)
+        .send(new ErrorW(err))
       })
+      isFetched = true
+    } else {
+      isFetched = false
     }
   }
+  if (!isFetched) throw new ErrorW('Could not fetch merges: Project doesnt exist')
+})
+app.post('/getCommits', (req, res) => {
+  let isFetched = false
+  for (let project in projects) {
+    if (projects[project].name === req.body.project) {
+      gitlabClient.getCommitsFromMerge(projects[project].id, req.body.mergeid)
+      .then((res) => {
+        commits = converter.convertCommits(res)
+      }).then(() => {
+        res.send(commits)
+      }).catch((err) => {
+        throw new ErrorW(err)
+      })
+      isFetched = true
+    } else {
+      isFetched = false
+    }
+  }
+  if (!isFetched) throw new ErrorW('Could not fetch commits: Project doesnt exist')
 })
 
 module.exports = app

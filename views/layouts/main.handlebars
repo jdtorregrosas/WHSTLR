@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WHSTLR</title>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="/public/assets/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/public/assets/images/favicon-16x16.png" sizes="16x16">
+    <link rel="stylesheet" href="/public/assets/style.css">
+    <link rel="stylesheet" href="/public/bower/sweetalert/dist/sweetalert.css">
+    <script src="/public/bower/jquery-3.0.0.min/index.js"></script>
+    <script src="/public/bower/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/public/js/alerts.js"></script>
+    <script src="/public/js/applyConfig.js"></script>
+    <script src="/public/js/getTags.js"></script>
+    <script src="/public/js/getMerges.js"></script>
+  </head>
+  <body>
+    <div class="background">
+      {{! Navigation Bar}}
+      <ul class="topnav">
+        <li><a class="active" href="/index">Home</a></li>
+        <li class="right"><a href="/about">About</a></li>
+      </ul>
+      {{! Main}}
+      <div class="main">
+        <div class="title">
+          <img src='/public/assets/images/whstlr-logo.png' height='120'>
+        </div>
+        {{{body}}}
+      </div>
+      {{! Footer }}
+      <div class="footer">What Happened Since The last release</div>
+    </div>
+  </body>
+</html>

@@ -29,7 +29,8 @@ function convertCommits (commits) {
       commitsView.push({
         message: commits[commit].message,
         author: commits[commit].author_name,
-        date: commits[commit].created_at
+        date: commits[commit].created_at,
+        mergeid: commits[commit].mergeid
       })
     }
   }

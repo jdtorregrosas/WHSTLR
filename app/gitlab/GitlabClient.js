@@ -7,16 +7,16 @@ function GitlabClient (baseURL, token) {
   this.token = token
   this.maxItems = 1000
 }
-// TODO test tags
 GitlabClient.prototype.getTags = function (projectId) {
   return new Promise((resolve, reject) => {
     const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/tags?per_page=${this.maxItems}`
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
-    .end((err, res) => {
-      if (err) reject(err)
+    .then((res) => {
       resolve(res)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
@@ -26,13 +26,14 @@ GitlabClient.prototype.getProjects = function () {
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
-    .end((err, res) => {
-      if (err) reject(err)
+    .then((res) => {
       let projects = []
       for (let project in res.body) {
         projects[project] = res.body[project]
       }
       resolve(projects)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
@@ -42,13 +43,15 @@ GitlabClient.prototype.getCommitsFromMerge = function (projectId, mergeRequestId
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
-    .end((err, res) => {
-      if (err) reject(err)
+    .then((res) => {
       let commits = []
       for (let commit in res.body) {
         commits[commit] = res.body[commit]
+        commits[commit].mergeid = mergeRequestId
       }
       resolve(commits)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
@@ -58,13 +61,14 @@ GitlabClient.prototype.getMergeRequests = function (projectId) {
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
-    .end((err, res) => {
-      if (err) reject(err)
+    .then((res) => {
       let mergeRequests = []
       for (let mergeRequest in res.body) {
         mergeRequests[mergeRequest] = res.body[mergeRequest]
       }
       resolve(mergeRequests)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
@@ -74,9 +78,10 @@ GitlabClient.prototype.getCurrentUser = function () {
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
-    .end((err, res) => {
-      if (err) reject(err)
-      else resolve(res.body)
+    .then((res) => {
+      resolve(res.body)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
