@@ -47,6 +47,7 @@ GitlabClient.prototype.getCommitsFromMerge = function (projectId, mergeRequestId
       let commits = []
       for (let commit in res.body) {
         commits[commit] = res.body[commit]
+        commits[commit].mergeid = mergeRequestId
       }
       resolve(commits)
     })
