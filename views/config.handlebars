@@ -10,16 +10,7 @@
       <input type='text' name='token' placeholder="3dzg38990nd89NzjhdbJrff">
     </div>
     <div class="form-item submit">
-      <button class="button" id="btnSubmit" onclick='loading()' type="submit">Apply</button>
+      <button class="button" id="btnSubmit" onclick='configLoading()' type="submit">Apply</button>
     </div>
   </form>
 </div>
-<script type="text/javascript">
-  var loading = function() {
-    swal({
-      title: "Wait a moment, please!",
-      text: "We are applying your configuration ",
-      imageUrl: "public/assets/images/loading.png"
-    });
-  }
-</script>

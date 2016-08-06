@@ -1,8 +1,7 @@
 <a href="/config">
   <img class="config" src='/public/assets/images/config-icon.ico' height='40'>
 </a>
-<div class="form">
-  <form id="formCreateNotes" name="createNotes" method="post" action="/createNotes">
+<div class="form">>
     <div class="form-item">
       <span> Project:</span>
       {{#if projects}}
@@ -23,45 +22,11 @@
     </div>
     <br>
     <div class="form-item submit">
-      <button class="button" id="btnSubmit" onclick='loading()' type="submit">Generate</button>
+      <button class="button" id="btnGenerate">Generate</button>
     </div>
-  </form>
 </div>
-<script>
-  $(document).on("change", '#projects', function(e) {
-    var project = $(this).val()
-    var $tags = $("#tags")
-    $tags.html(
-      $("<option />").attr('disabled','disabled').attr('selected','selected').text('Fetching tags...')
-    )
-
-    $.ajax({
-      type: "POST",
-      data: {project: project},
-      url: '/getTags',
-      dataType: 'json',
-      success: function(json) {
-        $tags.empty()
-        $.each(json, function(value, key) {
-          $tags.append($("<option />").attr("value", key.name).text(key.name))
-        })
-      }
-    })
-  })
-</script>
-<script>
-  var loading = function () {
-    swal({
-      title: "Wait a moment, please!",
-      text: "We are trying to proccess your request",
-      imageUrl: "public/assets/images/thumbs-up.jpg"
-    });
-  }
-  var error = function (err) {
-    swal({
-      title: "Baaad!",
-      text: "Error",
-      imageUrl: "public/assets/images/thumbs-up.jpg"
-    });
-  }
-</script>
+<fieldset class="left merges-fieldset">
+  <legend class="main-legend">Merge Requests</legend>
+  <div id="merges" class='merges-div'>
+  </div>
+</fieldset>
