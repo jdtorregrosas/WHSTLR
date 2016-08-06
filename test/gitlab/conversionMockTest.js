@@ -23,21 +23,6 @@ describe('# Projects', () => {
   })
 })
 
-describe('# Commits', () => {
-  it('should output a datastructure as specified in the schema', (done) => {
-    request(mock)
-    .get('/api/v3/projects/140/repository/commits')
-    .end((err, res) => {
-      if (err) done(err)
-      else {
-        const commits = converter.convertCommits(res.body)
-        commitsSchema.validateCommits(commits)
-        done()
-      }
-    })
-  })
-})
-
 describe('# Merge Requests', () => {
   it('should output a datastructure as specified in the schema', (done) => {
     request(mock)
