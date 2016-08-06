@@ -15,9 +15,5 @@ function indexLoading() {
 }
 
 function error(err) {
-  swal({
-    title: "Error!",
-    text: err,
-    imageUrl: "public/assets/images/error.png"
-  });
+  swal("Oops Error!", err,"error");
 }
