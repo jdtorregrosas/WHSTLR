@@ -14,14 +14,14 @@ let currentTag
 let currentProject
 
 app.get('/', (req, res) => {
-  res.redirect('/config')
+  res.redirect('/config/')
 })
 
-app.get('/config', (req, res) => {
+app.get('/config/', (req, res) => {
   res.render('config', {})
 })
 
-app.get('/index', (req, res) => {
+app.get('/index/', (req, res) => {
   if (projects) {
     res.render('index', {
       user: user,
@@ -32,12 +32,12 @@ app.get('/index', (req, res) => {
       currentProject: currentProject
     })
   } else {
-    res.redirect('/config')
+    res.redirect('/config/')
   }
   // error = ''
 })
 
-app.post('/applyConfig', (req, res) => {
+app.post('/applyConfig/', (req, res) => {
   let token = req.body.token
   let baseURL = req.body.baseURL
   gitlabClient = new GitlabClient(baseURL, token)
@@ -45,7 +45,7 @@ app.post('/applyConfig', (req, res) => {
     gitlabClient.getProjects().then((res) => {
       projects = converter.convertProjects(res)
     }).then(() => {
-      var redirect = JSON.stringify('/index')
+      var redirect = JSON.stringify('/index/')
       res.header('Content-Length', redirect.length)
       res.send(redirect)
     }).catch((err) => {
@@ -58,7 +58,7 @@ app.post('/applyConfig', (req, res) => {
   })
 })
 
-app.post('/getTags', (req, res) => {
+app.post('/getTags/', (req, res) => {
   for (let project in projects) {
     if (projects[project].name === req.body.project) {
       gitlabClient.getTags(projects[project].id)
@@ -74,7 +74,7 @@ app.post('/getTags', (req, res) => {
     }
   }
 })
-app.post('/getMerges', (req, res) => {
+app.post('/getMerges/', (req, res) => {
   let tagDate
   let tagDateConverted = '2007-09-06T04:00:00'
   let isFetched = false
@@ -105,7 +105,7 @@ app.post('/getMerges', (req, res) => {
   }
   if (!isFetched) throw new ErrorW('Could not fetch merges: Project doesnt exist')
 })
-app.post('/getCommits', (req, res) => {
+app.post('/getCommits/', (req, res) => {
   let isFetched = false
   for (let project in projects) {
     if (projects[project].name === req.body.project) {

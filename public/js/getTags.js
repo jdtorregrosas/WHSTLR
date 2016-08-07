@@ -8,7 +8,7 @@ $(document).on("change", '#projects', function() {
   $.ajax({
     type: "POST",
     data: {project: project},
-    url: '/getTags',
+    url: '/getTags/',
     dataType: 'json',
     success: function(json) {
       $tags.empty();

@@ -6,7 +6,7 @@ $(document).on("click", '#btnGenerate', function() {
   $.ajax({
     type: "POST",
     data: {project: project, tag: tag},
-    url: '/getMerges',
+    url: '/getMerges/',
     dataType: 'json',
     success: function(merges) {
       indexLoading()

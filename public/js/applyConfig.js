@@ -6,7 +6,7 @@ $(document).on("click", '#btnApplyConfig', function() {
     type: "POST",
     data: {baseURL: baseURL, token: token},
     dataType: 'json',
-    url: '/applyConfig',
+    url: '/applyConfig/',
     success: function(redirect) {
       window.location = redirect;
     },
