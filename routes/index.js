@@ -37,7 +37,7 @@ app.get('/index/', (req, res) => {
   // error = ''
 })
 
-app.post('/applyConfig/', (req, res) => {
+app.post('/getProjects/', (req, res) => {
   let token = req.body.token
   let baseURL = req.body.baseURL
   gitlabClient = new GitlabClient(baseURL, token)
@@ -45,9 +45,7 @@ app.post('/applyConfig/', (req, res) => {
     gitlabClient.getProjects().then((res) => {
       projects = converter.convertProjects(res)
     }).then(() => {
-      var redirect = JSON.stringify('/index/')
-      res.header('Content-Length', redirect.length)
-      res.send(redirect)
+      res.send(projects)
     }).catch((err) => {
       res.send(new ErrorW(err))
     })

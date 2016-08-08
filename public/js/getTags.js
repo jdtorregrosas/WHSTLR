@@ -1,23 +1,23 @@
-$(document).on("change", '#projects', function() {
+$(document).on('change', '#projects', function() {
   var project = $(this).val();
-  var $tags = $("#tags");
+  var $tags = $('#tags');
   $tags.html(
-    $("<option />").attr('disabled','disabled').attr('selected','selected').text('Fetching tags...')
+    $('<option />').attr('disabled','disabled').attr('selected','selected').text('Fetching tags...')
   )
 
   $.ajax({
-    type: "POST",
+    type: 'POST',
     data: {project: project},
     url: '/getTags/',
     dataType: 'json',
-    success: function(json) {
+    success: function (json) {
       $tags.empty();
-      $.each(json, function(value, key) {
-        $tags.append($("<option />").attr("value", key.name).text(key.name));
+      $.each(json, function (value, key) {
+        $tags.append($('<option />').attr('value', key.name).text(key.name));
       })
     },
-    error: function(err) {
-      error(err.responseText);
+    error: function (err) {
+      error(err.responseText)
     }
   })
 })
