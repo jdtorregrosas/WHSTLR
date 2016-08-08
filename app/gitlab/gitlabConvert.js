@@ -58,10 +58,12 @@ function convertTags (tags) {
   return tagsView
 }
 
-function convertMergeRequests (mergeRequests, tagDate) {
+function convertMergeRequests (mergeRequests, date) {
   let mergeRequestsView = []
+  let tagDate = (date) ? new Date(date) : new Date('1991-05-25')
   for (let mergeRequest in mergeRequests) {
-    if (convertDate(mergeRequests[mergeRequest].updated_at) > tagDate) {
+    let updateDate = new Date(mergeRequests[mergeRequest].updated_at)
+    if (tagDate < updateDate) {
       mergeRequestsView.push({
         id: mergeRequests[mergeRequest].id,
         title: mergeRequests[mergeRequest].title,

@@ -3,6 +3,7 @@
 const path = require('path')
 const healthRoute = require('./routes/_health')
 const indexRoute = require('./routes/index')
+const api = require('./routes/api')
 const aboutRoute = require('./routes/about')
 const notFoundRoute = require('./routes/notFound')
 const bodyParser = require('body-parser')
@@ -27,5 +28,8 @@ app.use('/releases', express.static(path.join(__dirname, '/releases')))
 app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use('/', healthRoute)
 app.use('/', indexRoute)
+app.use('/', api)
 app.use('/', aboutRoute)
 app.use('/', notFoundRoute)
+
+module.exports = app

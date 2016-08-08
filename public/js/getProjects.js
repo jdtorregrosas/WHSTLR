@@ -7,14 +7,17 @@ $(document).on('click', '#btnApplyConfig', function() {
     type: 'POST',
     data: {baseURL: baseURL, token: token},
     dataType: 'json',
-    url: '/getProjects/',
-    success: function(json) {
-      window.location = '/index/'
-      $projects.html(
-        $('<option />').attr('disabled','disabled').attr('selected','selected').text('Select your project')
-      )
-      $.each(json, function(value, key) {
-        $projects.append($('<option />').attr('value', key.name).text(key.name))
+    url: '/config/',
+    success: function() {
+      $.ajax({
+        type: 'GET',
+        url: '/projects/',
+        success: function(res) {
+          window.location = '/'
+        },
+        error: function(err) {
+          error(err.responseText)
+        }
       })
     },
     error: function(err) {
