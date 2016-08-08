@@ -77,7 +77,6 @@ app.post('/getTags/', (req, res) => {
 app.post('/getMerges/', (req, res) => {
   let tagDate
   let tagDateConverted = '2007-09-06T04:00:00'
-  let isFetched = false
   for (let project in projects) {
     if (projects[project].name === req.body.project) {
       for (let tag in tags) {
@@ -98,15 +97,10 @@ app.post('/getMerges/', (req, res) => {
         .status(500)
         .send(new ErrorW(err))
       })
-      isFetched = true
-    } else {
-      isFetched = false
     }
   }
-  if (!isFetched) throw new ErrorW('Could not fetch merges: Project doesnt exist')
 })
 app.post('/getCommits/', (req, res) => {
-  let isFetched = false
   for (let project in projects) {
     if (projects[project].name === req.body.project) {
       gitlabClient.getCommitsFromMerge(projects[project].id, req.body.mergeid)
@@ -117,12 +111,8 @@ app.post('/getCommits/', (req, res) => {
       }).catch((err) => {
         throw new ErrorW(err)
       })
-      isFetched = true
-    } else {
-      isFetched = false
     }
   }
-  if (!isFetched) throw new ErrorW('Could not fetch commits: Project doesnt exist')
 })
 
 module.exports = app
