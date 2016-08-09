@@ -50,9 +50,9 @@ $(document).on('click', '#btnGenerate', function() {
           </div>
         </fieldset>`)
       getCommits(projectId, merges[merge].id, (commits) => {
-        var messageElements = []
-        var counter = 0
         for (var commit in commits) {
+          var messageElements = []
+          var counter = 0
           messageElements = commits[commit].message.split(/\n|\r/)
           for (var i in messageElements) {
             if (messageElements[i] && counter === 0) {
