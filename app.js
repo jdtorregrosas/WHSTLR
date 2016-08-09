@@ -19,9 +19,13 @@ app.get('/test', (req, res) => {
   res.render('index')
 })
 
-app.listen(5000, function () {
-  console.log('WHSTLR running on port 5000!')
-})
+if (process.env.NODE_ENV == 'production') {
+    app.listen(80)
+} else {
+    app.listen(5000, function () {
+      console.log('WHSTLR running on port 5000!')
+    })
+}
 
 app.use('/releases', express.static(path.join(__dirname, '/releases')))
 app.use('/public', express.static(path.join(__dirname, '/public')))
