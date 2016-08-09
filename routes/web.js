@@ -11,11 +11,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/config', (req, res) => {
-  if (true) {
-    res.render('config')
-  } else {
-    res.render('config')
-  }
+  res.render('config')
 })
 
 app.get('/about/', (req, res) => {
