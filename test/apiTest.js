@@ -1,11 +1,11 @@
 'use strict'
 
 const store = require('../routes/store')
-const mock = require('./gitlab/helper/mockServer')
 const request = require('supertest')
 const app = require('../app')
+require('./gitlab/helper/mockServer')
 
-describe('# Routes', () => {
+describe('# API Routes', () => {
   before('Configuration', () => {
     store.config.baseURL = 'localhost:2000'
     store.config.token = 'asdfghjkl'
@@ -44,14 +44,13 @@ describe('# Routes', () => {
   })
   it('# GET One Merge Request by Id', (done) => {
     request(app)
-    .get(`/projects/140/getMerges/1456`)
+    .get('/projects/140/merges/1456')
     .set('Accept', 'application/json')
     .expect(200, done)
   })
   it('# GET Commits from a merge request', (done) => {
-    const testDate = new Date('2016-06-25')
     request(app)
-    .get(`/projects/140/merges/1456/commits`)
+    .get('/projects/140/merges/1456/commits')
     .set('Accept', 'application/json')
     .expect(200, done)
   })
