@@ -19,7 +19,8 @@ app.get('/about/', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.status(404).render('notFound')
+  res.status(404)
+  res.render('notFound')
 })
 
 module.exports = app

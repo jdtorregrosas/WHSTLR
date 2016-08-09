@@ -14,14 +14,10 @@
         <div class="col-3">
           <label class="label"> Project:</label>
         </div><div class="col-9">
-          {{#if projects}}
           <select class="select" id="projects" name="projects">
             <option>Please Select<option>
-            {{#each projects}}
               <option value="{{this.name}}")>{{this.name}}</option>
-            {{/each}}
           </select>
-          {{/if}}
         </div>
       </div>
       <div class="row">

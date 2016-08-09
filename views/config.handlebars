@@ -4,28 +4,26 @@
 <div class="row">
   <div class="col-3">
   </div><div class="col-9 page-background">
-    <form>
-      <div class="row">
-        <h2 class="form-title">Configuration</h2>
+    <div class="row">
+      <h2 class="form-title">Configuration</h2>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label class="label">Repository URL:</label>
+      </div><div class="col-9">
+        <input class="input" type='text' id='baseURL' placeholder="http://your-repository.org/" value="{{baseURL}}" />
       </div>
-      <div class="row">
-        <div class="col-3">
-          <label class="label">Repository URL:</label>
-        </div><div class="col-9">
-          <input class="input" type='text' name='baseURL' placeholder="http://your-repository.org/" value="{{baseURL}}" />
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label class="label"> Access Token:</label>
+      </div><div class="col-9">
+        <input class="input" type='text' id='token' placeholder="3dzg38990nd89NzjhdbJrff" value="{{localStorage.token}}" />
       </div>
-      <div class="row">
-        <div class="col-3">
-          <label class="label"> Access Token:</label>
-        </div><div class="col-9">
-          <input class="input" type='text' name='token' placeholder="3dzg38990nd89NzjhdbJrff" value="{{token}}" />
-        </div>
+    </div>
+    <div class="row center">
+        <button class="button" id="applyConfig">Apply</button>
       </div>
-      <div class="row center">
-          <button class="button" id="applyConfig">Apply</button>
-      </div>
-    </form>
   </div>
   {{#if continue}}
   <div class="row right">
