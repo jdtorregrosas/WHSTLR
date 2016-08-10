@@ -8,7 +8,6 @@ $(document).on('click', '#btnGenerate', function() {
   getMerges(projectId, (merges) => {
     for (var merge in merges) {
       var mergeScript = $("#merge").html()
-      console.log($("#merge").html());
       var mergeTemplate = Handlebars.compile(mergeScript)
       $("#merges").append(mergeTemplate(merges[merge]))
       getCommits(projectId, merges[merge].id, (commits) => {
