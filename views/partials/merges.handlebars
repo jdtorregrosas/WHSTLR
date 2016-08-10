@@ -1,0 +1,39 @@
+<fieldset id='merge-\{{merge.id}}'>
+  <legend class='merge-title'><a  href='\{{url}}'>\{{merge.title}}</a></legend>
+  <div class='row'>
+    <div class='col-2'>
+      <label class='label merge-subtitle'>Branch:</label>
+    </div><div class='col-10'>
+      <label class='label merge-info'>\{{merge.source_branch}}</label>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-2'>
+      <label class='label merge-subtitle'>Author:</label>
+    </div><div class='col-10'>
+      <label class='label merge-info'>\{{merge.author}}</label>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-2'>
+      <label class='label merge-subtitle'>Date:</label>
+    </div><div class='col-10'>
+      <label class='label merge-info'>\{{merge.date}}</label>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-2'>
+      <label class='label merge-subtitle'>Info:</label>
+    </div><div class='col-10'>
+      <label class='label merge-info'>\{{merge.description}}</label>
+    </div>
+  </div>
+  <div class='row center'>
+    <button class='button btnShowCommits' id='btnShowCommits-\{{merge.id}}' value='commits-merge-\{{merge.id}}'>Show Commits</button>
+  </div>
+  <hr/>
+  <div class='row commit-div'>
+    <div id='commits-merge-\{{merge.id}}' class='row commit-messages-container' value='hide'>
+    </div>
+  </div>
+</fieldset>

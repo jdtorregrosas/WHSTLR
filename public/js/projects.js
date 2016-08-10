@@ -7,7 +7,7 @@ $( document ).ready(function() {
         $('<option />').attr('disabled','disabled').attr('selected','selected').text('Select your project')
       )
       $.each(projects, function(value, key) {
-        projectsElement.append($('<option />').attr('value', key.id).text(key.name))
+        projectsElement.append($('<option />').attr('value', key.id).attr('url', key.url).text(key.name))
       })
     })
   }
