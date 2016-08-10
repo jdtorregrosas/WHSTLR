@@ -1,98 +1,167 @@
+body > *{
+  --darkSlateGray: #222;
+  --darkGray: #444;
+  --brightGray: #999;
+  --lightGray: #EEE;
+  --dimPurple: #849;
+  --brightPurple: #879;
+  --royalBlue: #55F;
+  --mediumSlateBlue: #97F;
+  --whiteBlue: #DDF;
+  --paleBlue: #9BF;
+  --darkkhaki: #BA5;
+  --dimBrown: #875;
+  --sandyBrown: #FE5;
+  --bold: 600;
+  --normal: 400;
+  font-size: 16px;
+  line-height: 32px;
+  font-weight: var(--normal);
+  color: var(--darkSlateGray);
+}
 *{
-  float: none;
-  clear: both;
   font-family: 'PT Sans', sans-serif;
-  color: #292929;
-}
-.title > img{
-  clear: none;
-  margin: 0 auto;
-}
-h2{
-  float: left;
-  clear: both;
-}
-.main{
-  margin: 0 auto;
-  padding: 1%;
-  width: 80%;
-  min-width: 400px;
-  min-height: 100vh;
-  background-color: #c3c3a8;
-}
-.form{
-  background-color: #292929;
-  border-radius: 10px;
-  padding: 10px;
-  clear: both;
-  margin: 0 auto;
-  max-width: 700px;
-  min-width: 300px;
-}
-.form > h2{
+  padding: 0;
   margin: 0;
-  padding:1em;
-  color: #F9F9F9;
+  box-sizing: border-box;
 }
-.form-item{
-  padding-bottom: .75em;
+/** grid System **/
+.row{
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+[class^="col-"] > *{
+  width: 100%;
+  height: 100%;
+}
+[class^="col-"]{
+  height: 100%;
   display: inline-block;
+  margin: 0;
+}
+.col-1{
+  width: 8.33%;
+}
+.col-2{
+  width: 16.66%;
+}
+.col-3{
+  width: 25%;
+}
+.col-4{
+  width: 33.33%;
+}
+.col-5{
+  width: 41.66%;
+}
+.col-6{
+  width: 50%;
+}
+.col-7{
+  width: 58.33%;
+}
+.col-8{
+  width: 66.66%;
+}
+.col-9{
+  width: 75%;
+}
+.col-10{
+  width: 83.33%;
+}
+.col-11{
+  width: 91.66%;
+}
+.col-12{
   width: 100%;
 }
-.form-item span{
-  width: 25%;
-  float: left;
-  clear: both;
-  color: #F9F9F9;
-  padding-top: .15em;
+/** Backgrounds **/
+.background {
+  background-color: var(--darkGray);
+  min-width: 950px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.main{
+  padding: 2em;
+  width: 100%;
+  min-width: 700px;
+  min-height: 100vh;
+  background-color: var(--brightPurple);
+}
+.page-background{
+  background-color: var(--darkSlateGray);
+  border-radius: 10px;
+  padding: .75em;
+  margin-bottom: 1em;
+  min-width: 440px;
+}
+.page{
+  padding: 0;
+}
+/** Align **/
+.left{
+  text-align: left;
+}
+.center{
+  text-align: center;
+  vertical-align: middle;
+}
+.right{
   text-align: right;
 }
-.form-item input{
-  width: 72%;
+/** Form **/
+.form-title{
+  margin: 0;
+  padding:1em;
+  font-size: 1.5em;
+  color: var(--whiteBlue);
+  font-weight: var(--bold);
+}
+.label{
+  display: block;
+  color: var(--whiteBlue);
+  padding: .50em;
+  text-align: right;
+  font-weight: var(--bold)
+}
+.input{
   height: 2.5em;
-  float: right;
-  clear: right;
+  border: none;
+  border-radius: 10px;
+  padding-left: .75em;
 }
-.form-item select{
-  width: 72%;
-  float: right;
-  clear: right;
+.select{
+  height: 2.5em;
+  border: none;
+  background-color: var(--whiteBlue);
+  border-radius: 10px;
+  padding-left: .75em;
 }
-.form-item.submit{
-  display: flex;
+option {
+  background:#DDD;
+  border-top:1px solid #DDD;
+  padding:.3em 1em .3em 1em;
 }
-.form-item > .button{
-  background-color: #fcd949;
-  color: #292929;
-  height: 40px;
-  border: solid 2px #292929;
+.button{
+  background-color: var(--royalBlue);
+  color: var(--whiteBlue);
+  padding: .25em 4em;
+  margin: .20em 0;
+  border: solid 2px var(--whiteBlue);
   border-radius: 15px;
+  font-size: 1em;
+  font-weight: var(--bold);
   display: inline-block;
-  margin: auto;
-  width: 50%;
 }
-.form-item > .button:hover{
+.button:hover{
   cursor: pointer;
-  color: #F9F9F9;
-  background-color: #E86F0C;
-  border: solid 2px #F9F9F9;
-}
-.output{
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  padding: 20px;
-  overflow: auto;
-}
-.output.error{
-  border: solid 2px #505050;
-  background-color: #930000;
-  color: #F9F9F9;
-}
-.output.successMessage{
-  border: solid 2px black;
-  background-color: #F9F9F9;
-  color: black;
+  color: var(--whiteBlue);
+  background-color: var(--dimPurple);
+  border: solid 2px var(--whiteBlue);
 }
 .about{
   color: #292929;
@@ -104,44 +173,42 @@ h2{
   width: 100%;
   text-align: center;
 }
-.header{
-  background-color: #333;
-  color: #F9F9F9;
-  height: 60px;
-  width: 100%;
-}
+
 .footer{
   padding: 15px;
-  text-align: right;
-  background-color: #292929;
-  color: #F9F9F9;
-  height: 30px;
+  font-weight: var(--bold);
+  background-color: var(--darkSlateGray);
+  color: var(--whiteBlue);
 }
 li{
   clear: none;
 }
-body {margin: 0;}
 ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #292929;
+    background-color: var(--darkSlateGray);
 }
 
 ul.topnav li {float: left;}
 
 ul.topnav li a {
     display: block;
-    color: white;
+    color: var(--whiteBlue);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #111;}
+ul.topnav li a:hover:not(.active) {
+  background-color: var(--whiteBlue);
+  color: var(--darkSlateGray);
+}
 
-ul.topnav li a.active {background-color: #E86F0C;}
+ul.topnav li a.active {
+  background-color: var(--dimPurple)
+}
 
 ul.topnav li.right {float: right;}
 
@@ -151,97 +218,84 @@ ul.topnav li.right {float: right;}
 }
 
 .container{
-  margin: 10px auto;
   overflow: auto;
-}
-.container.center.border{
-  border: solid 2px #292929;
-  padding: 15px;
-  margin: 15px auto;
-  width: 70%;
-}
-.container > .right{
-  clear: none;
-  float: right;
-  width: 48%;
-  box-sizing: border-box;
-}
-.container > .left{
-  clear: none;
-  float: left;
-  width: 48%;
-  box-sizing: border-box;
 }
 /** commits **/
 .commit-title{
-  padding-left: 0;
-  font-weight: bold;
+  padding-left: .55em;
+  font-weight: var(--bold);
+  line-height: 1.2em;
+  text-align: left;
+  font-size: 1em;
+  color: var(--darkSlateGray);
 }
 .commit-body{
-  padding-left: 0;
+  padding-left: .55em;
+  font-weight: var(--normal);
+  line-height: 1em;
+  text-align: left;
+  font-size: 1em;
+  color: var(--darkSlateGray);
 }
-.commit-div{
-  display: inline-flex;
-  margin-bottom: 10px;
-}
-.commits-div{
-  margin: 2px;
-  overflow-y: scroll;
-  height: 800px;
-}
-.commits-fieldset {
-  border:2px solid #292929;
+.commit-messages-container{
+  padding: .33em;
+  display: none;
+  background: var(--darkkhaki);
 }
 .main-legend {
   padding: 0.2em 0.5em;
-  border: 2px solid #292929;
-  background-color: #E86F0C;
-  box-shadow: 0 3px 2px 0 rgba(0,0,0,1);
-  color:#F9F9F9;
+  border: 2px solid var(--darkSlateGray);
+  background-color: var(--dimPurple);
+  color: var(--whiteBlue);
   font-weight: bold;
-  font-size:90%;
+  font-size:.9em;
   text-align:center;
   }
 /*** merges ***/
+[id^="merge-"]{
+  background: var(--mediumSlateBlue);
+  border: solid 2px var(--whiteBlue);
+  margin-top: .75em;
+}
 .merges-div {
   overflow-y: scroll;
   height: 800px;
+  max-width: 700px;
+  min-width: 440px;
+  padding: 1em;
 }
 .merges-fieldset {
   display: none;
-  border:2px solid #292929;
+  margin: 0 auto;
+  border:2px solid var(--darkSlateGray);
+  max-width: 700px;
+  min-width: 440px;
 }
 .merge-title{
-  padding-left: 0;
-  font-weight: bold;
+  padding: 0 .75em;
+  font-weight: var(--bold);
+  font-size: 1.15em;
+  color: var(--darkSlateGray);
+  text-decoration: underline;
+  border: solid 2px var(--whiteBlue);
+  background: var(--darkkhaki);
 }
+
 .merge-subtitle{
-  padding-left: 0;
-  font-weight: bold;
-  font-size: 110%;
+  padding: 0 1em;
+  font-size: 1.10em;
+  text-align: left;
+  font-weight: var(--bold);
+  color: var(--darkSlateGray);
 }
-/*** Select dropdown ***/
-select {
-  /* irrelevante Eigenschaften gekürzt */
-  border: 1px solid black;
-  padding:.50em .15em .25em .25em;
-  box-shadow: 0 2px 1px 0 rgba(0,0,0,1);
-  background-color:#C3C3A8;
-  color:#292929;
+.merge-info{
+  padding: 0 1em;
+  font-size: 1em;
+  line-height: 1em;
+  text-align: left;
+  font-weight: var(--normal);
+  color: var(--darkSlateGray);
 }
-
-option {
-  background:#DDD;
-  border-top:1px solid #DDD;
-  padding:.3em 1em .3em 1em;
-}
-
-.background {
-  width: 100%;
-  background-color: #454545;
-  min-height: 100vh;
-}
-
 /*** checkbox ***/
 input[type=checkbox] {
    /*position: absolute;
@@ -250,6 +304,8 @@ input[type=checkbox] {
 }
 
 img.commit-title-checkbox {
+  line-height: 1em;
+  vertical-align: middle;
   content:url("/public/assets/images/git-commit.png");
   cursor: pointer;
 }

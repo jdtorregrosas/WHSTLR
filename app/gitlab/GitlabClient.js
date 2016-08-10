@@ -14,7 +14,7 @@ GitlabClient.prototype.getTags = function (projectId) {
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
     .then((res) => {
-      resolve(res)
+      resolve(res.body)
     }).catch((err) => {
       reject(err)
     })
