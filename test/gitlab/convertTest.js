@@ -76,29 +76,6 @@ describe('# Commits', () => {
 })
 
 describe('# Merges', () => {
-  it('Should throw error when mergeRequests without message are comming', () => {
-    assert.throws(() => {
-      const badMergeRequests = [{
-        test: 'test'
-      }, {
-        test2: 'test2'
-      }]
-      converter.convertMergeRequests(badMergeRequests)
-    }, TypeError, 'Expected error')
-  })
-  it('Should throw error when mergeRequests are not an array', () => {
-    assert.throws(() => {
-      const badMergeRequests = 'thatSNotAnArray'
-      converter.convertMergeRequests(badMergeRequests)
-    }, TypeError, 'Expected error')
-  })
-  it('Should throw error when mergeRequests are not an array of objects', () => {
-    assert.throws(() => {
-      const badMergeRequests = [1, 2, 3, 4, 5]
-      converter.convertMergeRequests(badMergeRequests)
-    }, TypeError, 'Expected error')
-  })
-
   it('Should convert a mergeRequest to the expected schema', () => {
     const goodMergeRequests = [{
       'id': 1456,

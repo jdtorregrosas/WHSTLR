@@ -1,10 +1,8 @@
 'use strict'
 
 const path = require('path')
-const healthRoute = require('./routes/_health')
-const indexRoute = require('./routes/index')
-const aboutRoute = require('./routes/about')
-const notFoundRoute = require('./routes/notFound')
+const webRoutes = require('./routes/web')
+const apiRoutes = require('./routes/api')
 const bodyParser = require('body-parser')
 
 const express = require('express')
@@ -29,7 +27,7 @@ if (process.env.NODE_ENV == 'production') {
 
 app.use('/releases', express.static(path.join(__dirname, '/releases')))
 app.use('/public', express.static(path.join(__dirname, '/public')))
-app.use('/', healthRoute)
-app.use('/', indexRoute)
-app.use('/', aboutRoute)
-app.use('/', notFoundRoute)
+app.use('/api', apiRoutes)
+app.use('/', webRoutes)
+
+module.exports = app
