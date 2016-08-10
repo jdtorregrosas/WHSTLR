@@ -12,7 +12,8 @@ function convertProjects (projects) {
     }
     projectsView.push({
       id: projects[project].id,
-      name: projects[project].name
+      name: projects[project].name,
+      url: projects[project].web_url
     })
   }
   function compare (a, b) {
@@ -66,6 +67,7 @@ function convertMergeRequests (mergeRequests, date) {
     if (tagDate < updateDate) {
       mergeRequestsView.push({
         id: mergeRequests[mergeRequest].id,
+        iid: mergeRequests[mergeRequest].iid,
         title: mergeRequests[mergeRequest].title,
         source_branch: mergeRequests[mergeRequest].source_branch,
         description: mergeRequests[mergeRequest].description,

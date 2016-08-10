@@ -1,16 +1,22 @@
 $(document).on('click', '#btnGenerate', function() {
   $('#merges').empty()
 
-  var projectId = $('#projects option:selected').val()
+  var project = {
+    id: $('#projects option:selected').val(),
+    url: projectUrl = $('#projects option:selected').attr('url')
+  }
   var tag = $('#tags option:selected').val()
   indexLoading()
   $(".merges-fieldset").show();
-  getMerges(projectId, (merges) => {
+  getMerges(project.id, (merges) => {
     for (var merge in merges) {
       var mergeScript = $("#merge").html()
       var mergeTemplate = Handlebars.compile(mergeScript)
-      $("#merges").append(mergeTemplate(merges[merge]))
-      getCommits(projectId, merges[merge].id, (commits) => {
+      $("#merges").append(mergeTemplate({
+        merge: merges[merge],
+        url: `${project.url}/merge_requests/${merges[merge].iid}`
+      }))
+      getCommits(project.id, merges[merge].id, (commits) => {
         for (var commit in commits) {
           var messageElements = []
           var counter = 0
