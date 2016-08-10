@@ -1,0 +1,192 @@
+FORMAT: 1A
+HOST: /
+
+# WHSTLR
+The WHSTLR API retrieves data from a gitlab server bit it will make the same for github and bitbucket
+
+# Group API
+
+## Username [/api/userName]
+
+### Get the username of the connected user [GET]
++ Response 200 (application/json)
+  + body
+    {"userName": "Tobias"}
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+
+## Projects [/api/projects]
+
+### Get an array of projects [GET]
++ Response 200 (application/json)
+  [{
+    "id": "140",
+    "name": "My Project",
+    "url": "https://gitlab/user/project"
+  },{
+    "id": "142",
+    "name": "Your Project",
+    "url": "https://gitlab/user/project"
+  }]
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+
+## Projects [/api/projects]
+
+### Get an array of projects [GET]
++ Response 200 (application/json)
+  [{
+    "id": "140",
+    "name": "My Project",
+    "url": "https://gitlab/user/project"
+  },{
+    "id": "142",
+    "name": "Your Project",
+    "url": "https://gitlab/user/project"
+  }]
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+
+## Tags [/api/projects/{projectId}/tags]
+
+### Get an array of tags [GET]
++ Parameters
+  + projectId (string) - The id of the project/repository
+
++ Response 200 (application/json)
+  [{
+    "name": "2.0.0",
+    "date":"date"
+  }, {
+    "name": "2.0.0",
+    "date":"date"
+  }]
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+## Tag [/api/projects/{projectId}/tag/{name}]
+
+### Get an array of tags [GET]
++ Parameters
+  + projectId (string) - The id of the project/repository
+  + name (string) - The name of the tag
+
++ Response 200 (application/json)
+  {
+    "name": "2.0.0",
+    "date":"date"
+  }
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+
+## Merges [/api/projects/{projectId}/merges]
+
+### Get an array of merges [GET]
++ Parameters
+  + projectId (string) - The id of the project/repository
+
++ Response 200 (application/json)
+  [{
+    "id": 1445,
+    "iid": 1,
+    "title": "A big change",
+    "source_branch": "big-change-branch",
+    "description": "Here we fixed some bugs and added some good things",
+    "author": "your name",
+    "date": "date"
+  },{
+    "id": 1445,
+    "iid": 1,
+    "title": "A big change",
+    "source_branch": "big-change-branch",
+    "description": "Here we fixed some bugs and added some good things",
+    "author": "your name",
+    "date": "date"
+  }]
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+## Merge [/api/projects/{projectId}/merges/{mergeId}]
+
+### Get a merge [GET]
++ Parameters
+  + projectId (string) - The id of the project/repository
+  + mergeId (string) - The id of the merge
+
++ Response 200 (application/json)
+  {
+    "id": 1445,
+    "iid": 1,
+    "title": "A big change",
+    "source_branch": "big-change-branch",
+    "description": "Here we fixed some bugs and added some good things",
+    "author": "your name",
+    "date": "date"
+  }
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+## Commits [/api/projects/{projectId}/merges/{mergeId}/commits]
+
+### Get an array of commits [GET]
++ Parameters
+  + projectId (string) - The id of the project/repository
+  + mergeId (string) - The id of the merge
+
++ Response 200 (application/json)
+  [{
+    "message": "Fix lint",
+    "author": "your name",
+    "date": "date",
+    "mergeid": 1345
+  },{
+    "message": "Fix lint",
+    "author": "your name",
+    "date": "date",
+    "mergeid": 1345
+  }]
+
++ Response 500 (application/json)
+  {
+    "name": "WHSTLR Error",
+    "message": "Unkown Error",
+    "stack": "stack"
+  }
+
+# Data Structures
+
+## Commits (object)
+- id: `1` (number) - The id
+- title: `hallo` (string) - The title

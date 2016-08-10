@@ -18,6 +18,9 @@ app.get('/about/', (req, res) => {
   res.render('about')
 })
 
+app.get('/api', (req, res) => {
+  res.redirect(301, '/public/api/index.html')
+})
 app.get('*', (req, res) => {
   res.status(404)
   res.render('notFound')
