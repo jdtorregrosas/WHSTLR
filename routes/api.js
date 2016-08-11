@@ -127,4 +127,19 @@ app.get('/projects/:projectId/merges/:mergeid/commits', (req, res) => {
   })
 })
 
+app.get('/projects/:projectId/commits', (req, res) => {
+  const baseURL = req.query.baseURL
+  const token = req.query.token
+  const gitlabClient = new GitlabClient(baseURL, token)
+  gitlabClient.getCommits(req.params.projectId)
+  .then((commitsRaw) => {
+    const commits = converter.convertCommits(commitsRaw)
+    res.send(commits)
+  }).catch((err) => {
+    res
+    .status(500)
+    .send(new ErrorW(err))
+  })
+})
+
 module.exports = app

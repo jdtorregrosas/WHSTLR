@@ -1,4 +1,5 @@
 $(document).on('click', '#btnGenerate', function() {
+  $(".merges-fieldset").hide();
   $('#merges').empty()
 
   var project = {
@@ -7,8 +8,10 @@ $(document).on('click', '#btnGenerate', function() {
   }
   var tag = $('#tags option:selected').val()
   indexLoading()
-  $(".merges-fieldset").show();
   getMerges(project.id, (merges) => {
+    if(merges.length > 0){
+      localStorage.commitsModus==='true' ? showCommits() : showMerges();
+    }
     for (var merge in merges) {
       var mergeScript = $("#merge").html()
       var mergeTemplate = Handlebars.compile(mergeScript)
@@ -16,7 +19,7 @@ $(document).on('click', '#btnGenerate', function() {
         merge: merges[merge],
         url: `${project.url}/merge_requests/${merges[merge].iid}`
       }))
-      getCommits(project.id, merges[merge].id, (commits) => {
+      getCommitsFromMerge(project.id, merges[merge].id, (commits) => {
         for (var commit in commits) {
           var messageElements = []
           var counter = 0
@@ -59,7 +62,7 @@ function getMerges(projectId, callback) {
   })
 }
 
-function getCommits(projectId, mergeId, callback) {
+function getCommitsFromMerge(projectId, mergeId, callback) {
   $.ajax({
     type: 'GET',
     url: `/api/projects/${projectId}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,

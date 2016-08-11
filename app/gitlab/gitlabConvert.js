@@ -34,7 +34,7 @@ function convertCommits (commits) {
         message: commits[commit].message,
         author: commits[commit].author_name,
         date: commits[commit].created_at,
-        mergeid: commits[commit].mergeid
+        mergeid: commits[commit].mergeid ? commits[commit].mergeid : ''
       })
     }
   }

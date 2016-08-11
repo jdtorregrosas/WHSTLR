@@ -1,7 +1,8 @@
 'use strict'
 
 const GitlabClient = require('../../app/gitlab/GitlabClient')
-const mockCommits = require('./helper/mockData/commits140WithMergeid.json')
+const mockCommitsFromMerge = require('./helper/mockData/commits140WithMergeid.json')
+const mockCommits = require('./helper/mockData/commits140.json')
 const mockProjects = require('./helper/mockData/projects.json')
 const mockTags = require('./helper/mockData/tags140.json')
 const mockMerges = require('./helper/mockData/mergeRequests140.json')
@@ -54,7 +55,7 @@ describe('Gitlab Client Tests', () => {
   })
   it('Should get Commits from Merge correctly', (done) => {
     gitlabClient.getCommitsFromMerge(140, 1456).then((commits) => {
-      assert.deepEqual(mockCommits, commits)
+      assert.deepEqual(mockCommitsFromMerge, commits)
       done()
     }).catch((err) => {
       done(err)
@@ -62,6 +63,21 @@ describe('Gitlab Client Tests', () => {
   })
   it('Should reject getCommitsFromMerge when an incorrect server is set', (done) => {
     gitlabClientInvalid.getCommitsFromMerge(140, 1456).then((tags) => {
+      done(new Error('Cannot send commits with an invalid server'))
+    }).catch((err) => {
+      if (err) done()
+    })
+  })
+  it('Should get Commits correctly', (done) => {
+    gitlabClient.getCommits(140).then((commits) => {
+      assert.deepEqual(mockCommits, commits)
+      done()
+    }).catch((err) => {
+      done(err)
+    })
+  })
+  it('Should reject getCommitsFromMerge when an incorrect server is set', (done) => {
+    gitlabClientInvalid.getCommits(140).then((tags) => {
       done(new Error('Cannot send commits with an invalid server'))
     }).catch((err) => {
       if (err) done()

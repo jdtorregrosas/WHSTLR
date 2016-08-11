@@ -55,6 +55,23 @@ GitlabClient.prototype.getCommitsFromMerge = function (projectId, mergeRequestId
     })
   })
 }
+GitlabClient.prototype.getCommits = function (projectId) {
+  return new Promise((resolve, reject) => {
+    const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/commits`
+    request
+    .get(url)
+    .set('PRIVATE-TOKEN', this.token)
+    .then((res) => {
+      let commits = []
+      for (let commit in res.body) {
+        commits[commit] = res.body[commit]
+      }
+      resolve(commits)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
 GitlabClient.prototype.getMergeRequests = function (projectId) {
   return new Promise((resolve, reject) => {
     const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests?state=merged&per_page=${this.maxItems}`
