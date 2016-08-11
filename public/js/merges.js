@@ -32,7 +32,8 @@ $(document).on('click', '#btnGenerate', function() {
               var commitTitleTemplate = Handlebars.compile(commitTitleHtml)
               $(`#commits-merge-${commits[commit].mergeid}`).append(commitTitleTemplate({
                 commit: commits[commit],
-                messageElement: messageElements[i]
+                messageElement: messageElements[i],
+                url: `${project.url}${commits[commit].path}`
               }))
               counter = counter + 1
             } else if (messageElements[i]) {

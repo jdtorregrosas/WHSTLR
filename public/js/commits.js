@@ -6,7 +6,7 @@ $(document).on('click', '#btnGenerate', function() {
 
   var project = {
     id: $('#projects option:selected').val(),
-    url: projectUrl = $('#projects option:selected').attr('url')
+    url: $('#projects option:selected').attr('url')
   }
   getCommits(project.id, (commits) => {
     if(commits.length > 0){
@@ -22,6 +22,7 @@ $(document).on('click', '#btnGenerate', function() {
           var commitTitleTemplate = Handlebars.compile(commitTitleHtml)
           $(`#commits`).append(commitTitleTemplate({
             commit: commits[commit],
+            url: project.url+commits[commit].path,
             messageElement: messageElements[i]
           }))
           counter = counter + 1

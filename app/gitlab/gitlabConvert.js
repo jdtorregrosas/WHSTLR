@@ -31,9 +31,11 @@ function convertCommits (commits) {
   for (let commit in commits) {
     if (!commits[commit].message.match(/Merge.*|Revert.*|.*lint.*/)) {
       commitsView.push({
+        id: commits[commit].id,
         message: commits[commit].message,
         author: commits[commit].author_name,
         date: commits[commit].created_at,
+        path: `/commit/${commits[commit].id}`,
         mergeid: commits[commit].mergeid ? commits[commit].mergeid : ''
       })
     }
