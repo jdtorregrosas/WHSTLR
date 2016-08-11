@@ -1,6 +1,8 @@
 $(document).on('click', '#btnGenerate', function() {
   $(".merges-fieldset").hide();
+  $(".commits-fieldset").hide()
   $('#merges').empty()
+  $('#commits').empty()
 
   var project = {
     id: $('#projects option:selected').val(),
@@ -10,7 +12,7 @@ $(document).on('click', '#btnGenerate', function() {
   indexLoading()
   getMerges(project.id, (merges) => {
     if(merges.length > 0){
-      localStorage.commitsModus==='true' ? showCommits() : showMerges();
+      localStorage.mergesModus === 'true' ? showMerges() : showCommits();
     }
     for (var merge in merges) {
       var mergeScript = $("#merge").html()

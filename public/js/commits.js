@@ -1,5 +1,7 @@
 $(document).on('click', '#btnGenerate', function() {
+  $(".merges-fieldset").hide();
   $(".commits-fieldset").hide()
+  $('#merges').empty()
   $("#commits").empty()
 
   var project = {
@@ -8,7 +10,7 @@ $(document).on('click', '#btnGenerate', function() {
   }
   getCommits(project.id, (commits) => {
     if(commits.length > 0){
-      localStorage.commitsModus==='true' ? showCommits() : showMerges();
+      localStorage.mergesModus === 'true' ? showMerges() : showCommits();
     }
     for (var commit in commits) {
       var messageElements = []

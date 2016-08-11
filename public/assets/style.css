@@ -103,6 +103,12 @@ body > *{
   padding: 0;
 }
 /** Align **/
+.inline-block{
+  display: inline-block;
+}
+.block{
+  display: block;
+}
 .top{
   vertical-align: top;
 }
@@ -130,11 +136,10 @@ body > *{
   font-weight: var(--bold);
 }
 .label{
-  display: block;
   color: var(--whiteBlue);
-  padding: .50em;
-  text-align: right;
-  font-weight: var(--bold)
+  padding: .50rem;
+  font-size: .8rem;
+  font-weight: var(--normal);
 }
 .input{
   height: 2.5em;
@@ -143,16 +148,12 @@ body > *{
   padding-left: .75em;
 }
 .select{
-  height: 2.5em;
+  height: 1.6rem;
+  font-size: .8rem;
   border: none;
   background-color: var(--whiteBlue);
   border-radius: 10px;
-  padding-left: .75em;
-}
-option {
-  background:#DDD;
-  border-top:1px solid #DDD;
-  padding:.3em 1em .3em 1em;
+  padding-left: .25rem;
 }
 .button{
   background-color: var(--royalBlue);
@@ -192,11 +193,13 @@ li{
   clear: none;
 }
 ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: var(--darkSlateGray);
+  line-height: .5rem;
+  font-size: .8rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--darkSlateGray);
 }
 
 ul.topnav li {float: left;}

@@ -1,14 +1,17 @@
 $(document).on('change', '#projects', function() {
   var projectId = $(this).val()
   var tagsElement = $('#tags')
-  tagsElement.html(
-    $('<option />').attr('disabled','disabled').attr('selected','selected').text('Fetching tags...')
-  )
+  tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('Fetching Tags...'))
   getTags(projectId, (tags) => {
     tagsElement.empty()
-    $.each(tags, function (value, key) {
-      tagsElement.append($('<option />').attr('value', key.date).text(key.name))
-    })
+    if (tags.length > 0) {
+      tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('[Select your Tag]'))
+      $.each(tags, function (value, key) {
+        tagsElement.append($('<option />').attr('value', key.date).text(key.name))
+      })
+    } else {
+      tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('--- No Tags found ---'))
+    }
   })
 })
 

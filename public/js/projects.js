@@ -2,13 +2,17 @@ $( document ).ready(function() {
   if (window.location.pathname === '/'){
     var projectsElement = $('#projects')
     projectsElement.empty()
+    projectsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('...Fetching Projects...'))
     getProjects((projects) => {
-      projectsElement.html(
-        $('<option />').attr('disabled','disabled').attr('selected','selected').text('Select your project')
-      )
-      $.each(projects, function(value, key) {
-        projectsElement.append($('<option />').attr('value', key.id).attr('url', key.url).text(key.name))
-      })
+      projectsElement.empty()
+      if (projects.length > 0) {
+        projectsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('[Select your project]'))
+        $.each(projects, function(value, key) {
+          projectsElement.append($('<option />').attr('value', key.id).attr('url', key.url).text(key.name))
+        })
+      } else {
+        projectsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('No Projects found'))
+      }
     })
   }
 });
