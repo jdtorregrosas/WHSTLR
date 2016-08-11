@@ -1,25 +1,29 @@
 <div class="row">
-  <a href="/config">
-    <img class="config" src='/public/assets/images/config-icon.ico' height='40'>
-  </a>
+  <div class="col-3 top">
+    <a href="/config">
+      <img class="config" src='/public/assets/images/config-icon.ico' height='40'>
+    </a>
+  </div><div class="col-6 middle">
+    <div class="row center">
+      <img src='/public/assets/images/whstlr-logo.png' height='120'>
+    </div>
+  </div><div class="col-3 top">
+    <div class="row right">
+      <label class="middle">Merges / Commits</label>
+      <label class="switch">
+        <input id="showModus" type="checkbox" checked>
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <div class="row right">
+      <label>Edit Modus</label>
+      <label class="switch">
+        <input id="editModus" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+  </div>
   <!-- Rounded switch -->
-</div>
-<div class="row">
-  <label class="switch">
-    <input id="showModus" type="checkbox" checked>
-    <div class="slider round"></div>
-  </label>
-  <label >Merges / Commits</label>
-</div>
-<div class="row">
-  <label class="switch">
-    <input id="editModus" type="checkbox">
-    <div class="slider round"></div>
-  </label>
-  <label>Edit Modus</label>
-</div>
-<div class="row center">
-  <img src='/public/assets/images/whstlr-logo.png' height='120'>
 </div>
 <div class="row">
   <div class="col-2">
@@ -61,7 +65,7 @@
     <fieldset class="commits-fieldset">
       <legend class="main-legend">Commits</legend>
       <div class='row commit-div'>
-        <div id='commits' class='row'>
+        <div id='commits' class='row commits-div'>
         </div>
       </div>
     </fieldset>
