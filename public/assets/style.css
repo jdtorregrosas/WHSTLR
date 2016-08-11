@@ -95,9 +95,10 @@ body > *{
 .page-background{
   background-color: var(--darkSlateGray);
   border-radius: 10px;
-  padding: .75em;
-  margin-bottom: 1em;
+  padding: .75rem;
+  margin: .8rem auto;
   min-width: 440px;
+  max-width: 700px;
 }
 .page{
   padding: 0;
@@ -137,15 +138,18 @@ body > *{
 }
 .label{
   color: var(--whiteBlue);
+  text-align: left;
   padding: .50rem;
   font-size: .8rem;
   font-weight: var(--normal);
 }
 .input{
-  height: 2.5em;
+  height: 1.6rem;
+  font-size: .8rem;
   border: none;
+  background-color: var(--whiteBlue);
   border-radius: 10px;
-  padding-left: .75em;
+  padding-left: .25em;
 }
 .select{
   height: 1.6rem;
@@ -156,21 +160,20 @@ body > *{
   padding-left: .25rem;
 }
 .button{
-  background-color: var(--royalBlue);
   color: var(--whiteBlue);
-  padding: .25em 4em;
-  margin: .20em 0;
-  border: solid 2px var(--whiteBlue);
-  border-radius: 15px;
-  font-size: 1em;
-  font-weight: var(--bold);
+  width: 12rem;
+  margin: .20rem 0;
+  background-color: var(--dimPurple);
+  border-radius: 10px;
+  font-size: .8rem;
+  font-weight: var(--normal);
   display: inline-block;
 }
 .button:hover{
   cursor: pointer;
   color: var(--whiteBlue);
-  background-color: var(--dimPurple);
-  border: solid 2px var(--whiteBlue);
+  background-color: var(--paleBlue);
+  box-shadow: inset 0 0 2rem var(--royalBlue);
 }
 .about{
   color: #292929;
@@ -233,16 +236,15 @@ ul.topnav li.right {float: right;}
 }
 /** commits **/
 .commit-title{
-  padding-left: .55em;
   font-weight: var(--bold);
-  line-height: 1.2em;
-  text-align: left;
   font-size: 1em;
+}
+.commit-author{
+  font-size: .8em;
   color: var(--darkSlateGray);
 }
 .commit-body{
   padding-left: .55em;
-  font-weight: var(--normal);
   line-height: 1em;
   text-align: left;
   font-size: 1em;
@@ -318,6 +320,10 @@ ul.topnav li.right {float: right;}
   text-align: left;
   font-weight: var(--normal);
   color: var(--darkSlateGray);
+}
+/** config button **/
+.config:hover{
+  height: 45px;
 }
 /*** checkbox ***/
 input[type=checkbox] {
