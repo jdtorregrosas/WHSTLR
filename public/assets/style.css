@@ -262,6 +262,30 @@ a{
   display: none;
   background: var(--darkkhaki);
 }
+/*** checkbox ***/
+input[type=checkbox] {
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    -webkit-appearance: none;
+    outline: 0;
+    cursor: pointer;
+}
+input[type=checkbox]:checked {
+  background-image: url("/public/assets/images/git-commit-checked.png");
+}
+input[type=checkbox]:hover:not(checked){
+  background-image: url("/public/assets/images/git-commit-hover.png");
+}
+input[type=checkbox]:hover:checked{
+  background-image: url("/public/assets/images/git-commit-hover-checked.png");
+}
+input[type=checkbox]:not(:checked) {
+  background-image: url("/public/assets/images/git-commit.png");
+}
+
 .main-legend {
   padding: 0.2em 0.5em;
   border: 2px solid var(--darkSlateGray);
@@ -358,23 +382,7 @@ a{
 .ruler{
   margin: 1rem 0;
 }
-/*** checkbox ***/
-input[type=checkbox] {
-   /*position: absolute;
-   top: -9999px;
-   left: -9999px;*/
-}
 
-img.commit-title-checkbox {
-  line-height: 1em;
-  vertical-align: middle;
-  content:url("/public/assets/images/git-commit.png");
-  cursor: pointer;
-}
-input[type=checkbox]:checked ~ img.commit-title-checkbox {
-  background-color: #44FF44;
-  content:url("/public/assets/images/git-merge.png")
-}
 /** on/off button **/
 /* The switch - the box around the slider */
 .switch {
