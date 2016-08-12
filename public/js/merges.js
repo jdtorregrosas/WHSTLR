@@ -19,7 +19,7 @@ $(document).on('click', '#btnGenerate', function() {
       var mergeTemplate = Handlebars.compile(mergeScript)
       $("#merges").append(mergeTemplate({
         merge: merges[merge],
-        url: `${project.url}/merge_requests/${merges[merge].iid}`
+        url: `${project.url}${merges[merge].path}`
       }))
       getCommitsFromMerge(project.id, merges[merge].id, (commits) => {
         for (var commit in commits) {

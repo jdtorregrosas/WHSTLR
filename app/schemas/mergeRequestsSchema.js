@@ -4,12 +4,12 @@ const Joi = require('joi')
 
 const mergeRequestsSchema = Joi.array().items(Joi.object().keys({
   id: Joi.number().required(),
-  iid: Joi.number(),
   title: Joi.string().required(),
   source_branch: Joi.string().required(),
   description: Joi.string().allow(''),
   author: Joi.string().required(),
-  date: Joi.string().required()
+  date: Joi.string().required(),
+  path: Joi.string().required()
 }))
 
 module.exports = {

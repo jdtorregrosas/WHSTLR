@@ -69,12 +69,12 @@ function convertMergeRequests (mergeRequests, date) {
     if (tagDate < updateDate) {
       mergeRequestsView.push({
         id: mergeRequests[mergeRequest].id,
-        iid: mergeRequests[mergeRequest].iid,
         title: mergeRequests[mergeRequest].title,
         source_branch: mergeRequests[mergeRequest].source_branch,
         description: mergeRequests[mergeRequest].description,
         author: mergeRequests[mergeRequest].author.username,
-        date: mergeRequests[mergeRequest].updated_at
+        date: mergeRequests[mergeRequest].updated_at,
+        path: `/merge_requests/${mergeRequests[mergeRequest].iid}`
       })
     }
   }
