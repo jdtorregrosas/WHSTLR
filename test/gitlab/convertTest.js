@@ -47,13 +47,26 @@ describe('# Commits', () => {
       'message': 'Update documentation descriptions 2',
       'mergeid': '4321'
     }]
+    const resultCommits = [{
+      'id': '8574912c1880ce03f89d6d666d0c624c1521e4f0',
+      'messages': ['Update documentation descriptions 1'],
+      'author': 'Tobias Sailer',
+      'date': '2016-07-07T11:40:45.000+02:00',
+      'path': '/commit/8574912c1880ce03f89d6d666d0c624c1521e4f0',
+      'mergeid': '1234'
+    }, {
+      'id': '6d9a3467990ac05de599c3c3757d342da4e1df3e',
+      'messages': ['Update documentation descriptions 2'],
+      'author': 'Julian',
+      'date': '2016-06-30T17:03:59.000+01:00',
+      'path': '/commit/6d9a3467990ac05de599c3c3757d342da4e1df3e',
+      'mergeid': '4321'
+    }]
     const convertedCommits = converter.convertCommits(goodCommits)
-    assert.doesNotThrow(() => {
-      commitsSchema.validateCommits(convertedCommits)
-    }, 'Invalid Schema')
+    assert.deepEqual(resultCommits, convertedCommits)
   })
 
-  it('Should throw error when the schema is wrong', () => {
+  it('Should throw error when the schema is not converted', () => {
     const goodCommits = [{
       'id': '8574912c1880ce03f89d6d666d0c624c1521e4f0',
       'title': 'Merge branch',

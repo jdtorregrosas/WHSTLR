@@ -13,24 +13,23 @@ $(document).on('click', '#btnGenerate', function() {
       localStorage.mergesModus === 'true' ? showMerges() : showCommits();
     }
     for (var commit in commits) {
-      var messageElements = []
       var counter = 0
-      messageElements = commits[commit].message.split(/\n|\r/)
-      for (var i in messageElements) {
-        if (messageElements[i] && counter === 0) {
+      var messages = commits[commit].messages
+      for (var i in messages) {
+        if (messages[i] && counter === 0) {
           var commitTitleHtml = $("#commitTitle").html()
           var commitTitleTemplate = Handlebars.compile(commitTitleHtml)
           $(`#commits`).append(commitTitleTemplate({
             commit: commits[commit],
             url: project.url+commits[commit].path,
-            messageElement: messageElements[i]
+            messageElement: messages[i]
           }))
           counter = counter + 1
-        } else if (messageElements[i]) {
+        } else if (messages[i]) {
           var commitBodyHtml = $("#commitBody").html()
           var commitBodyTemplate = Handlebars.compile(commitBodyHtml)
           $(`#commits`).append(commitBodyTemplate({
-            messageElement: messageElements[i]
+            messageElement: messages[i]
           }))
         }
       }

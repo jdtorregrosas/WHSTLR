@@ -23,24 +23,23 @@ $(document).on('click', '#btnGenerate', function() {
       }))
       getCommitsFromMerge(project.id, merges[merge].id, (commits) => {
         for (var commit in commits) {
-          var messageElements = []
           var counter = 0
-          messageElements = commits[commit].message.split(/\n|\r/)
-          for (var i in messageElements) {
-            if (messageElements[i] && counter === 0) {
+          messages = commits[commit].messages
+          for (var i in messages) {
+            if (messages[i] && counter === 0) {
               var commitTitleHtml = $("#commitTitle").html()
               var commitTitleTemplate = Handlebars.compile(commitTitleHtml)
               $(`#commits-merge-${commits[commit].mergeid}`).append(commitTitleTemplate({
                 commit: commits[commit],
-                messageElement: messageElements[i],
+                messageElement: messages[i],
                 url: `${project.url}${commits[commit].path}`
               }))
               counter = counter + 1
-            } else if (messageElements[i]) {
+            } else if (messages[i]) {
               var commitBodyHtml = $("#commitBody").html()
               var commitBodyTemplate = Handlebars.compile(commitBodyHtml)
               $(`#commits-merge-${commits[commit].mergeid}`).append(commitBodyTemplate({
-                messageElement: messageElements[i]
+                messageElement: messages[i]
               }))
             }
           }

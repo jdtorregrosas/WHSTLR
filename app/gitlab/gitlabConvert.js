@@ -1,8 +1,6 @@
 'use strict'
 
-function convertDate (date) {
-  return date.replace(/\+.*/, '')
-}
+const formatLine = require('../formatLine')
 
 function convertProjects (projects) {
   let projectsView = []
@@ -30,9 +28,13 @@ function convertCommits (commits) {
   let commitsView = []
   for (let commit in commits) {
     if (!commits[commit].message.match(/Merge.*|Revert.*|.*lint.*/)) {
+      let messages = commits[commit].message.split(/\n|\r/)
+      for (let message in messages) {
+        messages[message] = formatLine(messages[message])
+      }
       commitsView.push({
         id: commits[commit].id,
-        message: commits[commit].message,
+        messages: messages,
         author: commits[commit].author_name,
         date: commits[commit].created_at,
         path: `/commit/${commits[commit].id}`,
@@ -85,6 +87,5 @@ module.exports = {
   convertProjects,
   convertCommits,
   convertTags,
-  convertMergeRequests,
-  convertDate
+  convertMergeRequests
 }
