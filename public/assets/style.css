@@ -239,9 +239,12 @@ ul.topnav li.right {float: right;}
   font-weight: var(--bold);
   font-size: 1em;
   padding-left: 0;
-  color: var(--dimPurple);
+  color: var(--darkSlateGray);
   text-decoration: none;
   cursor: pointer;
+}
+.commit-title:hover{
+  text-shadow: 0 0 2px red;
 }
 a{
   text-decoration: none;
@@ -277,10 +280,10 @@ input[type=checkbox]:checked {
   background-image: url("/public/assets/images/git-commit-checked.png");
 }
 input[type=checkbox]:hover:not(checked){
-  background-image: url("/public/assets/images/git-commit-hover.png");
+  background-image: url("/public/assets/images/git-commit-hover-checked.png");
 }
 input[type=checkbox]:hover:checked{
-  background-image: url("/public/assets/images/git-commit-hover-checked.png");
+  background-image: url("/public/assets/images/git-commit-hover.png");
 }
 input[type=checkbox]:not(:checked) {
   background-image: url("/public/assets/images/git-commit.png");
