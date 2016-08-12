@@ -29,12 +29,15 @@ function convertCommits (commits) {
   for (let commit in commits) {
     if (!commits[commit].message.match(/Merge.*|Revert.*|.*lint.*/)) {
       let messages = commits[commit].message.split(/\n|\r/)
+      let formatMessages = []
       for (let message in messages) {
-        messages[message] = formatLine(messages[message])
+        if(messages[message]!==''){
+          formatMessages.push(formatLine(messages[message]))
+        }
       }
       commitsView.push({
         id: commits[commit].id,
-        messages: messages,
+        messages: formatMessages,
         author: commits[commit].author_name,
         date: commits[commit].created_at,
         path: `/commit/${commits[commit].id}`,
@@ -69,12 +72,19 @@ function convertMergeRequests (mergeRequests, date) {
   for (let mergeRequest in mergeRequests) {
     let updateDate = new Date(mergeRequests[mergeRequest].updated_at)
     if (tagDate < updateDate) {
+      let descriptions = mergeRequests[mergeRequest].description.split(/\n|\r/)
+      let formatDescriptions = []
+      for (let i in descriptions) {
+        if(descriptions[i]!==''){
+          formatDescriptions.push(formatLine(descriptions[i]))
+        }
+      }
       mergeRequestsView.push({
         id: mergeRequests[mergeRequest].id,
         title: mergeRequests[mergeRequest].title,
         source_branch: mergeRequests[mergeRequest].source_branch,
-        description: mergeRequests[mergeRequest].description,
-        author: mergeRequests[mergeRequest].author.username,
+        descriptions: formatDescriptions,
+        author: mergeRequests[mergeRequest].author.name,
         date: mergeRequests[mergeRequest].updated_at,
         path: `/merge_requests/${mergeRequests[mergeRequest].iid}`
       })

@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = function(line){
-  return line.replace(/[^A-Za-z]*/, '')
+  return line.trim().replace(/[^A-Za-z]*/, '')
 }

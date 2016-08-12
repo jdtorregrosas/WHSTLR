@@ -273,12 +273,13 @@ ul.topnav li.right {float: right;}
 }
 .merges-div {
   overflow-y: scroll;
-  height: 800px;
+  height: 700px;
   max-width: 700px;
   min-width: 440px;
   padding: 1em;
 }
 .commits-div {
+  height: 700px;
   overflow-y: scroll;
   padding: 1em;
 }
@@ -315,6 +316,7 @@ ul.topnav li.right {float: right;}
   color: var(--darkSlateGray);
 }
 .merge-info{
+  display: block;
   padding: 0 1em;
   font-size: 1em;
   line-height: 1em;
@@ -329,13 +331,14 @@ ul.topnav li.right {float: right;}
 /** Release Note **/
 .release-note-fieldset {
   border:0;
+  height: 700px;
   max-width: 700px;
   min-width: 440px;
   padding: 1rem;
 }
 .releaseNote-div{
   background-color: var(--whiteBlue);
-  height: 700px;
+  height: 100%;
   padding: 1.5rem;
   overflow-y: scroll;
 }

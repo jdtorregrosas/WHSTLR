@@ -44,7 +44,7 @@ describe('# Commits', () => {
       'title': 'Update documentation descriptions',
       'author_name': 'Julian',
       'created_at': '2016-06-30T17:03:59.000+01:00',
-      'message': 'Update documentation descriptions 2',
+      'message': 'Update documentation descriptions 2\r\n  Message \n *# - Message',
       'mergeid': '4321'
     }]
     const resultCommits = [{
@@ -56,14 +56,14 @@ describe('# Commits', () => {
       'mergeid': '1234'
     }, {
       'id': '6d9a3467990ac05de599c3c3757d342da4e1df3e',
-      'messages': ['Update documentation descriptions 2'],
+      'messages': ['Update documentation descriptions 2', 'Message', 'Message'],
       'author': 'Julian',
       'date': '2016-06-30T17:03:59.000+01:00',
       'path': '/commit/6d9a3467990ac05de599c3c3757d342da4e1df3e',
       'mergeid': '4321'
     }]
     const convertedCommits = converter.convertCommits(goodCommits)
-    assert.deepEqual(resultCommits, convertedCommits)
+    assert.deepEqual(convertedCommits, resultCommits)
   })
 
   it('Should throw error when the schema is not converted', () => {
@@ -92,6 +92,7 @@ describe('# Merges', () => {
   it('Should convert a mergeRequest to the expected schema', () => {
     const goodMergeRequests = [{
       'id': 1456,
+      "iid": 45,
       'project_id': 140,
       'title': 'Regiestrierungsdatum f575',
       'description': 'Add createdAt in the response',
@@ -110,9 +111,10 @@ describe('# Merges', () => {
       }
     }, {
       'id': 1453,
+      "iid": 44,
       'project_id': 140,
       'title': 'Regiestrierungsdatum f572',
-      'description': 'Add createdAt in the response 2',
+      'description': 'Add createdAt in the response 2\r my message \n\r  - # my second message',
       'state': 'merged',
       'created_at': '2016-06-30T10:39:46.649+02:00',
       'updated_at': '2016-07-07T11:40:50.742+02:00',
@@ -127,10 +129,25 @@ describe('# Merges', () => {
         'web_url': 'http://gitlab.local.coliquio.de/u/jdtorregrosas'
       }
     }]
+    const resultMergeRequests = [{
+      'id': 1456,
+      'title': 'Regiestrierungsdatum f575',
+      'source_branch': 'regiestrierungsdatum-f575',
+      'descriptions': ['Add createdAt in the response'],
+      'date': '2016-07-07T11:40:50.742+02:00',
+      'author': 'Julian David Torregrosa Simbaqueva',
+      'path': '/merge_requests/45',
+    }, {
+      'id': 1453,
+      'title': 'Regiestrierungsdatum f572',
+      'source_branch': 'regiestrierungsdatum-f5752',
+      'descriptions': ['Add createdAt in the response 2', 'my message', 'my second message'],
+      'date': '2016-07-07T11:40:50.742+02:00',
+      'author': 'Julian David Torregrosa Simbaqueva',
+      'path': '/merge_requests/44'
+    }]
     const convertedMergeRequests = converter.convertMergeRequests(goodMergeRequests)
-    assert.doesNotThrow(() => {
-      mergeRequestsSchema.validateMergeRequests(convertedMergeRequests)
-    }, 'Invalid Schema')
+    assert.deepEqual(convertedMergeRequests, resultMergeRequests)
   })
 
   it('Should throw error when the schema is wrong', () => {

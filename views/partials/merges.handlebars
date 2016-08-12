@@ -22,10 +22,12 @@
     </div>
   </div>
   <div class='row'>
-    <div class='col-2'>
+    <div class='col-2 top'>
       <label class='label merge-subtitle'>Info:</label>
     </div><div class='col-10'>
-      <label class='label merge-info'>\{{merge.description}}</label>
+      \{{#each merge.descriptions}}
+      <label class='label merge-info'>\{{this}}</label>
+      \{{/each}}
     </div>
   </div>
   <div class='row center'>
