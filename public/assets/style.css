@@ -239,6 +239,12 @@ ul.topnav li.right {float: right;}
   font-weight: var(--bold);
   font-size: 1em;
   padding-left: 0;
+  color: var(--dimPurple);
+  text-decoration: none;
+  cursor: pointer;
+}
+a{
+  text-decoration: none;
 }
 .commit-author{
   font-size: .8em;
@@ -288,7 +294,7 @@ ul.topnav li.right {float: right;}
   margin: 0 auto;
   border:2px solid var(--darkSlateGray);
   max-width: 700px;
-  min-width: 440px;
+  min-width: 340px;
 }
 .commits-fieldset {
   background-color: var(--darkkhaki);
@@ -296,7 +302,7 @@ ul.topnav li.right {float: right;}
   margin: 0 auto;
   border:2px solid var(--darkSlateGray);
   max-width: 700px;
-  min-width: 440px;
+  min-width: 340px;
 }
 .merge-title{
   padding: 0 .75em;
@@ -333,7 +339,7 @@ ul.topnav li.right {float: right;}
   border:0;
   height: 700px;
   max-width: 700px;
-  min-width: 440px;
+  min-width: 340px;
   padding: 1rem;
 }
 .releaseNote-div{

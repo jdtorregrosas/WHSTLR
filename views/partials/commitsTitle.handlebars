@@ -4,9 +4,11 @@
         <img class='commit-title-checkbox' width=20>
       </div>
    </div><div class='col-11 top'>
-      <label class='label commit-title left'>
-      <a href='\{{url}}'>\{{messageElement}}</a>
-      </label>
+      <a href='\{{url}}'>
+        <label id="commit-\{{commit.id}}" class='label commit-title left'>
+        \{{messageElement}}
+        </label>
+      </a>
       <label class='label commit-author right'>
          [\{{commit.author}}]
       </label>
