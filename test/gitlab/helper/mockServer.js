@@ -43,8 +43,4 @@ app.get('/api/v3/user', (req, res) => {
   res.send(user)
 })
 
-app.listen(2000, () => {
-  console.log('Mock server in port', 2000)
-})
-
 module.exports = app
