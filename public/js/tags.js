@@ -24,7 +24,6 @@ function getTags(projectId, callback) {
       callback(tags)
     },
     error: function (err) {
-      console.log(projectId)
       error('Cannot fetch tags, verify your configuration')
     }
   })
