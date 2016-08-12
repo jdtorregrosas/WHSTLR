@@ -238,13 +238,14 @@ ul.topnav li.right {float: right;}
 .commit-title{
   font-weight: var(--bold);
   font-size: 1em;
+  padding-left: 0;
 }
 .commit-author{
   font-size: .8em;
   color: var(--darkSlateGray);
 }
 .commit-body{
-  padding-left: .55em;
+  padding-left: 0;
   line-height: 1em;
   text-align: left;
   font-size: 1em;
