@@ -340,10 +340,10 @@ ul.topnav li.right {float: right;}
   overflow-y: scroll;
 }
 
-#features{
+#releaseNoteFeatures{
   padding: 0 1.5rem;
 }
-#fixes{
+#releaseNoteFixes{
   padding: 0 1.5rem;
 }
 .ruler{
