@@ -327,7 +327,7 @@ ul.topnav li.right {float: right;}
 }
 /** Release Note **/
 .release-note-fieldset {
-  border:2px solid var(--darkSlateGray);
+  border:0;
   max-width: 700px;
   min-width: 440px;
   padding: 1rem;
