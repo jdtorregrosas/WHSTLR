@@ -2,9 +2,12 @@
 
 const request = require('supertest')
 const app = require('../app')
-require('./gitlab/helper/mockServer')
+const mock = require('./gitlab/helper/mockServer')
 
 describe('# API Routes', () => {
+  before('Starts the mock server',() => {
+    mock.listen(2000)
+  })
   const baseURL = 'localhost:2000'
   const token = 'token'
   it('# GET UserName', (done) => {
