@@ -331,6 +331,7 @@ input[type=checkbox]:not(:checked) {
   max-width: 700px;
   min-width: 340px;
 }
+
 .merge-title{
   padding: 0 .75em;
   font-weight: var(--bold);
@@ -369,13 +370,32 @@ input[type=checkbox]:not(:checked) {
   min-width: 340px;
   padding: 1rem;
 }
+.md-fieldset {
+  display: none;
+  border:0;
+  max-width: 700px;
+  min-width: 340px;
+  padding: 1rem;
+}
 .releaseNote-div{
   background-color: var(--whiteBlue);
   height: 100%;
   padding: 1.5rem;
   overflow-y: scroll;
 }
-
+.md-div{;
+  background-color: var(--whiteBlue);
+  padding: 1.5rem;
+  height: 700px;
+}
+#md{
+  padding: .35rem;
+  min-height:100px;
+  height:100%;
+  width:100%;
+  resize: none;
+  background-color: var(--lightGray);
+}
 #releaseNoteFeatures{
   padding: 0 1.5rem;
 }
@@ -388,6 +408,9 @@ input[type=checkbox]:not(:checked) {
 
 /** on/off button **/
 /* The switch - the box around the slider */
+.modus {
+  padding: 0 1rem;
+}
 .switch {
   position: relative;
   display: inline-block;

@@ -9,16 +9,23 @@
     </div>
   </div><div class="col-3 top">
     <div class="row right">
-      <label class="label inline-block">Commits / Merges</label>
+      <label class="label inline-block modus">Commits / Merges</label>
       <label class="switch middle">
         <input id="showModus" type="checkbox">
         <div class="slider round"></div>
       </label>
     </div>
     <div class="row right">
-      <label class="label inline-block">Edit Modus</label>
+      <label class="label inline-block modus">Edit Modus</label>
       <label class="switch middle">
         <input id="editModus" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <div class="row right">
+      <label class="label inline-block modus">View Markdown</label>
+      <label class="switch middle">
+        <input id="markdownModus" type="checkbox">
         <div class="slider round"></div>
       </label>
     </div>
@@ -73,6 +80,13 @@
     <fieldset class="release-note-fieldset">
       <legend class="main-legend">Your Release Notes</legend>
       {{> releaseNote}}
+    </fieldset>
+    <fieldset class="md-fieldset">
+      <legend class="main-legend">Markdown</legend>
+      <div class='row md-div'>
+        <textarea id="md" rows="30" cols="39" readonly>
+        </textarea>
+      </div>
     </fieldset>
   </div>
 </div>
