@@ -1,9 +1,4 @@
 $(document).on('click', '#btnGenerate', function() {
-  $(".merges-fieldset").hide();
-  $(".commits-fieldset").hide()
-  $('#merges').empty()
-  $('#commits').empty()
-
   var project = {
     id: $('#projects option:selected').val(),
     url: projectUrl = $('#projects option:selected').attr('url')

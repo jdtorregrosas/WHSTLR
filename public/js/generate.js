@@ -1,4 +1,9 @@
 $(document).on('click', '#btnGenerate', function() {
+  $(".merges-fieldset").hide()
+  $(".commits-fieldset").hide()
+  $(".release-note-fieldset").show()
+  $('#merges').empty()
+  $('#commits').empty()
   var projectName = $('#projects option:selected').text()
   $('#releaseNoteTitle').text(projectName)
 })
