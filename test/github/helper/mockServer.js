@@ -3,7 +3,7 @@
 const express = require('express')
 const app = express()
 
-const projects = require('./mockData/repos.json')
+const repos = require('./mockData/repos.json')
 const commits = require('./mockData/commitsHola-mundo.json')
 const tags = require('./mockData/releasesHola-mundo.json')
 const pulls = require('./mockData/pullsHola-mundo.json')
