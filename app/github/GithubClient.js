@@ -37,9 +37,9 @@ GithubClient.prototype.getProjects = function () {
     })
   })
 }
-GithubClient.prototype.getCommitsFromMerge = function (projectId, mergeRequestId) {
+GithubClient.prototype.getCommitsFromMerge = function (projectId, pullId) {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests/${mergeRequestId}/commits?per_page=${this.maxItems}`
+    const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests/${pullId}/commits?per_page=${this.maxItems}`
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
@@ -47,7 +47,7 @@ GithubClient.prototype.getCommitsFromMerge = function (projectId, mergeRequestId
       let commits = []
       for (let commit in res.body) {
         commits[commit] = res.body[commit]
-        commits[commit].mergeid = mergeRequestId
+        commits[commit].mergeid = pullId
       }
       resolve(commits)
     }).catch((err) => {
@@ -72,18 +72,18 @@ GithubClient.prototype.getCommits = function (projectId) {
     })
   })
 }
-GithubClient.prototype.getMergeRequests = function (projectId) {
+GithubClient.prototype.getPulls = function (projectId) {
   return new Promise((resolve, reject) => {
     const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests?state=merged&per_page=${this.maxItems}`
     request
     .get(url)
     .set('PRIVATE-TOKEN', this.token)
     .then((res) => {
-      let mergeRequests = []
-      for (let mergeRequest in res.body) {
-        mergeRequests[mergeRequest] = res.body[mergeRequest]
+      let pulls = []
+      for (let pull in res.body) {
+        pulls[pull] = res.body[pull]
       }
-      resolve(mergeRequests)
+      resolve(pulls)
     }).catch((err) => {
       reject(err)
     })
