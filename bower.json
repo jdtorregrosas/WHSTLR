@@ -23,7 +23,6 @@
     "sweetalert": "^1.1.3",
     "jquery-3.0.0.min": "https://code.jquery.com/jquery-3.0.0.min.js",
     "handlebars": "^4.0.5",
-    "html-md": "^3.0.2",
-    "showdown": "^1.4.2"
+    "html-md": "^3.0.2"
   }
 }
