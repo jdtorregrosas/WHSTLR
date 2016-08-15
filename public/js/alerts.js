@@ -17,7 +17,6 @@ function indexLoading() {
 function copied() {
   swal({
     title: 'Copied to your clipboard!',
-    text: 'We are trying to proccess your request',
     imageUrl: '/public/assets/images/clipboard.png',
     timer: 2000
   })
