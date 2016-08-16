@@ -2,6 +2,7 @@ $(document).on('click', '#btnGenerate', function() {
   $(".merges-fieldset").hide()
   $(".commits-fieldset").hide()
   $(".release-note-fieldset").show()
+  $(".md-fieldset").hide()
   $('#merges').empty()
   $('#commits').empty()
   var projectName = $('#projects option:selected').text()
