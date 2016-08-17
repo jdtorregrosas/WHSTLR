@@ -7,5 +7,5 @@ git pull
 rm -fdr node_modules/*
 npm install
 npm run bower
-npm run production
+NODE_ENV=production node app.js
 echo "Now running WHSTLR in production"
