@@ -3,9 +3,10 @@ language: node_js
 node_js:
   - "6"
 
-sudo: false
+sudo: true
 
 install:
+  - echo '127.0.0.1     gitlab.mock   github.mock' | sudo tee --append /etc/hosts
   - npm install
 
 script:

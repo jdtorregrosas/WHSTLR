@@ -1,8 +1,12 @@
 $(document).on('change', '#projects', function() {
-  var projectId = $(this).val()
+  var project = {
+    id: $('#projects option:selected').val(),
+    name: $('#projects option:selected').text(),
+    owner: $('#projects option:selected').attr('owner')
+  }
   var tagsElement = $('#tags')
   tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('Fetching Tags...'))
-  getTags(projectId, (tags) => {
+  getTags(project, (tags) => {
     tagsElement.empty()
     if (tags.length > 0) {
       tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('[Select your Tag]'))
@@ -15,10 +19,17 @@ $(document).on('change', '#projects', function() {
   })
 })
 
-function getTags(projectId, callback) {
+function getTags(project, callback) {
+  var baseURL = localStorage.baseURL
+  var url = ''
+  if (baseURL.match(/.*gitlab.*/)) {
+    url = `/api/projects/${project.id}/tags?baseURL=${baseURL}&token=${localStorage.token}`
+  } else if (baseURL.match(/.*github.*/)) {
+    url = `/api/projects/${project.owner}/${project.name}/tags?baseURL=${localStorage.baseURL}&token=${localStorage.token}`
+  }
   $.ajax({
     type: 'GET',
-    url: `/api/projects/${projectId}/tags?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
+    url: url,
     dataType: 'json',
     success: function (tags) {
       callback(tags)
