@@ -51,40 +51,54 @@ describe('# Github converter', function () {
   it('Should convert a list of repos to the expected schema and return it in alphabetical order', () => {
     const goodReposData = [{
       'id': 1296269,
+      "owner": {
+        "login": "octocat"
+      },
       'name': 'Hello-World',
       'html_url': 'https://github.com/octocat/Hello-World'
     },{
       'id': 1296249,
+      "owner": {
+        "login": "octocat"
+      },
       'name': 'Hallo-Welt',
       'html_url': 'https://github.com/octocat/Hello-World'
     },{
       'id': 1236267,
+      "owner": {
+        "login": "octocat"
+      },
       'name': 'Hola-Mundo',
       'html_url': 'https://github.com/octocat/Hello-World'
     },{
       'id': 1346269,
+      "owner": {
+        "login": "octocat"
+      },
       'name': 'Ciao-Mondo',
       'html_url': 'https://github.com/octocat/Hello-World'
-    }
-  ]
+    }]
     const goodReposSchema = [{
       'id': 1346269,
       'name': 'Ciao-Mondo',
+      "owner": "octocat",
       'url': 'https://github.com/octocat/Hello-World'
     }, {
       'id': 1296249,
       'name': 'Hallo-Welt',
+      "owner": "octocat",
       'url': 'https://github.com/octocat/Hello-World'
     }, {
       'id': 1296269,
       'name': 'Hello-World',
+      "owner": "octocat",
       'url': 'https://github.com/octocat/Hello-World'
     }, {
       'id': 1236267,
       'name': 'Hola-Mundo',
+      "owner": "octocat",
       'url': 'https://github.com/octocat/Hello-World'
-    }
-  ]
+    }]
     const convertedRepos = converter.convertRepos(goodReposData)
     assert.deepEqual(convertedRepos, goodReposSchema)
   })
@@ -161,7 +175,7 @@ describe('# Github converter', function () {
 
     const goodPullsSchema = [
       {
-        'id': 1,
+        'id': 1347,
         'title': 'new-feature',
         'source_branch': 'new-topic',
         'descriptions': ['Please pull these awesome changes'],
@@ -169,7 +183,7 @@ describe('# Github converter', function () {
         'date': '2011-01-26T19:01:12Z',
         'path': '/pull/1347'
       }, {
-        'id': 2,
+        'id': 1342,
         'title': 'new-feature 2',
         'source_branch': 'new-topic 2',
         'descriptions': ['Please pull these awesome changes 2'],
@@ -177,7 +191,7 @@ describe('# Github converter', function () {
         'date': '2011-01-26T19:01:22Z',
         'path': '/pull/1342'
       }, {
-        'id': 3,
+        'id': 1343,
         'title': 'new-feature 3',
         'source_branch': 'new-topic 3',
         'descriptions': ['Please pull these awesome changes 3','Cool'],

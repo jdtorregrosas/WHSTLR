@@ -11,6 +11,7 @@ function convertRepos (repos) {
     reposView.push({
       id: repos[project].id,
       name: repos[project].name,
+      owner: repos[project].owner.login,
       url: repos[project].html_url
     })
   }
@@ -80,7 +81,7 @@ function convertPulls (pulls, date) {
         }
       }
       pullsView.push({
-        id: pulls[pull].id,
+        id: pulls[pull].number,
         title: pulls[pull].title,
         source_branch: pulls[pull].head.ref,
         descriptions: formatDescriptions,

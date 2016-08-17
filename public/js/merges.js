@@ -1,11 +1,13 @@
 $(document).on('click', '#btnGenerate', function() {
   var project = {
     id: $('#projects option:selected').val(),
-    url: projectUrl = $('#projects option:selected').attr('url')
+    name: $('#projects option:selected').text(),
+    owner: $('#projects option:selected').attr('owner'),
+    url: $('#projects option:selected').attr('url')
   }
   var tag = $('#tags option:selected').val()
   indexLoading()
-  getMerges(project.id, (merges) => {
+  getMerges(project, (merges) => {
     if(merges.length > 0){
       localStorage.mergesModus === 'true' ? showMerges() : showCommits();
     }
@@ -16,7 +18,7 @@ $(document).on('click', '#btnGenerate', function() {
         merge: merges[merge],
         url: `${project.url}${merges[merge].path}`
       }))
-      getCommitsFromMerge(project.id, merges[merge].id, (commits) => {
+      getCommitsFromMerge(project, merges[merge].id, (commits) => {
         for (var commit in commits) {
           var counter = 0
           messages = commits[commit].messages
@@ -44,33 +46,64 @@ $(document).on('click', '#btnGenerate', function() {
   })
 })
 
-function getMerges(projectId, callback) {
-  $.ajax({
-    type: 'GET',
-    url: `/api/projects/${projectId}/merges?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
-    dataType: 'json',
-    success: function(merges) {
-      callback(merges)
-    },
-    error: function(err) {
-      $('.merges-fieldset').hide()
-      error(err.responseText)
-    }
-  })
+function getMerges(project, callback) {
+  var baseURL = localStorage.baseURL
+  if (baseURL.match(/.*gitlab.*/)) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/projects/${project.id}/merges?baseURL=${baseURL}&token=${localStorage.token}`,
+      dataType: 'json',
+      success: function(merges) {
+        callback(merges)
+      },
+      error: function(err) {
+        $('.merges-fieldset').hide()
+        error(err.responseText)
+      }
+    })
+  } else if (baseURL.match(/.*github.*/)) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/projects/${project.owner}/${project.name}/merges?baseURL=${baseURL}&token=${localStorage.token}`,
+      dataType: 'json',
+      success: function(merges) {
+        callback(merges)
+      },
+      error: function(err) {
+        $('.merges-fieldset').hide()
+        error(err.responseText)
+      }
+    })
+  }
 }
 
-function getCommitsFromMerge(projectId, mergeId, callback) {
-  $.ajax({
-    type: 'GET',
-    url: `/api/projects/${projectId}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
-    dataType: 'json',
-    success: function (commits) {
-      callback(commits)
-    },
-    error: function (err) {
-      error(err.responseText)
-    }
-  })
+function getCommitsFromMerge(project, mergeId, callback) {
+  var baseURL = localStorage.baseURL
+  if (baseURL.match(/.*gitlab.*/)) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/projects/${projectId}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
+      dataType: 'json',
+      success: function (commits) {
+        callback(commits)
+      },
+      error: function (err) {
+        error(err.responseText)
+      }
+    })
+  } else if (baseURL.match(/.*github.*/)) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/projects/${project.owner}/${project.name}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
+      dataType: 'json',
+      success: function (commits) {
+        callback(commits)
+      },
+      error: function (err) {
+        error(err.responseText)
+      }
+    })
+  }
 }
 $(document).on('click', '.btnShowCommits', function() {
   var btnId = $(this).attr('id')

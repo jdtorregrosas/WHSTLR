@@ -300,7 +300,7 @@ describe('# Projects', () => {
   })
 
   it('Should convert a Project to the expected schema', () => {
-    const goodProjects = [{
+    const goodProjectsData = [{
       'id': 169,
       'description': '',
       'default_branch': 'master',
@@ -409,10 +409,19 @@ describe('# Projects', () => {
         }
       }
     }]
-    const convertedProjects = converter.convertProjects(goodProjects)
-    assert.doesNotThrow(() => {
-      projectsSchema.validateProjects(convertedProjects)
-    }, 'Invalid Schema')
+    const goodProjectsSchema = [{
+      'id': 168,
+      'name': 'ci-git-integration',
+      "owner": "",
+      'url': 'http://gitlab.local.coliquio.de/devteam/ci-git-integration'
+    }, {
+      'id': 169,
+      'name': 'releaseNotesPrinter',
+      "owner": "jdtorregrosas",
+      'url': 'http://gitlab.local.coliquio.de/jdtorregrosas/releaseNotesPrinter'
+    }]
+    const convertedProjects = converter.convertProjects(goodProjectsData)
+    assert.deepEqual(convertedProjects, goodProjectsSchema)
   })
 
   it('Should throw error when the projects schema is wrong', () => {

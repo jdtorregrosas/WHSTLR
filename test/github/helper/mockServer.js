@@ -21,15 +21,15 @@ app.get('/repos/octocat/Hola-mundo/releases', (req, res) => {
   res.send(tags)
 })
 
-app.get('/repos/octocat/Hola-mundo/pulls?state=closed', (req, res) => {
-  res.send(pulls)
-})
-
 app.get('/repos/octocat/Hola-mundo/pulls/1347/commits', (req, res) => {
   res.send(commits)
 })
 
-app.get('https://api.github.com/user', (req, res) => {
+app.get('/repos/octocat/Hola-mundo/pulls', (req, res) => {
+  res.send(pulls)
+})
+
+app.get('/user', (req, res) => {
   res.send(user)
 })
 

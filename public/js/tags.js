@@ -1,8 +1,12 @@
 $(document).on('change', '#projects', function() {
-  var projectId = $(this).val()
+  var project = {
+    id: $('#projects option:selected').val(),
+    name: $('#projects option:selected').text(),
+    owner: $('#projects option:selected').attr('owner')
+  }
   var tagsElement = $('#tags')
   tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('Fetching Tags...'))
-  getTags(projectId, (tags) => {
+  getTags(project, (tags) => {
     tagsElement.empty()
     if (tags.length > 0) {
       tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('[Select your Tag]'))
@@ -15,16 +19,31 @@ $(document).on('change', '#projects', function() {
   })
 })
 
-function getTags(projectId, callback) {
-  $.ajax({
-    type: 'GET',
-    url: `/api/projects/${projectId}/tags?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
-    dataType: 'json',
-    success: function (tags) {
-      callback(tags)
-    },
-    error: function (err) {
-      error('Cannot fetch tags, verify your configuration')
-    }
-  })
+function getTags(project, callback) {
+  var baseURL = localStorage.baseURL
+  if (baseURL.match(/.*gitlab.*/)) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/projects/${project.id}/tags?baseURL=${baseURL}&token=${localStorage.token}`,
+      dataType: 'json',
+      success: function (tags) {
+        callback(tags)
+      },
+      error: function (err) {
+        error('Cannot fetch tags, verify your configuration')
+      }
+    })
+  } else if (baseURL.match(/.*github.*/)) {
+    $.ajax({
+      type: 'GET',
+      url: `/api/projects/${project.owner}/${project.name}/tags?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
+      dataType: 'json',
+      success: function (tags) {
+        callback(tags)
+      },
+      error: function (err) {
+        error('Cannot fetch tags, verify your configuration')
+      }
+    })
+  }
 }

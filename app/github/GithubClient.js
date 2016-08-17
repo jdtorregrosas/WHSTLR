@@ -1,18 +1,18 @@
 'use strict'
 
 const request = require('superagent')
-
+// 'https://api.github.com'
 function GithubClient (baseURL, token) {
-  this.baseURL = 'https://api.github.com'
+  this.baseURL = baseURL
   this.token = token
   this.maxItems = 1000
 }
-GithubClient.prototype.getTags = function (projectId) {
+GithubClient.prototype.getTags = function (project) {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/tags?per_page=${this.maxItems}`
+    const url = `${this.baseURL}/repos/${project.owner}/${project.name}/releases`
     request
     .get(url)
-    .set('PRIVATE-TOKEN', this.token)
+    .set('Authorization', `token ${this.token}`)
     .then((res) => {
       resolve(res.body)
     }).catch((err) => {
@@ -20,12 +20,12 @@ GithubClient.prototype.getTags = function (projectId) {
     })
   })
 }
-GithubClient.prototype.getProjects = function () {
+GithubClient.prototype.getRepos = function () {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects?per_page=${this.maxItems}`
+    const url = `${this.baseURL}/user/repos`
     request
     .get(url)
-    .set('PRIVATE-TOKEN', this.token)
+    .set('Authorization', `token ${this.token}`)
     .then((res) => {
       let projects = []
       for (let project in res.body) {
@@ -37,12 +37,12 @@ GithubClient.prototype.getProjects = function () {
     })
   })
 }
-GithubClient.prototype.getCommitsFromMerge = function (projectId, pullId) {
+GithubClient.prototype.getCommitsFromPull = function (project, pullId) {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests/${pullId}/commits?per_page=${this.maxItems}`
+    const url = `${this.baseURL}/repos/${project.owner}/${project.name}/pulls/${pullId}/commits`
     request
     .get(url)
-    .set('PRIVATE-TOKEN', this.token)
+    .set('Authorization', `token ${this.token}`)
     .then((res) => {
       let commits = []
       for (let commit in res.body) {
@@ -51,16 +51,17 @@ GithubClient.prototype.getCommitsFromMerge = function (projectId, pullId) {
       }
       resolve(commits)
     }).catch((err) => {
+      console.log(err);
       reject(err)
     })
   })
 }
-GithubClient.prototype.getCommits = function (projectId) {
+GithubClient.prototype.getCommits = function (project) {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/repository/commits?per_page=${this.maxItems}`
+    const url = `${this.baseURL}/repos/${project.owner}/${project.name}/commits`
     request
     .get(url)
-    .set('PRIVATE-TOKEN', this.token)
+    .set('Authorization', `token ${this.token}`)
     .then((res) => {
       let commits = []
       for (let commit in res.body) {
@@ -72,12 +73,12 @@ GithubClient.prototype.getCommits = function (projectId) {
     })
   })
 }
-GithubClient.prototype.getPulls = function (projectId) {
+GithubClient.prototype.getPulls = function (project) {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/projects/${projectId}/merge_requests?state=merged&per_page=${this.maxItems}`
+    const url = `${this.baseURL}/repos/${project.owner}/${project.name}/pulls?state=closed`
     request
     .get(url)
-    .set('PRIVATE-TOKEN', this.token)
+    .set('Authorization', `token ${this.token}`)
     .then((res) => {
       let pulls = []
       for (let pull in res.body) {
@@ -91,7 +92,7 @@ GithubClient.prototype.getPulls = function (projectId) {
 }
 GithubClient.prototype.getCurrentUser = function () {
   return new Promise((resolve, reject) => {
-    const url = `${this.baseURL}/api/v3/user`
+    const url = `${this.baseURL}/user`
     request
     .get(url)
     .set('Authorization', `token ${this.token}`)

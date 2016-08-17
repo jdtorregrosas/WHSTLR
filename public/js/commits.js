@@ -6,9 +6,11 @@ $(document).on('click', '#btnGenerate', function() {
 
   var project = {
     id: $('#projects option:selected').val(),
+    name: $('#projects option:selected').text(),
+    owner: $('#projects option:selected').attr('owner'),
     url: $('#projects option:selected').attr('url')
   }
-  getCommits(project.id, (commits) => {
+  getCommits(project, (commits) => {
     if(commits.length > 0){
       localStorage.mergesModus === 'true' ? showMerges() : showCommits();
     }
@@ -36,10 +38,17 @@ $(document).on('click', '#btnGenerate', function() {
     }
   })
 })
-function getCommits(projectId, callback) {
+function getCommits(project, callback) {
+  var baseURL = localStorage.baseURL
+  var url = ''
+  if (baseURL.match(/.*gitlab.*/)) {
+    url = `/api/projects/${project.id}/commits?baseURL=${baseURL}&token=${localStorage.token}`
+  } else if (baseURL.match(/.*github.*/)) {
+    url = `/api/projects/${project.owner}/${project.name}/commits?baseURL=${baseURL}&token=${localStorage.token}`
+  }
   $.ajax({
     type: 'GET',
-    url: `/api/projects/${projectId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
+    url: url,
     dataType: 'json',
     success: function (commits) {
       callback(commits)

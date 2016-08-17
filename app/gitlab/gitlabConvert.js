@@ -11,6 +11,7 @@ function convertProjects (projects) {
     projectsView.push({
       id: projects[project].id,
       name: projects[project].name,
+      owner: projects[project].owner ? projects[project].owner.username : '',
       url: projects[project].web_url
     })
   }
