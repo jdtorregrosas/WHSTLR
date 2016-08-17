@@ -48,62 +48,45 @@ $(document).on('click', '#btnGenerate', function() {
 
 function getMerges(project, callback) {
   var baseURL = localStorage.baseURL
+  var url = ''
   if (baseURL.match(/.*gitlab.*/)) {
-    $.ajax({
-      type: 'GET',
-      url: `/api/projects/${project.id}/merges?baseURL=${baseURL}&token=${localStorage.token}`,
-      dataType: 'json',
-      success: function(merges) {
-        callback(merges)
-      },
-      error: function(err) {
-        $('.merges-fieldset').hide()
-        error(err.responseText)
-      }
-    })
+    url = `/api/projects/${project.id}/merges?baseURL=${baseURL}&token=${localStorage.token}`
   } else if (baseURL.match(/.*github.*/)) {
-    $.ajax({
-      type: 'GET',
-      url: `/api/projects/${project.owner}/${project.name}/merges?baseURL=${baseURL}&token=${localStorage.token}`,
-      dataType: 'json',
-      success: function(merges) {
-        callback(merges)
-      },
-      error: function(err) {
-        $('.merges-fieldset').hide()
-        error(err.responseText)
-      }
-    })
+    url = `/api/projects/${project.owner}/${project.name}/merges?baseURL=${baseURL}&token=${localStorage.token}`
   }
+  $.ajax({
+    type: 'GET',
+    url: url,
+    dataType: 'json',
+    success: function(merges) {
+      callback(merges)
+    },
+    error: function(err) {
+      $('.merges-fieldset').hide()
+      error(err.responseText)
+    }
+  })
 }
 
 function getCommitsFromMerge(project, mergeId, callback) {
   var baseURL = localStorage.baseURL
+  var url = ''
   if (baseURL.match(/.*gitlab.*/)) {
-    $.ajax({
-      type: 'GET',
-      url: `/api/projects/${projectId}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
-      dataType: 'json',
-      success: function (commits) {
-        callback(commits)
-      },
-      error: function (err) {
-        error(err.responseText)
-      }
-    })
+    url = `/api/projects/${projectId}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`
   } else if (baseURL.match(/.*github.*/)) {
-    $.ajax({
-      type: 'GET',
-      url: `/api/projects/${project.owner}/${project.name}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
-      dataType: 'json',
-      success: function (commits) {
-        callback(commits)
-      },
-      error: function (err) {
-        error(err.responseText)
-      }
-    })
+    url = `/api/projects/${project.owner}/${project.name}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`
   }
+  $.ajax({
+    type: 'GET',
+    url: url,
+    dataType: 'json',
+    success: function (commits) {
+      callback(commits)
+    },
+    error: function (err) {
+      error(err.responseText)
+    }
+  })
 }
 $(document).on('click', '.btnShowCommits', function() {
   var btnId = $(this).attr('id')

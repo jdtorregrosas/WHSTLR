@@ -21,29 +21,21 @@ $(document).on('change', '#projects', function() {
 
 function getTags(project, callback) {
   var baseURL = localStorage.baseURL
+  var url = ''
   if (baseURL.match(/.*gitlab.*/)) {
-    $.ajax({
-      type: 'GET',
-      url: `/api/projects/${project.id}/tags?baseURL=${baseURL}&token=${localStorage.token}`,
-      dataType: 'json',
-      success: function (tags) {
-        callback(tags)
-      },
-      error: function (err) {
-        error('Cannot fetch tags, verify your configuration')
-      }
-    })
+    url = `/api/projects/${project.id}/tags?baseURL=${baseURL}&token=${localStorage.token}`
   } else if (baseURL.match(/.*github.*/)) {
-    $.ajax({
-      type: 'GET',
-      url: `/api/projects/${project.owner}/${project.name}/tags?baseURL=${localStorage.baseURL}&token=${localStorage.token}`,
-      dataType: 'json',
-      success: function (tags) {
-        callback(tags)
-      },
-      error: function (err) {
-        error('Cannot fetch tags, verify your configuration')
-      }
-    })
+    url = `/api/projects/${project.owner}/${project.name}/tags?baseURL=${localStorage.baseURL}&token=${localStorage.token}`
   }
+  $.ajax({
+    type: 'GET',
+    url: url,
+    dataType: 'json',
+    success: function (tags) {
+      callback(tags)
+    },
+    error: function (err) {
+      error('Cannot fetch tags, verify your configuration')
+    }
+  })
 }
