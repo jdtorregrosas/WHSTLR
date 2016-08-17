@@ -72,7 +72,7 @@ function getCommitsFromMerge(project, mergeId, callback) {
   var baseURL = localStorage.baseURL
   var url = ''
   if (baseURL.match(/.*gitlab.*/)) {
-    url = `/api/projects/${projectId}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`
+    url = `/api/projects/${project.id}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`
   } else if (baseURL.match(/.*github.*/)) {
     url = `/api/projects/${project.owner}/${project.name}/merges/${mergeId}/commits?baseURL=${localStorage.baseURL}&token=${localStorage.token}`
   }
