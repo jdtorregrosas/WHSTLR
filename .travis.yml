@@ -6,7 +6,7 @@ node_js:
 sudo: true
 
 install:
-  - echo 'localhost gitlab.mock github.mock' | sudo tee --append /etc/hosts
+  - echo '127.0.0.1     gitlab.mock   github.mock' | sudo tee --append /etc/hosts
   - npm install
 
 script:
