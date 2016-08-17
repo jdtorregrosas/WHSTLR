@@ -1,10 +1,6 @@
 'use strict'
 
 const converter = require('../../app/github/githubConvert.js')
-const commitsSchema = require('../../app/schemas/commitsSchema.js')
-const mergeRequestsSchema = require('../../app/schemas/mergeRequestsSchema.js')
-const projectsSchema = require('../../app/schemas/projectsSchema.js')
-const tagsSchema = require('../../app/schemas/tagsSchema.js')
 const assert = require('assert')
 
 describe('# Github converter', function () {
@@ -19,7 +15,7 @@ describe('# Github converter', function () {
         },
         'message': 'Fix all the bugs\n\rRight now'
       }
-    },{
+    }, {
       'sha': '6dcb09b5b57875f334f61aebed695e2e4193db51',
       'html_url': 'https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db51',
       'commit': {
@@ -51,29 +47,29 @@ describe('# Github converter', function () {
   it('Should convert a list of repos to the expected schema and return it in alphabetical order', () => {
     const goodReposData = [{
       'id': 1296269,
-      "owner": {
-        "login": "octocat"
+      'owner': {
+        'login': 'octocat'
       },
       'name': 'Hello-World',
       'html_url': 'https://github.com/octocat/Hello-World'
-    },{
+    }, {
       'id': 1296249,
-      "owner": {
-        "login": "octocat"
+      'owner': {
+        'login': 'octocat'
       },
       'name': 'Hallo-Welt',
       'html_url': 'https://github.com/octocat/Hello-World'
-    },{
+    }, {
       'id': 1236267,
-      "owner": {
-        "login": "octocat"
+      'owner': {
+        'login': 'octocat'
       },
       'name': 'Hola-Mundo',
       'html_url': 'https://github.com/octocat/Hello-World'
-    },{
+    }, {
       'id': 1346269,
-      "owner": {
-        "login": "octocat"
+      'owner': {
+        'login': 'octocat'
       },
       'name': 'Ciao-Mondo',
       'html_url': 'https://github.com/octocat/Hello-World'
@@ -81,22 +77,22 @@ describe('# Github converter', function () {
     const goodReposSchema = [{
       'id': 1346269,
       'name': 'Ciao-Mondo',
-      "owner": "octocat",
+      'owner': 'octocat',
       'url': 'https://github.com/octocat/Hello-World'
     }, {
       'id': 1296249,
       'name': 'Hallo-Welt',
-      "owner": "octocat",
+      'owner': 'octocat',
       'url': 'https://github.com/octocat/Hello-World'
     }, {
       'id': 1296269,
       'name': 'Hello-World',
-      "owner": "octocat",
+      'owner': 'octocat',
       'url': 'https://github.com/octocat/Hello-World'
     }, {
       'id': 1236267,
       'name': 'Hola-Mundo',
-      "owner": "octocat",
+      'owner': 'octocat',
       'url': 'https://github.com/octocat/Hello-World'
     }]
     const convertedRepos = converter.convertRepos(goodReposData)
@@ -172,7 +168,6 @@ describe('# Github converter', function () {
       }
     ]
 
-
     const goodPullsSchema = [
       {
         'id': 1347,
@@ -194,7 +189,7 @@ describe('# Github converter', function () {
         'id': 1343,
         'title': 'new-feature 3',
         'source_branch': 'new-topic 3',
-        'descriptions': ['Please pull these awesome changes 3','Cool'],
+        'descriptions': ['Please pull these awesome changes 3', 'Cool'],
         'author': 'octocata',
         'date': '2011-01-26T19:01:13Z',
         'path': '/pull/1343'

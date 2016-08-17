@@ -6,7 +6,7 @@ const gitlabMock = require('./gitlab/helper/mockServer')
 const githubMock = require('./github/helper/mockServer')
 
 describe('# API Routes with gitlab mock server', () => {
-  before('Starts the mock server',() => {
+  before('Starts the mock server', () => {
     gitlabMock.listen(3000, 'gitlab.mock')
   })
   const baseURL = 'gitlab.mock:3000'
@@ -64,7 +64,7 @@ describe('# API Routes with gitlab mock server', () => {
   })
 })
 describe('# API Routes with github mock server', () => {
-  before('Starts the mock server',() => {
+  before('Starts the mock server', () => {
     githubMock.listen(3001, 'github.mock')
   })
   const baseURL = 'github.mock:3001'

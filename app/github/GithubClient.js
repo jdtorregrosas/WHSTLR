@@ -51,7 +51,6 @@ GithubClient.prototype.getCommitsFromPull = function (project, pullId) {
       }
       resolve(commits)
     }).catch((err) => {
-      console.log(err);
       reject(err)
     })
   })

@@ -18,7 +18,7 @@ app.get('/userName', (req, res) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(userName, null, 3))
     }).catch((err) => {
-      res.status(404).send(new ErrorW('UserName not found'))
+      res.status(404).send(new ErrorW('UserName not found ' + err))
     })
   } else if (client instanceof GithubClient) {
     client.getCurrentUser().then((user) => {
@@ -26,7 +26,7 @@ app.get('/userName', (req, res) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(userName, null, 3))
     }).catch((err) => {
-      res.status(404).send(new ErrorW('UserName not found'))
+      res.status(404).send(new ErrorW('UserName not found ' + err))
     })
   }
 })
@@ -40,15 +40,15 @@ app.get('/projects', (req, res) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(projects, null, 3))
     }).catch((err) => {
-      res.status(500).send(new ErrorW('Cannot get gitlab Repos'))
+      res.status(500).send(new ErrorW('Cannot get gitlab Repos ' + err))
     })
-  }else if (client instanceof GithubClient) {
+  } else if (client instanceof GithubClient) {
     client.getRepos().then((reposRaw) => {
       const repos = githubConverter.convertRepos(reposRaw)
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(repos, null, 3))
     }).catch((err) => {
-      res.status(500).send(new ErrorW('Cannot get github Repos'))
+      res.status(500).send(new ErrorW('Cannot get github Repos ' + err))
     })
   }
 })
@@ -245,7 +245,7 @@ app.get('/projects/:projectOwner/:projectName/merges/:mergeid/commits', (req, re
     }).catch((err) => {
       res
       .status(500)
-      .send(new ErrorW('Cannot get commits from pull'))
+      .send(new ErrorW('Cannot get commits from pull ' + err))
     })
   }
 })
@@ -295,9 +295,9 @@ app.get('/projects/:projectOwner/:projectName/commits', (req, res) => {
   }
 })
 
-function getClient(baseURL, token){
+function getClient (baseURL, token) {
   let Client
-  if (baseURL.match(/.*github.*/)){
+  if (baseURL.match(/.*github.*/)) {
     Client = new GithubClient(baseURL, token)
   } else if (baseURL.match(/.*gitlab.*/)) {
     Client = new GitlabClient(baseURL, token)

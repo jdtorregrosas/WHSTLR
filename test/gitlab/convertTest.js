@@ -92,7 +92,7 @@ describe('# Merges', () => {
   it('Should convert a mergeRequest to the expected schema', () => {
     const goodMergeRequests = [{
       'id': 1456,
-      "iid": 45,
+      'iid': 45,
       'project_id': 140,
       'title': 'Regiestrierungsdatum f575',
       'description': 'Add createdAt in the response',
@@ -111,7 +111,7 @@ describe('# Merges', () => {
       }
     }, {
       'id': 1453,
-      "iid": 44,
+      'iid': 44,
       'project_id': 140,
       'title': 'Regiestrierungsdatum f572',
       'description': 'Add createdAt in the response 2\r my message \n\r  - # my second message',
@@ -136,7 +136,7 @@ describe('# Merges', () => {
       'descriptions': ['Add createdAt in the response'],
       'date': '2016-07-07T11:40:50.742+02:00',
       'author': 'Julian David Torregrosa Simbaqueva',
-      'path': '/merge_requests/45',
+      'path': '/merge_requests/45'
     }, {
       'id': 1453,
       'title': 'Regiestrierungsdatum f572',
@@ -412,12 +412,12 @@ describe('# Projects', () => {
     const goodProjectsSchema = [{
       'id': 168,
       'name': 'ci-git-integration',
-      "owner": "",
+      'owner': '',
       'url': 'http://gitlab.local.coliquio.de/devteam/ci-git-integration'
     }, {
       'id': 169,
       'name': 'releaseNotesPrinter',
-      "owner": "jdtorregrosas",
+      'owner': 'jdtorregrosas',
       'url': 'http://gitlab.local.coliquio.de/jdtorregrosas/releaseNotesPrinter'
     }]
     const convertedProjects = converter.convertProjects(goodProjectsData)
