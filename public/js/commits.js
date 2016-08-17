@@ -42,9 +42,9 @@ function getCommits(project, callback) {
   var baseURL = localStorage.baseURL
   var url = ''
   if (baseURL.match(/.*gitlab.*/)) {
-    url = `/api/projects/${project.id}/commits?baseURL=${baseURL}&token=${localStorage.token}`
+    url = `/api/projects/${project.id}/commits?since=${localStorage.tagDate}&baseURL=${baseURL}&token=${localStorage.token}`
   } else if (baseURL.match(/.*github.*/)) {
-    url = `/api/projects/${project.owner}/${project.name}/commits?baseURL=${baseURL}&token=${localStorage.token}`
+    url = `/api/projects/${project.owner}/${project.name}/commits?since=${localStorage.tagDate}&baseURL=${baseURL}&token=${localStorage.token}`
   }
   $.ajax({
     type: 'GET',

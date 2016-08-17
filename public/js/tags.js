@@ -11,8 +11,9 @@ $(document).on('change', '#projects', function() {
     if (tags.length > 0) {
       tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('[Select your Tag]'))
       $.each(tags, function (value, key) {
-        tagsElement.append($('<option />').attr('value', key.date).text(key.name))
+        tagsElement.append($('<option />').attr('date', key.date).text(key.name))
       })
+      tagsElement.append($('<option />').attr('date', '1970-01-01T21:43:37Z').text('The beginning of the time'))
     } else {
       tagsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('--- No Tags found ---'))
     }

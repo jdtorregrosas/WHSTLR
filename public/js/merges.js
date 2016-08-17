@@ -5,7 +5,8 @@ $(document).on('click', '#btnGenerate', function() {
     owner: $('#projects option:selected').attr('owner'),
     url: $('#projects option:selected').attr('url')
   }
-  var tag = $('#tags option:selected').val()
+  localStorage.tagDate = $('#tags option:selected').attr('date')
+
   indexLoading()
   getMerges(project, (merges) => {
     if(merges.length > 0){
@@ -50,9 +51,9 @@ function getMerges(project, callback) {
   var baseURL = localStorage.baseURL
   var url = ''
   if (baseURL.match(/.*gitlab.*/)) {
-    url = `/api/projects/${project.id}/merges?baseURL=${baseURL}&token=${localStorage.token}`
+    url = `/api/projects/${project.id}/merges?since=${localStorage.tagDate}&baseURL=${baseURL}&token=${localStorage.token}`
   } else if (baseURL.match(/.*github.*/)) {
-    url = `/api/projects/${project.owner}/${project.name}/merges?baseURL=${baseURL}&token=${localStorage.token}`
+    url = `/api/projects/${project.owner}/${project.name}/merges?since=${localStorage.tagDate}&baseURL=${baseURL}&token=${localStorage.token}`
   }
   $.ajax({
     type: 'GET',

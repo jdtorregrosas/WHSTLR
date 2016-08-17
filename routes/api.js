@@ -127,7 +127,7 @@ app.get('/projects/:projectId/merges', (req, res) => {
   const token = req.query.token
   const client = getClient(baseURL, token)
   if (client instanceof GitlabClient) {
-    let date = (req.query.since) ? new Date(req.query.since) : new Date('1991-05-25')
+    let date = (req.query.since) ? new Date(req.query.since) : new Date('1970-01-01T21:43:37Z')
     if (date) {
       client.getMergeRequests(req.params.projectId)
       .then((mergesRaw) => {
@@ -156,7 +156,7 @@ app.get('/projects/:projectOwner/:projectName/merges', (req, res) => {
     .status(500)
     .send(new ErrorW('Gitlab doesn\'t need the owner and name of a repo'))
   } else if (client instanceof GithubClient) {
-    let date = (req.query.since) ? new Date(req.query.since) : new Date('1991-05-25')
+    let date = (req.query.since) ? new Date(req.query.since) : new Date('1970-01-01T21:43:37Z')
     if (date) {
       const project = {
         owner: req.params.projectOwner,
@@ -255,15 +255,18 @@ app.get('/projects/:projectId/commits', (req, res) => {
   const token = req.query.token
   const client = getClient(baseURL, token)
   if (client instanceof GitlabClient) {
-    client.getCommits(req.params.projectId)
-    .then((commitsRaw) => {
-      const commits = gitlabConverter.convertCommits(commitsRaw)
-      res.send(commits)
-    }).catch((err) => {
-      res
-      .status(500)
-      .send(new ErrorW(err))
-    })
+    let date = (req.query.since) ? new Date(req.query.since) : new Date('1970-01-01T21:43:37Z')
+    if (date) {
+      client.getCommits(req.params.projectId)
+      .then((commitsRaw) => {
+        const commits = gitlabConverter.convertCommits(commitsRaw, date)
+        res.send(commits)
+      }).catch((err) => {
+        res
+        .status(500)
+        .send(new ErrorW(err))
+      })
+    }
   } else if (client instanceof GithubClient) {
     res
     .status(500)
@@ -283,15 +286,18 @@ app.get('/projects/:projectOwner/:projectName/commits', (req, res) => {
       owner: req.params.projectOwner,
       name: req.params.projectName
     }
-    client.getCommits(project)
-    .then((commitsRaw) => {
-      const commits = githubConverter.convertCommits(commitsRaw)
-      res.send(commits)
-    }).catch((err) => {
-      res
-      .status(500)
-      .send(new ErrorW(err))
-    })
+    let date = (req.query.since) ? new Date(req.query.since) : new Date('1970-01-01T21:43:37Z')
+    if (date) {
+      client.getCommits(project)
+      .then((commitsRaw) => {
+        const commits = githubConverter.convertCommits(commitsRaw, date)
+        res.send(commits)
+      }).catch((err) => {
+        res
+        .status(500)
+        .send(new ErrorW(err))
+      })
+    }
   }
 })
 

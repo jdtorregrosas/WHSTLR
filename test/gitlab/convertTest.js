@@ -8,29 +8,6 @@ const tagsSchema = require('../../app/schemas/tagsSchema.js')
 const assert = require('assert')
 
 describe('# Commits', () => {
-  it('Should throw error when commits without message are comming', () => {
-    assert.throws(() => {
-      const badCommits = [{
-        test: 'test'
-      }, {
-        test2: 'test2'
-      }]
-      converter.convertCommits(badCommits)
-    }, TypeError, 'Expected error')
-  })
-  it('Should throw error when commits are not an array', () => {
-    assert.throws(() => {
-      const badCommits = 'thatSNotAnArray'
-      converter.convertCommits(badCommits)
-    }, TypeError, 'Expected error')
-  })
-  it('Should throw error when commits are not an array of objects', () => {
-    assert.throws(() => {
-      const badCommits = [1, 2, 3, 4, 5]
-      converter.convertCommits(badCommits)
-    }, TypeError, 'Expected error')
-  })
-
   it('Should convert a commit to the expected schema', () => {
     const goodCommits = [{
       'id': '8574912c1880ce03f89d6d666d0c624c1521e4f0',
