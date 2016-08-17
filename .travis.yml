@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - "6"
 
-sudo: false
+sudo: true
 
 install:
   - echo 'localhost gitlalb.mock github.mock' | sudo tee --append /etc/hosts
