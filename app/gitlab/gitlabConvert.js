@@ -25,25 +25,29 @@ function convertProjects (projects) {
   return projectsView
 }
 
-function convertCommits (commits) {
+function convertCommits (commits, date) {
   let commitsView = []
+  let tagDate = (date && !isNaN(date.valueOf())) ? new Date(date) : new Date('1970-01-01T21:43:37Z')
   for (let commit in commits) {
-    if (!commits[commit].message.match(/Merge.*|Revert.*|.*lint.*/)) {
-      let messages = commits[commit].message.split(/\n|\r/)
-      let formatMessages = []
-      for (let message in messages) {
-        if (messages[message] !== '') {
-          formatMessages.push(formatLine(messages[message]))
+    let committedDate = new Date(commits[commit].created_at)
+    if (tagDate < committedDate) {
+      if (!commits[commit].message.match(/Merge.*|Revert.*|.*lint.*/)) {
+        let messages = commits[commit].message.split(/\n|\r/)
+        let formatMessages = []
+        for (let message in messages) {
+          if (messages[message] !== '') {
+            formatMessages.push(formatLine(messages[message]))
+          }
         }
+        commitsView.push({
+          id: commits[commit].id,
+          messages: formatMessages,
+          author: commits[commit].author_name,
+          date: commits[commit].created_at,
+          path: `/commit/${commits[commit].id}`,
+          mergeid: commits[commit].mergeid ? commits[commit].mergeid : ''
+        })
       }
-      commitsView.push({
-        id: commits[commit].id,
-        messages: formatMessages,
-        author: commits[commit].author_name,
-        date: commits[commit].created_at,
-        path: `/commit/${commits[commit].id}`,
-        mergeid: commits[commit].mergeid ? commits[commit].mergeid : ''
-      })
     }
   }
   return commitsView
@@ -69,7 +73,7 @@ function convertTags (tags) {
 
 function convertMergeRequests (mergeRequests, date) {
   let mergeRequestsView = []
-  let tagDate = (date) ? new Date(date) : new Date('1991-05-25')
+  let tagDate = (date && !isNaN(date.valueOf())) ? new Date(date) : new Date('1970-01-01T21:43:37Z')
   for (let mergeRequest in mergeRequests) {
     let updateDate = new Date(mergeRequests[mergeRequest].updated_at)
     if (tagDate < updateDate) {

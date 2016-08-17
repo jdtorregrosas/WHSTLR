@@ -25,25 +25,30 @@ function convertRepos (repos) {
   return reposView
 }
 
-function convertCommits (commits) {
+function convertCommits (commits, date) {
   let commitsView = []
+  const invalidDate = new Date('Not a date')
+  let tagDate = (date && !isNaN(date.valueOf())) ? new Date(date) : new Date('1970-01-01T21:43:37Z')
   for (let commit in commits) {
-    if (!commits[commit].commit.message.match(/Merge.*|Revert.*|.*lint.*/)) {
-      let messages = commits[commit].commit.message.split(/\n|\r/)
-      let formatMessages = []
-      for (let message in messages) {
-        if (messages[message] !== '') {
-          formatMessages.push(formatLine(messages[message]))
+    let committedDate = new Date(commits[commit].commit.author.date)
+    if (tagDate < committedDate) {
+      if (!commits[commit].commit.message.match(/Merge.*|Revert.*|.*lint.*/)) {
+        let messages = commits[commit].commit.message.split(/\n|\r/)
+        let formatMessages = []
+        for (let message in messages) {
+          if (messages[message] !== '') {
+            formatMessages.push(formatLine(messages[message]))
+          }
         }
+        commitsView.push({
+          id: commits[commit].sha,
+          messages: formatMessages,
+          author: commits[commit].commit.author.name,
+          date: commits[commit].commit.author.date,
+          path: `/commit/${commits[commit].sha}`,
+          mergeid: commits[commit].mergeid ? commits[commit].mergeid : ''
+        })
       }
-      commitsView.push({
-        id: commits[commit].sha,
-        messages: formatMessages,
-        author: commits[commit].commit.author.name,
-        date: commits[commit].commit.author.date,
-        path: `/commit/${commits[commit].sha}`,
-        mergeid: commits[commit].mergeid ? commits[commit].mergeid : ''
-      })
     }
   }
   return commitsView
@@ -69,7 +74,7 @@ function convertReleases (releases) {
 
 function convertPulls (pulls, date) {
   let pullsView = []
-  let tagDate = (date) ? new Date(date) : new Date('1991-05-25')
+  let tagDate = (date && !isNaN(date.valueOf())) ? new Date(date) : new Date('1970-01-01T21:43:37Z')
   for (let pull in pulls) {
     let mergedDate = new Date(pulls[pull].merged_at)
     if (tagDate < mergedDate) {
