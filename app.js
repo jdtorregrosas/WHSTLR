@@ -17,10 +17,11 @@ app.get('/test', (req, res) => {
   res.render('index')
 })
 
-app.listen(process.env.PORT || 5000, function () {
-  console.log('WHSTLR running on port 5000!')
-})
-
+const server_port = process.env.PORT || 5000;
+const server_host = '0.0.0.0';
+app.listen(server_port, server_host, function() {
+    console.log('Listening on port %d', server_port);
+});
 app.use('/releases', express.static(path.join(__dirname, '/releases')))
 app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use('/api', apiRoutes)
