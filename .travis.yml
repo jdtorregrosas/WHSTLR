@@ -6,7 +6,7 @@ node_js:
 sudo: false
 
 install:
-  - sudo echo "localhost gitlalb.mock github.mock" >> /etc/hosts
+  - echo 'localhost gitlalb.mock github.mock' | sudo tee --append /etc/hosts
   - npm install
 
 script:
