@@ -156,7 +156,7 @@ app.get('/projects/:projectOwner/:projectName/merges', (req, res) => {
     .status(500)
     .send(new ErrorW('Gitlab doesn\'t need the owner and name of a repo'))
   } else if (client instanceof GithubClient) {
-    let date = (req.query.since) ? new Date(req.query.since) : new Date('1991-05-25')
+    let date = (req.query.since) ? new Date(req.query.since) : new Date('1970-01-01T21:43:37Z')
     if (date) {
       const project = {
         owner: req.params.projectOwner,
