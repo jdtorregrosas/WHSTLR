@@ -5,6 +5,7 @@ const Joi = require('joi')
 const projectsSchema = Joi.array().items(Joi.object().keys({
   id: Joi.number().required(),
   name: Joi.string().required(),
+  owner: Joi.string().required(),
   url: Joi.string()
 }))
 

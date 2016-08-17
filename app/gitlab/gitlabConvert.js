@@ -11,6 +11,7 @@ function convertProjects (projects) {
     projectsView.push({
       id: projects[project].id,
       name: projects[project].name,
+      owner: projects[project].owner ? projects[project].owner.username : '',
       url: projects[project].web_url
     })
   }
@@ -31,7 +32,7 @@ function convertCommits (commits) {
       let messages = commits[commit].message.split(/\n|\r/)
       let formatMessages = []
       for (let message in messages) {
-        if(messages[message]!==''){
+        if (messages[message] !== '') {
           formatMessages.push(formatLine(messages[message]))
         }
       }
@@ -75,7 +76,7 @@ function convertMergeRequests (mergeRequests, date) {
       let descriptions = mergeRequests[mergeRequest].description.split(/\n|\r/)
       let formatDescriptions = []
       for (let i in descriptions) {
-        if(descriptions[i]!==''){
+        if (descriptions[i] !== '') {
           formatDescriptions.push(formatLine(descriptions[i]))
         }
       }

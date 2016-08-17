@@ -8,7 +8,7 @@ $( document ).ready(function() {
       if (projects.length > 0) {
         projectsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('[Select your project]'))
         $.each(projects, function(value, key) {
-          projectsElement.append($('<option />').attr('value', key.id).attr('url', key.url).text(key.name))
+          projectsElement.append($('<option />').attr('value', key.id).attr('url', key.url).attr('owner', key.owner).text(key.name))
         })
       } else {
         projectsElement.append($('<option />').attr('disabled','disabled').attr('selected','selected').text('No Projects found'))

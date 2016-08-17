@@ -14,6 +14,13 @@ function indexLoading() {
     timer: 2000
   })
 }
+function copied() {
+  swal({
+    title: 'Copied to your clipboard!',
+    imageUrl: '/public/assets/images/clipboard.png',
+    timer: 2000
+  })
+}
 
 function error(err) {
   swal('Oops Error!', err,'error')

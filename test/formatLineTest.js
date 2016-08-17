@@ -36,5 +36,4 @@ describe('# Format Line', () => {
       assert.deepEqual(formatLine(wrongLinesWithSpecialChars[line]), correctLineWithSpecialChars)
     })
   }
-
 })

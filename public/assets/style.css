@@ -1,23 +1,15 @@
 body > *{
-  --darkSlateGray: #222;
-  --darkGray: #444;
-  --brightGray: #999;
-  --lightGray: #EEE;
-  --dimPurple: #849;
-  --brightPurple: #879;
-  --royalBlue: #55F;
-  --mediumSlateBlue: #97F;
-  --whiteBlue: #DDF;
-  --paleBlue: #9BF;
-  --darkkhaki: #BA5;
-  --dimBrown: #875;
-  --sandyBrown: #FE5;
+  --gray-dark: #262626;
+  --orange: #F5A017;
+  --yellow-light: #EDE0AE;
+  --yellow-dark: #F8C74A;
+  --yellow: #F3D538;
   --bold: 600;
   --normal: 400;
   font-size: 16px;
   line-height: 32px;
   font-weight: var(--normal);
-  color: var(--darkSlateGray);
+  color: var(--gray-dark);
 }
 *{
   font-family: 'PT Sans', sans-serif;
@@ -79,7 +71,8 @@ body > *{
 }
 /** Backgrounds **/
 .background {
-  background-color: var(--darkGray);
+  background-image: url(/public/assets/images/background-all.png);
+  background-repeat: repeat;
   min-width: 950px;
   min-height: 100vh;
   margin: 0;
@@ -90,10 +83,11 @@ body > *{
   width: 100%;
   min-width: 700px;
   min-height: 100vh;
-  background-color: var(--brightPurple);
+  background-image: url(/public/assets/images/background.png);
+  background-repeat: repeat;
 }
 .page-background{
-  background-color: var(--darkSlateGray);
+  background-color: rgba(26, 26, 26, .5);
   border-radius: 10px;
   padding: .75rem;
   margin: .8rem auto;
@@ -133,21 +127,24 @@ body > *{
   margin: 0;
   padding:1em;
   font-size: 1.5em;
-  color: var(--whiteBlue);
+  color: var(--yellow-light);
   font-weight: var(--bold);
 }
 .label{
-  color: var(--whiteBlue);
+  color: var(--yellow-light);
   text-align: left;
   padding: .50rem;
   font-size: .8rem;
   font-weight: var(--normal);
 }
+.label-button{
+  color: var(--gray-dark);
+}
 .input{
   height: 1.6rem;
   font-size: .8rem;
   border: none;
-  background-color: var(--whiteBlue);
+  background-color: var(--yellow-light);
   border-radius: 10px;
   padding-left: .25em;
 }
@@ -155,15 +152,15 @@ body > *{
   height: 1.6rem;
   font-size: .8rem;
   border: none;
-  background-color: var(--whiteBlue);
+  background-color: var(--yellow-light);
   border-radius: 10px;
   padding-left: .25rem;
 }
 .button{
-  color: var(--whiteBlue);
+  color: var(--yellow-light);
   width: 12rem;
   margin: .20rem 0;
-  background-color: var(--dimPurple);
+  background-color: var(--gray-dark);
   border-radius: 10px;
   font-size: .8rem;
   font-weight: var(--normal);
@@ -171,12 +168,11 @@ body > *{
 }
 .button:hover{
   cursor: pointer;
-  color: var(--whiteBlue);
-  background-color: var(--paleBlue);
-  box-shadow: inset 0 0 2rem var(--royalBlue);
+  color: var(--gray-dark);
+  background-color: var(--orange);
 }
 .about{
-  color: #292929;
+  color: var(--gray-dark);
   padding: 20px;
 }
 .title{
@@ -187,10 +183,10 @@ body > *{
 }
 
 .footer{
-  padding: 15px;
+  padding: .5rem;
   font-weight: var(--bold);
-  background-color: var(--darkSlateGray);
-  color: var(--whiteBlue);
+  background-color: var(--gray-dark);
+  color: var(--yellow-light);
 }
 li{
   clear: none;
@@ -202,27 +198,28 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: var(--darkSlateGray);
+  border-bottom: solid;
+  background-color: var(--gray-dark);
 }
 
 ul.topnav li {float: left;}
 
 ul.topnav li a {
     display: block;
-    color: var(--whiteBlue);
+    color: var(--yellow-light);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {
-  background-color: var(--whiteBlue);
-  color: var(--darkSlateGray);
+ul.topnav li a:hover{
+  background-color: var(--yellow-light);
+  color: var(--gray-dark);
 }
-
+/*
 ul.topnav li a.active {
-  background-color: var(--dimPurple)
-}
+  background-color: var(--orange)
+}*/
 
 ul.topnav li.right {float: right;}
 
@@ -239,26 +236,20 @@ ul.topnav li.right {float: right;}
   font-weight: var(--bold);
   font-size: 1em;
   padding-left: 0;
-  color: var(--darkSlateGray);
-  text-decoration: none;
-  cursor: pointer;
-}
-.commit-title:hover{
-  text-shadow: 0 0 2px red;
 }
 a{
   text-decoration: none;
 }
 .commit-author{
   font-size: .8em;
-  color: var(--darkSlateGray);
+  color: var(--gray-dark);
 }
 .commit-body{
   padding-left: 0;
   line-height: 1em;
   text-align: left;
   font-size: 1em;
-  color: var(--darkSlateGray);
+  color: var(--gray-dark);
 }
 .commit-messages-container{
   padding: .33em;
@@ -289,11 +280,21 @@ input[type=checkbox]:not(:checked) {
   background-image: url("/public/assets/images/git-commit.png");
 }
 
+a{
+  text-decoration: none;
+  color: var(--orange);
+}
+a:hover{
+  color: var(--yellow-dark);
+}
+a:visited{
+  color: var(--orange);
+}
 .main-legend {
   padding: 0.2em 0.5em;
-  border: 2px solid var(--darkSlateGray);
-  background-color: var(--dimPurple);
-  color: var(--whiteBlue);
+  border: 2px solid var(--gray-dark);
+  background-color: var(--orange);
+  color: var(--yellow-light);
   font-weight: bold;
   font-size:.9em;
   text-align:center;
@@ -301,14 +302,12 @@ input[type=checkbox]:not(:checked) {
 /*** merges ***/
 [id^="merge-"]{
   background: var(--mediumSlateBlue);
-  border: solid 2px var(--whiteBlue);
+  border: solid 2px var(--yellow-light);
   margin-top: .75em;
 }
 .merges-div {
   overflow-y: scroll;
   height: 700px;
-  max-width: 700px;
-  min-width: 440px;
   padding: 1em;
 }
 .commits-div {
@@ -319,15 +318,16 @@ input[type=checkbox]:not(:checked) {
 .merges-fieldset {
   display: none;
   margin: 0 auto;
-  border:2px solid var(--darkSlateGray);
+  border:2px solid var(--gray-dark);
   max-width: 700px;
   min-width: 340px;
+  background-color: rgba(26, 26, 26, 0.6);
 }
 .commits-fieldset {
-  background-color: var(--darkkhaki);
   display: none;
   margin: 0 auto;
-  border:2px solid var(--darkSlateGray);
+  border:2px solid var(--gray-dark);
+  background-color: rgba(26, 26, 26, 0.5);
   max-width: 700px;
   min-width: 340px;
 }
@@ -336,10 +336,9 @@ input[type=checkbox]:not(:checked) {
   padding: 0 .75em;
   font-weight: var(--bold);
   font-size: 1.15em;
-  color: var(--darkSlateGray);
-  text-decoration: underline;
-  border: solid 2px var(--whiteBlue);
-  background: var(--darkkhaki);
+  color: var(--gray-dark);
+  border: solid 2px var(--yellow-light);
+  background: var(--gray-dark);
 }
 
 .merge-subtitle{
@@ -347,7 +346,7 @@ input[type=checkbox]:not(:checked) {
   font-size: 1.10em;
   text-align: left;
   font-weight: var(--bold);
-  color: var(--darkSlateGray);
+  color: var(--gray-dark);
 }
 .merge-info{
   display: block;
@@ -356,7 +355,7 @@ input[type=checkbox]:not(:checked) {
   line-height: 1em;
   text-align: left;
   font-weight: var(--normal);
-  color: var(--darkSlateGray);
+  color: var(--gray-dark);
 }
 /** config button **/
 .config:hover{
@@ -366,10 +365,10 @@ input[type=checkbox]:not(:checked) {
 .release-note-fieldset {
   display: none;
   border:0;
-  height: 700px;
   max-width: 700px;
   min-width: 340px;
   padding: 1rem;
+  background-color: rgba(245, 160, 23, 0.5);
 }
 .md-fieldset {
   display: none;
@@ -377,17 +376,18 @@ input[type=checkbox]:not(:checked) {
   max-width: 700px;
   min-width: 340px;
   padding: 1rem;
+  background-color: rgba(245, 160, 23, 0.5);
 }
 .releaseNote-div{
-  background-color: var(--whiteBlue);
-  height: 100%;
+  background-color: var(--yellow-light);
+  height: 670px;
   padding: 1.5rem;
   overflow-y: scroll;
 }
 .md-div{;
-  background-color: var(--whiteBlue);
+  background-color: var(--yellow-light);
   padding: 1.5rem;
-  height: 700px;
+  height: 670px;
 }
 #md{
   padding: .35rem;
@@ -430,7 +430,6 @@ input[type=checkbox]:not(:checked) {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--lightGray);
   -webkit-transition: .4s;
   transition: .4s;
   box-shadow: inset 0 0 10px #000000;
@@ -444,13 +443,13 @@ input[type=checkbox]:not(:checked) {
   left: 2px;
   right: 2px;
   bottom: 1px;
-  background: radial-gradient(var(--dimPurple), var(--darkSlateGray), var(--dimPurple));
+  background: var(--gray-dark);
   -webkit-transition: .3s;
   transition: .1s;)
 }
 
 input:checked + .slider {
-  background-color: var(--sandyBrown);
+  background-color: var(--orange);
 }
 
 input:focus + .slider {
@@ -466,7 +465,7 @@ input:checked + .slider:before {
 /* Rounded sliders */
 .slider.round {
   border-radius: 26px;
-  border: solid 2px var(--darkSlateGray);
+  border: solid 2px var(--gray-dark);
 }
 
 .slider.round:before {

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Print the release notes from commit messages in a repository",
   "scripts": {
-    "bower": "node_modules/bower/bin/bower -f --allow-root install",
+    "production": "forever stopall && NODE_ENV=production forever start app.js",
+    "bower": "bower -f --allow-root install",
     "start": "node ./app.js",
     "mocha": "node_modules/.bin/mocha",
     "test": "mocha test/*",
@@ -40,6 +41,7 @@
     "eslint-plugin-mocha": "^3.0.0",
     "eslint-plugin-promise": "^1.3.2",
     "eslint-plugin-standard": "^1.3.2",
+    "forever": "^0.15.2",
     "istanbul": "^0.4.4",
     "mocha": "^2.5.3",
     "nodemon": "^1.9.2"
