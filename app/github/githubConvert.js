@@ -27,7 +27,6 @@ function convertRepos (repos) {
 
 function convertCommits (commits, date) {
   let commitsView = []
-  const invalidDate = new Date('Not a date')
   let tagDate = (date && !isNaN(date.valueOf())) ? new Date(date) : new Date('1970-01-01T21:43:37Z')
   for (let commit in commits) {
     let committedDate = new Date(commits[commit].commit.author.date)
