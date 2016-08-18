@@ -10,6 +10,9 @@ app.get('/', (req, res) => {
   }
 })
 
+app.get('/test2', (req, res) => {
+  res.render('test')
+})
 app.get('/config', (req, res) => {
   res.render('config')
 })
