@@ -471,3 +471,54 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+/* Image buttons overlay */
+.overlay{
+  position: absolute;
+  width: 400px;
+  height: 280px;
+  z-index: 15;
+  top: 30%;
+  left: 45%;
+  margin: -100px 0 0 -150px;
+  border-radius: 20px;
+  border: solid 2px #292929;
+  background: rgba(249, 160, 23, 0.5);
+}
+.title-overlay{
+  padding: 1rem 0;
+}
+.image-button{
+  border-radius: 20px;
+  border: solid 2px #292929;
+  background-color: rgba(29, 29, 29, 0.7);
+  box-shadow: inset 0 0 15px black;
+  padding: 1.1rem;
+}
+.image-button:hover{
+  background-color: rgba(129, 129, 129, 0.7);
+  cursor: pointer;
+}
+.image-button-config{
+  border-radius: 20px;
+  border: solid 2px #292929;
+  background-color: rgba(129, 129, 129, 0.7);
+  box-shadow: inset 0 0 15px black;
+  padding: .2rem;
+}
+.image-button-config[active]{
+  border-radius: 20px;
+  border: solid 2px #292929;
+  background-color: rgba(249, 160, 23, 0.5);
+  box-shadow: inset 0 0 15px black;
+  padding: .2rem;
+}
+.image-button-config:hover{
+  background-color: rgba(249, 160, 23, 0.5);
+  cursor: pointer;
+}
+#configSheet{
+  display: none;
+}
+#overlay{
+  display: none;
+}

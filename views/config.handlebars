@@ -1,17 +1,26 @@
+{{> overlay}}
 <div class="row link">
   <img src='/public/assets/images/config-icon.png' height='120'>
 </div>
 <div class="row">
   <div class="col-3">
-  </div><div class="col-9 page-background">
+  </div><div id="configSheet" class="col-9 page-background">
     <div class="row">
-      <h2 class="form-title">Configuration</h2>
+      <div class="col-6">
+        <h2 class="form-title">Configuration</h2>
+      </div><div class="col-3">
+      </div><div class="col-1">
+      </div><div class="col-1">
+        <img id="gitlab-config" class="image-button-config" src='/public/assets/images/gitlab-logo.png' height='190'>
+      </div><div class="col-1">
+        <img id="github-config" class="image-button-config" src='/public/assets/images/github-logo.png' height='190'>
+      </div>
     </div>
     <div class="row">
       <div class="col-3">
-        <label class="label">Repository URL:</label>
+        <label for="baseURL" class="label">Repository URL:</label>
       </div><div class="col-9">
-        <input class="input" type='text' id='baseURL' placeholder="http://your-repository.org/" value="{{baseURL}}" />
+        <input class="input" type='text' id='baseURL' placeholder="http://your-repository.org/" value="{{baseURL}}" disabled/>
       </div>
     </div>
     <div class="row">

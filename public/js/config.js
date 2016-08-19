@@ -3,7 +3,7 @@ $( document ).ready(function() {
   var $token = $('#token')
   if (localStorage.baseURL) $baseURL.val(localStorage.baseURL)
   if (localStorage.token) $token.val(localStorage.token)
-});
+})
 $(document).on('click', '#applyConfig', function() {
   configLoading()
   applyConfig()
@@ -33,4 +33,11 @@ function applyConfig() {
   var token = $('#token').val()
   localStorage.baseURL = baseURL
   localStorage.token = token
+  if (baseURL.match(/.*gitlab.*/)) {
+    localStorage.gitlabURL = baseURL
+    localStorage.gitlabToken = token
+  } else if (baseURL.match(/.*github.*/)) {
+    localStorage.githubURL = baseURL
+    localStorage.githubToken = token
+  }
 }
