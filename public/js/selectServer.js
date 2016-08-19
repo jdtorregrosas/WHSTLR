@@ -44,7 +44,7 @@ function activateGitlab() {
 }
 
 function activateGithub() {
-  $('#baseURL').val('https://api.github.com')
+  localStorage.githubURL = 'https://api.github.com'
   $('#baseURL').attr('disabled', 'disabled')
   $('#github-config').attr('active', 'active')
   $('#gitlab-config').attr('active', null)
